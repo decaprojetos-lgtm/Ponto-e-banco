@@ -1,0 +1,6 @@
+﻿id;name;role;baseDailyMinutes;englishWeekDay;englishWeekMinutes;isActive;startDate;initialBalanceMinutes;isHourly
+"27d83b80-0073-41d6-82f3-c7c9dc341db8";"Douglas ";"Vendedor responsável";"480";"1";"240";"true";"2026-02-02T00:00:00+00:00";"0";"false"
+"55d4b834-65d7-46a9-952d-e0915aa921b8";"Luana";"vendedora";"480";"4";"240";"true";"2026-06-01T00:00:00+00:00";"0";"false"
+"6c62ccbf-5719-4a03-89cf-3506e5200dd2";"Matheus ";"Gerente Administrativo";"480";"6";"240";"true";"2026-02-02T00:00:00+00:00";"0";"false"
+"01f9409f-d074-4c85-b8aa-96be02f6ba07";"Patrícia";"Estagiária";"360";"6";"0";"true";"2026-02-02T00:00:00+00:00";"0";"false"
+"10af27b6-820d-4142-a168-b43e8f261518";"Roberto";"Vendedor";"480";"1";"240";"true";"2026-02-02T00:00:00+00:00";"0";"false"

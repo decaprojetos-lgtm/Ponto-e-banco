@@ -1,0 +1,62 @@
+[
+  {
+    "id": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "name": "Douglas ",
+    "role": "Vendedor responsável",
+    "baseDailyMinutes": 480,
+    "englishWeekDay": 1,
+    "englishWeekMinutes": 240,
+    "isActive": true,
+    "startDate": "2026-02-02T00:00:00+00:00",
+    "initialBalanceMinutes": 0,
+    "isHourly": false
+  },
+  {
+    "id": "55d4b834-65d7-46a9-952d-e0915aa921b8",
+    "name": "Luana",
+    "role": "vendedora",
+    "baseDailyMinutes": 480,
+    "englishWeekDay": 4,
+    "englishWeekMinutes": 240,
+    "isActive": true,
+    "startDate": "2026-06-01T00:00:00+00:00",
+    "initialBalanceMinutes": 0,
+    "isHourly": false
+  },
+  {
+    "id": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "name": "Matheus ",
+    "role": "Gerente Administrativo",
+    "baseDailyMinutes": 480,
+    "englishWeekDay": 6,
+    "englishWeekMinutes": 240,
+    "isActive": true,
+    "startDate": "2026-02-02T00:00:00+00:00",
+    "initialBalanceMinutes": 0,
+    "isHourly": false
+  },
+  {
+    "id": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "name": "Patrícia",
+    "role": "Estagiária",
+    "baseDailyMinutes": 360,
+    "englishWeekDay": 6,
+    "englishWeekMinutes": 0,
+    "isActive": true,
+    "startDate": "2026-02-02T00:00:00+00:00",
+    "initialBalanceMinutes": 0,
+    "isHourly": false
+  },
+  {
+    "id": "10af27b6-820d-4142-a168-b43e8f261518",
+    "name": "Roberto",
+    "role": "Vendedor",
+    "baseDailyMinutes": 480,
+    "englishWeekDay": 1,
+    "englishWeekMinutes": 240,
+    "isActive": true,
+    "startDate": "2026-02-02T00:00:00+00:00",
+    "initialBalanceMinutes": 0,
+    "isHourly": false
+  }
+]

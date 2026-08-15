@@ -1,0 +1,5186 @@
+[
+  {
+    "id": "cc7cc145-bdd1-4984-9153-3340c2bf273e",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-02-02",
+    "minutes": 240,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "3828f220-fbbf-4a9c-a073-b9dd54b02a0d",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-02-02",
+    "minutes": 240,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "a53a1df6-2a13-4928-86cd-6fb66ea686d7",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-02-02",
+    "minutes": 480,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "5edb6a31-0dd2-44d9-80cb-c2603858f5e9",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-02-03",
+    "minutes": 480,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "9a4e0b79-e696-4d2f-b5ec-826e9bc479d3",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-02-03",
+    "minutes": 480,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "0f9ba83c-b99f-4c01-87c8-e4bd6a643d0b",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-02-03",
+    "minutes": 480,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "0b57ae2d-f046-429d-905f-8fec28c77424",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-02-04",
+    "minutes": 480,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "515f510c-0208-48e9-b518-89e66f885342",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-02-04",
+    "minutes": 480,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "fd655aea-d198-45e2-83b6-0b6c88c1f188",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-02-04",
+    "minutes": 360,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "ba1e20ed-5874-4e60-a6f9-351621d412df",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-02-04",
+    "minutes": 480,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "27fee442-b957-4a5f-ac25-fbb496f5a97f",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-02-05",
+    "minutes": 480,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "c9893d4f-d683-4afc-b9cf-dbff0a8de6e2",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-02-05",
+    "minutes": 360,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "e18acbfe-2d2d-4e2b-b8c4-7761025d6f44",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-02-05",
+    "minutes": 480,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "9481ce2c-14f9-4ba0-8002-5c54eb518de4",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-02-05",
+    "minutes": 480,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "aabaa25e-0e48-4dc3-b642-9167a41df6ab",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-02-06",
+    "minutes": 480,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "8265a4ab-7cfb-4e3d-ae33-e7deca07bc93",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-02-06",
+    "minutes": 360,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "a715dc8b-e088-47de-b45f-456d460b69aa",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-02-06",
+    "minutes": 480,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "cf5296fb-872a-4a20-b360-7f62d834551e",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-02-07",
+    "minutes": 480,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "d42e0f21-25ed-42c3-841d-d385485cf124",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-02-07",
+    "minutes": 480,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "fb19a6fa-c6c1-4ffd-aa60-eff95344f074",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-02-07",
+    "minutes": 360,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "f3e77c46-9e23-465b-b02c-af327cba661c",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-02-07",
+    "minutes": 240,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "959ad951-550a-423a-9b51-eeeca563e1a6",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-02-08",
+    "minutes": 420,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "6fe6a16d-008a-4a66-ada6-016619676c7f",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-02-09",
+    "minutes": 240,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "8c626f27-f411-4be2-b853-c70ae7300406",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-02-09",
+    "minutes": 480,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "032a3cc0-351f-4fa1-a323-030d12ac8d24",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-02-09",
+    "minutes": 480,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "e81a20a4-5943-4429-b7db-da9736ce77f2",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-02-09",
+    "minutes": 120,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "c327a692-1003-46e5-a864-3cfad17b0925",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-02-10",
+    "minutes": 360,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "89ccda47-4c4b-4544-8b29-820f829ef7b9",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-02-10",
+    "minutes": 480,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "afcc12ac-f81c-4969-8895-2b2d568c2aa7",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-02-10",
+    "minutes": 480,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "79275e64-c2ef-4fca-91bc-323f481a704a",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-02-10",
+    "minutes": 480,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "3ccdd9c7-9246-4f6a-9aed-22d3fcf0d35c",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-02-11",
+    "minutes": -180,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "7f9882bd-aa65-4d58-b932-8c024ba4b2e4",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-02-11",
+    "minutes": 167,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "0ea973a4-0baa-4510-863e-2ba8d0fec0e4",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-02-11",
+    "minutes": 0,
+    "type": "OFF_DAY",
+    "note": ""
+  },
+  {
+    "id": "fb00948d-f1de-4afd-93dd-f07d39ad9c7d",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-02-11",
+    "minutes": -6,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "64c56570-a3c6-477d-becf-3a9056d3ca5c",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-02-11",
+    "minutes": -12,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "8b8a65b1-b034-4efd-a420-dc30e756ee09",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-02-12",
+    "minutes": -233,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "ad7268b3-f8bf-41dc-a080-98e8be4ba14c",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-02-12",
+    "minutes": 12,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "5d9a2c4c-6408-4520-9692-c03618882fac",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-02-12",
+    "minutes": 12,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "fab40a33-d8b2-4c66-9675-b67ea86d3c5f",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-02-12",
+    "minutes": -62,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "16705a70-6b6a-438b-90ac-25cf46502ee8",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-02-12",
+    "minutes": 12,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "f69b1b5e-a3ba-46cf-8d93-1e43bea5675e",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-02-12",
+    "minutes": -25,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "a2301c28-e341-4ab3-a999-d0fdc055f764",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-02-12",
+    "minutes": 480,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "e26e625c-af21-4702-876d-a3e5eebf23c4",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-02-12",
+    "minutes": 60,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "eb3677e7-a912-4094-84b0-b98bc1686e2a",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-02-13",
+    "minutes": -85,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "f014c191-18fb-458a-915c-44fadf5e0bdf",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-02-13",
+    "minutes": 480,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "9e8eb78f-e18c-47f0-80d5-c344823c6e81",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-02-13",
+    "minutes": -65,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "3413a178-8c4a-418f-9e97-905de6199a8e",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-02-13",
+    "minutes": -15,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "9080354d-a97c-4b5a-8d25-c6600d9d209d",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-02-14",
+    "minutes": -26,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "cbaa41fb-62d3-4283-b4c3-27d39c41e89a",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-02-14",
+    "minutes": -23,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "d7fabf58-1467-4f46-92a3-2616d29b26de",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-02-14",
+    "minutes": 226,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "99d2cd36-dcb7-4fd2-b907-3f754b81ed0d",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-02-16",
+    "minutes": 360,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "6e5dab8c-4bdd-42d7-854a-41e838b0bdc4",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-02-16",
+    "minutes": 240,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "b4c96e42-258b-4c56-831c-66a43c0800f3",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-02-16",
+    "minutes": 240,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "eba44db1-0c86-4aab-93de-6a651619e755",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-02-16",
+    "minutes": 480,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "b5031ed1-b70c-4d38-9358-510fb8b6d080",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-02-17",
+    "minutes": 0,
+    "type": "HOLIDAY",
+    "note": ""
+  },
+  {
+    "id": "c1a76ea1-c5ce-4010-a900-2d6d33e4ea8f",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-02-17",
+    "minutes": 0,
+    "type": "HOLIDAY",
+    "note": ""
+  },
+  {
+    "id": "ba1529cd-f893-4feb-a08f-8218c3ed7498",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-02-17",
+    "minutes": 0,
+    "type": "HOLIDAY",
+    "note": ""
+  },
+  {
+    "id": "2a3adaaf-84c1-439c-b6c8-926e035d42e7",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-02-17",
+    "minutes": 0,
+    "type": "HOLIDAY",
+    "note": ""
+  },
+  {
+    "id": "de0258c1-bd5a-432b-8758-19d5ffad2106",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-02-18",
+    "minutes": 360,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "e4b9f5b0-b8a5-40bb-abcd-ca82e7366505",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-02-18",
+    "minutes": 480,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "5e14cff6-ab7a-4e9d-a1b8-1b50bc82ec2f",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-02-18",
+    "minutes": -7,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "e0962c90-7406-420c-ba4c-c02ed29bd38d",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-02-19",
+    "minutes": -30,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "d774496f-2b20-4672-9e0e-91b00755ccea",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-02-19",
+    "minutes": 7,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "64c78e30-1833-4ea2-99a4-b12f83eb29ca",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-02-19",
+    "minutes": 42,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "65fc1393-c9c2-4d73-a512-2028a4fb7c3c",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-02-19",
+    "minutes": -16,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "43eb3d29-ce2a-4c28-9208-c3b7d18af509",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-02-20",
+    "minutes": -10,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "78350021-75a7-4d5e-9f41-faa16fa24c81",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-02-20",
+    "minutes": -24,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "70a94a7f-c10f-4dab-9b81-934d265e41e5",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-02-20",
+    "minutes": 40,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "45253f7b-37ed-4b30-abd3-4eea310a8aa5",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-02-20",
+    "minutes": 14,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "7ecb53ee-fb09-4d9f-a759-a75706093c42",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-02-20",
+    "minutes": -29,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "f4860f61-c1dd-4276-9c23-93d73bf1bf3d",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-02-21",
+    "minutes": 460,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "bf4ceac6-0839-4637-bb59-828a92cb6486",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-02-21",
+    "minutes": -17,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "d09d057e-fff4-439a-a7a8-9cafe0cd84f8",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-02-21",
+    "minutes": 210,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "03ec3132-27e5-40f3-a96c-943738d0764f",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-02-22",
+    "minutes": 516,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "e949a9e8-d61f-4568-b2c8-4cef929a3ced",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-02-22",
+    "minutes": 423,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "4e1e24f8-9713-43ce-8fc6-5696dc6430a1",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-02-23",
+    "minutes": 20,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "818a8a68-1eb6-4b45-9f9b-b92263760032",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-02-23",
+    "minutes": 19,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "8dfa0303-ea5a-4ed5-90b6-c05fa613886d",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-02-23",
+    "minutes": 11,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "922fb587-f3ee-495f-877e-6663ab414cc1",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-02-24",
+    "minutes": 3,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "d09fa7cf-442f-4778-be75-88c7b57c1f1e",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-02-24",
+    "minutes": -34,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "81d969d4-6349-4e85-a1fd-2fa2810dd10d",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-02-24",
+    "minutes": 23,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "65079337-83bb-48aa-804d-6af57b0a59d3",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-02-24",
+    "minutes": -223,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "e0f56daf-b864-4b5c-b957-fdb165a60ac1",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-02-25",
+    "minutes": 43,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "98e93222-47cb-439d-b0b8-86ba81d2af4d",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-02-25",
+    "minutes": -195,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "b15fa49a-025b-4b0f-8676-2f1a719d6e61",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-02-25",
+    "minutes": -16,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "fa206fc0-498b-444e-976f-62451f578159",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-02-25",
+    "minutes": -73,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "746fab8c-d43b-4130-844a-201429b56f0e",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-02-26",
+    "minutes": -22,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "41758516-721e-424d-a6ad-1e186a76947d",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-02-26",
+    "minutes": 77,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "f6871dc9-1835-4f3f-8812-a61f44d85d0e",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-02-26",
+    "minutes": -41,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "71a141c1-6845-45e3-8f90-4db19c6406c1",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-02-26",
+    "minutes": -16,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "19c98106-4324-459e-bc0e-06fa9ea4fd97",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-02-27",
+    "minutes": 12,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "9630cd0c-236b-4427-b48a-1c600ae4e3e7",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-02-27",
+    "minutes": 76,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "7170de9e-e549-4ff9-a326-d415f266e155",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-02-27",
+    "minutes": 4,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "67cfe9ab-7513-440f-8e22-7618957a32aa",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-02-27",
+    "minutes": -48,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "90f21ce6-1735-439a-af8f-6d6531c1a4bd",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-02-28",
+    "minutes": 88,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "4d95c82b-f7ef-47eb-bd91-adf5a93f160a",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-02-28",
+    "minutes": 598,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "56a03c1f-14d1-44ce-82e7-523b10d8e1f7",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-02-28",
+    "minutes": 78,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "3727a12e-d9f0-4a47-8336-3a3d42cf9cec",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-03-02",
+    "minutes": 480,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "4c660416-2ab4-4f1e-acab-577bfbe73a2e",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-03-02",
+    "minutes": 360,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "3286a080-6a03-432b-8a2b-c962accef0cd",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-03-02",
+    "minutes": 233,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "65d51b39-f6f0-4f6b-8421-745e1456dc86",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-03-03",
+    "minutes": -11,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "9990594d-7ef0-4664-b413-ae8669aa0930",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-03-03",
+    "minutes": -219,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "a8be5ccd-c0e0-4b9f-a563-0d67fa9c0b3c",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-03-03",
+    "minutes": 33,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "184e4334-7156-4d9c-88d8-8d0db81c47f7",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-03-03",
+    "minutes": 12,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "9b555497-3e2e-4434-9f8f-509b2faeea15",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-03-04",
+    "minutes": -22,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "fe31d64f-674d-4ee1-897d-145f8503113f",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-03-04",
+    "minutes": -29,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "d5a76fe6-3baf-4363-b619-62b24e1639ab",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-03-04",
+    "minutes": 56,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "8c64c0b5-9189-4e79-adb2-935df80b5797",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-03-04",
+    "minutes": -14,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "d345b9d8-e8e4-4e1b-bdd8-4110e8a8fdbb",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-03-05",
+    "minutes": 2,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "d1a5381e-9fb7-4a6a-a482-b4589ac7a824",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-03-05",
+    "minutes": -18,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "fa7aeec0-d849-4622-8460-a8e881064fcf",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-03-05",
+    "minutes": 20,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "6f4ce812-bcd2-4f34-a6f0-de93ed4db89d",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-03-05",
+    "minutes": -2,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "eee12aa3-2f3c-4384-aeea-91049f64657d",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-03-05",
+    "minutes": 2,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "1ea106d8-f1d1-4f85-81b0-e924601bb61e",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-03-06",
+    "minutes": -32,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "62b9692b-31df-4353-a2af-6ea384991384",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-03-06",
+    "minutes": -51,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "026caa1d-03cc-4490-b459-a4b8742cf0c6",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-03-06",
+    "minutes": -10,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "f70c0da7-afa3-46f4-9adf-09c305f4f027",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-03-07",
+    "minutes": -13,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "ca44dd70-25c5-4074-9202-0fc665e72990",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-03-07",
+    "minutes": -38,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "012cebf3-ff39-41bf-816e-2a579e7efdfd",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-03-08",
+    "minutes": 419,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "2d08d713-f6fc-40fd-94fc-ec0cc48dfe67",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-03-08",
+    "minutes": 421,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "ad42dd6c-2993-4530-80df-b56b43b4b4a5",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-03-08",
+    "minutes": 410,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "df4609bd-2da6-45ac-b77c-7a3f7e7c0262",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-03-09",
+    "minutes": 38,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "f1c69f6e-86a1-4ad0-b411-d00118d30238",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-03-09",
+    "minutes": 50,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "de3c9cc9-a18e-4e75-9a45-ba52c21922f1",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-03-09",
+    "minutes": 0,
+    "type": "OFF_DAY",
+    "note": ""
+  },
+  {
+    "id": "84dfbf2d-4d74-417d-a61e-d8102bed2874",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-03-10",
+    "minutes": -14,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "71746b47-4bbc-4bb1-92a5-052385268a7c",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-03-10",
+    "minutes": -38,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "3232f696-97f8-4acd-8c2e-538368c137e7",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-03-10",
+    "minutes": 360,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "449c07cb-e93b-4316-bb9d-c6682bceb18d",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-03-10",
+    "minutes": -195,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "d02dcd6f-c2d5-4a56-87c0-b6cc35ed48f5",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-03-11",
+    "minutes": 480,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "667645ca-0e39-4dac-bdb1-435905c8a8c8",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-03-11",
+    "minutes": 0,
+    "type": "OFF_DAY",
+    "note": ""
+  },
+  {
+    "id": "4f8a1bc9-6236-45cb-b5ec-1c727d816538",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-03-11",
+    "minutes": 480,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "56da15e7-4eba-4504-b9a4-ad467d96459b",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-03-11",
+    "minutes": -10,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "8256955e-3a50-4fbb-a51d-d90a3d5bccec",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-03-11",
+    "minutes": 8,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "09512a37-33a9-46f5-bc64-b18eb4a7dd00",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-03-12",
+    "minutes": 0,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "0f1c543b-5400-4beb-bdff-0833f40d31d2",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-03-12",
+    "minutes": -17,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "31430721-761c-4670-ae60-9dc192bee478",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-03-12",
+    "minutes": 5,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "1211e52a-c15f-4b0b-aa61-f82faf61f978",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-03-12",
+    "minutes": -36,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "14509413-4a17-42a7-a6f7-3c0d97ca02b7",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-03-13",
+    "minutes": 7,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "43de4c9a-ff96-4f9a-8f23-4b6348548491",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-03-13",
+    "minutes": 480,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "860e0af5-3f04-44dc-8adf-60099cfd0816",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-03-13",
+    "minutes": -17,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "d8892281-78ee-4426-8727-9e0bc67a21b8",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-03-13",
+    "minutes": -33,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "f7bd4f76-5c08-417e-b41f-7b4f310e76fe",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-03-14",
+    "minutes": -81,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "21966fd8-f96e-4d37-87f2-0cc09a4c410f",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-03-14",
+    "minutes": 80,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "76b92cf2-b49b-4b99-b256-1ea63629fa78",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-03-14",
+    "minutes": -14,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "a22acb21-49e6-4ff3-b819-ea0736518472",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-03-14",
+    "minutes": 359,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "d7b7d66f-94ce-46ef-96d1-f4bbea158a0f",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-03-14",
+    "minutes": 0,
+    "type": "OFF_DAY",
+    "note": ""
+  },
+  {
+    "id": "1e51b2ab-495b-4d9f-85ad-f6c709dfe08c",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-03-16",
+    "minutes": 0,
+    "type": "OFF_DAY",
+    "note": ""
+  },
+  {
+    "id": "c199c0ff-e907-437a-850e-989b97530ed3",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-03-16",
+    "minutes": 0,
+    "type": "HOLIDAY",
+    "note": ""
+  },
+  {
+    "id": "f55d67d8-a6b6-4637-bef4-a4e2fd7e0b4f",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-03-16",
+    "minutes": 0,
+    "type": "HOLIDAY",
+    "note": ""
+  },
+  {
+    "id": "fd38e69b-0ed8-467b-bdc8-e15e29f58c5c",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-03-16",
+    "minutes": 0,
+    "type": "HOLIDAY",
+    "note": ""
+  },
+  {
+    "id": "be7db06b-62dd-47c9-aeca-8ff6d2d78315",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-03-17",
+    "minutes": -215,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "f325b0d2-6ce6-407c-a32c-711eb5a0c5cc",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-03-17",
+    "minutes": 0,
+    "type": "OFF_DAY",
+    "note": ""
+  },
+  {
+    "id": "081bb6cf-d33e-42f1-bf40-5cbd93c6bb01",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-03-17",
+    "minutes": -217,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "0f96f159-6e6c-4158-b684-46d106453a00",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-03-17",
+    "minutes": -28,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "37c9672a-5d05-4ae9-848c-d1e60e951715",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-03-18",
+    "minutes": -22,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "fedb56f6-000f-457e-b1a4-90d0ed46e2cc",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-03-18",
+    "minutes": 6,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "8574e320-6ac2-4576-9d5e-a1cec2406e19",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-03-18",
+    "minutes": -16,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "a6213b1b-f540-4f16-9d6b-4fb4d584e009",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-03-18",
+    "minutes": 5,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "0af50565-0ae3-48f0-a8c6-40796f6b8de4",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-03-19",
+    "minutes": -30,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "fa55e4c4-d30e-4b23-ae27-6a05afe8f5a9",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-03-19",
+    "minutes": 10,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "f4364834-8949-4123-a67f-02047772f2ec",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-03-19",
+    "minutes": -16,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "53081924-e0ff-4648-a440-fd9d6bc57479",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-03-19",
+    "minutes": 5,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "7b9f998f-22b5-4af5-b6d1-24e0abf7b666",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-03-20",
+    "minutes": 36,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "4b4690a9-9de0-4baa-bd54-98460e4e665e",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-03-20",
+    "minutes": -2,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "f01cd098-2355-4f3b-8a3a-ab1c359977aa",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-03-20",
+    "minutes": -7,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "0ce23eea-3b81-4825-9208-9642365992fb",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-03-20",
+    "minutes": -35,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "4891cfef-890e-49da-bc44-6dc60c13549f",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-03-21",
+    "minutes": 65,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "984877f8-5b2b-47cc-90b3-86e8809af960",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-03-21",
+    "minutes": -24,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "c373bcda-5514-4534-8c49-0d44a882cd1d",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-03-21",
+    "minutes": 0,
+    "type": "OFF_DAY",
+    "note": ""
+  },
+  {
+    "id": "5bb33cbd-975a-41fa-9e0b-93f7399be3db",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-03-21",
+    "minutes": 355,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "1f65da6b-6368-4c28-bafb-2cfd9a8af03a",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-03-23",
+    "minutes": 500,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "5e76da86-847a-426e-a462-8301c3843ae1",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-03-23",
+    "minutes": 28,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "1df1add9-1dc5-474a-8f11-95af4b597f2c",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-03-23",
+    "minutes": 9,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "6e7149d5-c415-4102-809b-809010c7ca8a",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-03-24",
+    "minutes": -15,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "f622f690-411a-4edf-8c7a-00ef16e575f7",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-03-24",
+    "minutes": -40,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "ae9360c6-852c-472a-8a2e-aecc0e711150",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-03-24",
+    "minutes": -38,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "4fb3ea38-e87b-450b-b777-3f35f74144eb",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-03-24",
+    "minutes": 7,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "02abde7e-ce2a-459f-a2cb-f488be2dc667",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-03-25",
+    "minutes": -32,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "4cc208f9-2d18-4ce3-ba49-3a7711c56031",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-03-25",
+    "minutes": 360,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "293bd4c9-af16-4f4f-a1f8-4351cd281be0",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-03-25",
+    "minutes": 480,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "76154f88-6064-4dd4-9ce7-cbf1950247aa",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-03-25",
+    "minutes": -11,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "c908ee88-5235-446d-92e5-8b7d27da3b00",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-03-26",
+    "minutes": -5,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "823ed3d5-aecd-4d84-876c-62a7642c01bd",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-03-26",
+    "minutes": -22,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "a62195c7-d3c7-404a-965f-db2439d3a70d",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-03-26",
+    "minutes": 6,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "c1cb70f1-cea8-4542-9267-9f9b02148d9b",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-03-26",
+    "minutes": 480,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "f10b6472-bbbb-4ce0-b390-c0acb0d96bf2",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-03-27",
+    "minutes": 12,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "8843bc8f-feb9-4a6e-8a2c-60f0de9702f5",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-03-27",
+    "minutes": -15,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "5568be0c-5ad7-4fa0-9f39-edffff95d69d",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-03-27",
+    "minutes": -28,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "50697cee-5ef2-452e-974d-66584cb6b041",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-03-27",
+    "minutes": 740,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "e2be0b99-624f-44a5-8666-3ace6d658b66",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-03-28",
+    "minutes": -2,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "6b665ff2-14f0-4888-9dec-a13d0b54b990",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-03-28",
+    "minutes": 420,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "e520be1c-2a56-46e0-b943-6ae8b2a5f026",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-03-28",
+    "minutes": 600,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "9f102b97-6344-4259-8de3-0865e3b7cd83",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-03-28",
+    "minutes": -13,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "0fc5eb0c-1b9c-4f60-8e50-ef350b03c221",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-03-29",
+    "minutes": 540,
+    "type": "ADJUSTMENT",
+    "note": "Ajuste manual administrativo"
+  },
+  {
+    "id": "deba32c7-550b-40f6-bae1-42abb7da282c",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-03-30",
+    "minutes": 56,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "101c518f-16ab-43a3-b99f-56d793c18e7c",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-03-30",
+    "minutes": 34,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "e6f1697e-e823-476a-ac0d-f9211c9936ed",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-03-30",
+    "minutes": 17,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "3a8be31c-2715-4e21-ba40-7a43bacf0885",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-03-31",
+    "minutes": -10,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "bcdd0d50-ea80-4272-b50c-3219bc30e910",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-03-31",
+    "minutes": -173,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "cd0f2130-a867-42f4-bb04-f2aa406bbd93",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-03-31",
+    "minutes": -15,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "2cfad70a-2aa6-426a-b546-64c6db25cb09",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-04-01",
+    "minutes": 4,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "2e80a47e-d8bd-47b9-b1c8-4209afd8c09e",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-04-01",
+    "minutes": -31,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "e7fa88ad-d64d-4b58-8789-5c17aafa747f",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-04-01",
+    "minutes": -212,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "2842f5ee-eb21-4e7d-adcb-949627233005",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-04-01",
+    "minutes": -108,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "1ab0128e-b59d-4a7a-b416-d29a6e55b0de",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-04-02",
+    "minutes": 7,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "b0e3e40a-fa23-4805-91f3-c86ff3aade95",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-04-02",
+    "minutes": 7,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "46de6163-ae27-4bea-bb1e-0e418aca0f1a",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-04-02",
+    "minutes": 7,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "165c4ef8-8c99-4ccc-9571-5312d67b4868",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-04-02",
+    "minutes": 7,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "cd2044a2-4d36-4e3b-994d-fe5466863c1d",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-04-02",
+    "minutes": -25,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "40471322-ce31-40fb-8249-d193cbf66578",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-04-02",
+    "minutes": 0,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "e9cffbde-e173-47b5-bb69-1a0ba5bae982",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-04-02",
+    "minutes": 675,
+    "type": "ADJUSTMENT",
+    "note": "Não consegui bater a saída por conta da Páscoa Petrópolis"
+  },
+  {
+    "id": "3c12b77e-57c5-4316-acf4-8212bce15c82",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-04-03",
+    "minutes": 480,
+    "type": "ADJUSTMENT",
+    "note": "Horas Extras trabalho feriado"
+  },
+  {
+    "id": "52ea3d46-7140-441a-b5d6-74b67b2b8ab5",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-04-03",
+    "minutes": 0,
+    "type": "HOLIDAY",
+    "note": ""
+  },
+  {
+    "id": "792bdedd-c4c1-443f-a399-727a754c4960",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-04-03",
+    "minutes": 500,
+    "type": "ADJUSTMENT",
+    "note": "Não consegui bater o ponto por estar na Páscoa Petrópolis"
+  },
+  {
+    "id": "e08b9815-0aa8-4750-99f7-66e63bd44b76",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-04-03",
+    "minutes": 0,
+    "type": "HOLIDAY",
+    "note": ""
+  },
+  {
+    "id": "16d1e6e0-7e73-4c86-a228-ec92253de686",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-04-03",
+    "minutes": 0,
+    "type": "HOLIDAY",
+    "note": ""
+  },
+  {
+    "id": "f39bb3c5-bfab-4904-b075-fde3ee3024af",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-04-04",
+    "minutes": 411,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "6bb24326-e9c7-4528-94b8-61c81457caf6",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-04-04",
+    "minutes": 600,
+    "type": "ADJUSTMENT",
+    "note": "Não consegui bater o ponto por estar na Páscoa Petrópolis"
+  },
+  {
+    "id": "2453d192-8888-4160-89d4-d109c673efe9",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-04-04",
+    "minutes": -50,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "5f7bf9ab-e603-470e-82d7-e546b9b00de6",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-04-04",
+    "minutes": -11,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "04477e13-9bf8-4f46-a872-7c5d1c9dfe1c",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-04-05",
+    "minutes": 750,
+    "type": "ADJUSTMENT",
+    "note": "Não consegui bater o ponto por estar na Páscoa Petrópolis"
+  },
+  {
+    "id": "fb3bd5ca-b545-4515-9ca4-fbe1e4d45996",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-04-05",
+    "minutes": 480,
+    "type": "ADJUSTMENT",
+    "note": "Horas Extras Trabalho Domingo Páscoa"
+  },
+  {
+    "id": "a01303dd-b159-4dfc-9a03-3b24fb552a50",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-04-06",
+    "minutes": 660,
+    "type": "ADJUSTMENT",
+    "note": "Não consegui bater a saída por estar no Centro Alceu fazendo evento"
+  },
+  {
+    "id": "5d5d10cb-715e-402a-9370-9be5d45f9108",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-04-06",
+    "minutes": 19,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "74c8a705-6ebf-45e2-887d-fec0e7aca8b0",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-04-06",
+    "minutes": 166,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "c3e9822c-19fd-4b2a-a1a0-9c5c2076697b",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-04-07",
+    "minutes": -209,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "1b7a6987-ac7c-4b1b-9f83-df5dd5e49316",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-04-07",
+    "minutes": 34,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "8d2c9ebf-a71f-4d3a-b7ca-f575e7553331",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-04-07",
+    "minutes": 4,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "abf1b46f-5575-4330-b495-ed6722da5e71",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-04-07",
+    "minutes": 180,
+    "type": "ADJUSTMENT",
+    "note": "Dia em que me senti mal. Não lembrei de bater a saída para ir ao médico."
+  },
+  {
+    "id": "969ad0d6-26f3-4f7d-aa2e-c4664b0e3dde",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-04-08",
+    "minutes": 20,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "82eebda0-3ea4-40fe-84f1-5eb542efcefe",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-04-08",
+    "minutes": 0,
+    "type": "MEDICAL",
+    "note": "Atestado Médico"
+  },
+  {
+    "id": "8cd0cd5c-3944-4c34-ae51-53782a0a53c6",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-04-08",
+    "minutes": -23,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "b9e3c97c-807d-4ec5-a1cf-f9e276d21121",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-04-08",
+    "minutes": -4,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "b9228016-4fe3-4bc3-956b-11407c7224b2",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-04-09",
+    "minutes": 480,
+    "type": "ADJUSTMENT",
+    "note": "Batida deletada"
+  },
+  {
+    "id": "173fb36e-da21-4c88-a2e7-140f8bd75f3e",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-04-09",
+    "minutes": 24,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "768292f8-5ae7-4ace-9456-e9693a830abb",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-04-09",
+    "minutes": 480,
+    "type": "ADJUSTMENT",
+    "note": "Batida deletada"
+  },
+  {
+    "id": "bc911329-541a-4368-bb2f-9a1a3a089ab0",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-04-09",
+    "minutes": 270,
+    "type": "ADJUSTMENT",
+    "note": "Esqueci de bater o ponto e fiz semana inglesa para ir ao jogo do Botafogo."
+  },
+  {
+    "id": "45108e5e-ec2d-4b8a-9045-c4f9992f0b9f",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-04-10",
+    "minutes": 360,
+    "type": "ADJUSTMENT",
+    "note": "esquecimento ponto"
+  },
+  {
+    "id": "0d84ea2c-ab56-41c2-9b11-f324277c08df",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-04-10",
+    "minutes": 2,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "0664abe0-0079-477c-ba39-7e040628ad06",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-04-10",
+    "minutes": 6,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "1601d60e-1db9-4c58-b22a-8c310628cf69",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-04-10",
+    "minutes": -44,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "87e734a8-079d-4d4f-8bb2-e07b4c848829",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-04-11",
+    "minutes": -16,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "795c6aaf-f697-4d1c-bd66-fc92c7fc43aa",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-04-11",
+    "minutes": 330,
+    "type": "ADJUSTMENT",
+    "note": "Trabalho Externo"
+  },
+  {
+    "id": "bb754320-9417-4123-a845-b26155e0dbba",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-04-11",
+    "minutes": -9,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "f4e64acc-fbb1-48f1-87e3-05c4d898c419",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-04-11",
+    "minutes": -9,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "87be1b58-2bc8-4d0e-aadc-e270e494a950",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-04-13",
+    "minutes": 25,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "94a8d59a-5656-4923-b317-66ff51d2da5f",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-04-13",
+    "minutes": 34,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "9837177a-7b14-4822-be26-cc67f1beb8d6",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-04-13",
+    "minutes": 24,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "ebd4069c-7d9c-4e94-b229-6259986b65eb",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-04-14",
+    "minutes": 480,
+    "type": "ADJUSTMENT",
+    "note": "trabalho externo feira Criativaidade"
+  },
+  {
+    "id": "60e46b5c-2a96-46c8-8ff9-cbcb65183dbd",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-04-14",
+    "minutes": 480,
+    "type": "ADJUSTMENT",
+    "note": "Esquecimento"
+  },
+  {
+    "id": "34310ff8-e335-47f9-9c68-c0ad0065f23b",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-04-14",
+    "minutes": 0,
+    "type": "OFF_DAY",
+    "note": "Folga antecipada referente feriado de 21/04"
+  },
+  {
+    "id": "34725e29-2e00-4403-82f5-a64fe8e7a975",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-04-14",
+    "minutes": 180,
+    "type": "ADJUSTMENT",
+    "note": "Não lembrei de bater a saída. Trabalhei menos por conta da consulta com o médico e para participar de um evento no Serrano."
+  },
+  {
+    "id": "5bdcc73f-dca5-4d6f-8d42-901cc5dc0009",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-04-15",
+    "minutes": 55,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "5021d803-ba2d-4d3d-9c12-9bf998cf0563",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-04-15",
+    "minutes": 360,
+    "type": "ADJUSTMENT",
+    "note": "Trabalho externo Feira Criativaidade"
+  },
+  {
+    "id": "fde27eda-79a2-4344-b931-8be767ac112b",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-04-15",
+    "minutes": -17,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "8eedbdab-7976-48b3-aa35-50ed133ccf8b",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-04-15",
+    "minutes": 0,
+    "type": "MEDICAL",
+    "note": "Atestado Médico"
+  },
+  {
+    "id": "2ec04120-8c4f-4326-991b-e54fd04c42fb",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-04-16",
+    "minutes": 520,
+    "type": "ADJUSTMENT",
+    "note": "Esqueci de bater a volta do almoço."
+  },
+  {
+    "id": "cb83e639-caa0-4330-83b5-2caf8d6c6004",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-04-16",
+    "minutes": -18,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "0bbee9e6-140c-4b12-b864-277e5ed58685",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-04-16",
+    "minutes": -23,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "121790bb-0be3-4294-90ab-bdba49673c9e",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-04-16",
+    "minutes": 15,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "7286d006-9e5b-4838-a828-308edb288e0b",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-04-17",
+    "minutes": -18,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "1d3a42af-4cad-4833-8cc8-fee9dd7baad9",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-04-17",
+    "minutes": -8,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "86f3ebd6-8ded-4a17-9f3c-2a0990cb7f32",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-04-17",
+    "minutes": 4,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "3c4cc62e-cd24-4fba-a058-1b6403ad243a",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-04-17",
+    "minutes": -36,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "f71d36ad-f089-4ae8-a2bd-d11d4ec93289",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-04-18",
+    "minutes": -42,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "d4a6aea2-2fcb-4a80-a522-4b52e1af9625",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-04-18",
+    "minutes": -15,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "01e8aac4-ca22-40fe-91f0-94b98e6ce509",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-04-20",
+    "minutes": 0,
+    "type": "OFF_DAY",
+    "note": "folga feriado trabalhado Tiradentes"
+  },
+  {
+    "id": "5a75c3b7-fb7a-45bd-8b28-c5362ef881f8",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-04-20",
+    "minutes": 222,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "42f5f638-b0b4-4853-961c-b950324b7177",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-04-20",
+    "minutes": 2,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "89c5bd79-fb59-42f4-ac61-546c1ca0bcc3",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-04-21",
+    "minutes": 0,
+    "type": "HOLIDAY",
+    "note": "Tiradentes"
+  },
+  {
+    "id": "1449004d-a3cd-47cb-aa56-29d910d46eaa",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-04-21",
+    "minutes": -50,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "533c769f-02d2-4fe4-82fd-fd813593c81a",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-04-21",
+    "minutes": -63,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "75c360bc-ba7b-4749-930f-c3e80fbf3b93",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-04-21",
+    "minutes": 0,
+    "type": "HOLIDAY",
+    "note": "Tiradentes"
+  },
+  {
+    "id": "64022cfd-3936-4e47-8e0a-bdf13166f9dc",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-04-22",
+    "minutes": -223,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "3c9a07a9-0379-4a6c-a8d6-c64e50d9ef5b",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-04-22",
+    "minutes": 480,
+    "type": "ADJUSTMENT",
+    "note": "Erro ponto"
+  },
+  {
+    "id": "c3837def-c983-418e-8c66-018ab077acf0",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-04-22",
+    "minutes": 3,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "67a5d8f0-fb24-4a17-b67a-eadd807d9b97",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-04-22",
+    "minutes": -8,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "2b17a5e4-ed12-432c-927e-da560589801a",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-04-23",
+    "minutes": 0,
+    "type": "HOLIDAY",
+    "note": "Feriado São jorge"
+  },
+  {
+    "id": "5ca5a05e-e087-4685-9b99-a4e428e2cb4b",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-04-23",
+    "minutes": 0,
+    "type": "HOLIDAY",
+    "note": "Feriado São Joge"
+  },
+  {
+    "id": "eb563f35-77f1-4050-9f14-55f665911705",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-04-23",
+    "minutes": -55,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "3e1b770d-5489-41f5-9882-a904d64de2e2",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-04-23",
+    "minutes": -20,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "fd578381-5723-49ef-9834-a1d0498c12cd",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-04-24",
+    "minutes": 20,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "26827c32-e2b7-41aa-8e4c-3463d82da618",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-04-24",
+    "minutes": -204,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "b6c9fdca-b09b-454f-b079-0e578b769bce",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-04-24",
+    "minutes": 14,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "690f0d20-cce4-4d4c-8471-9a04586a390d",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-04-25",
+    "minutes": 11,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "02bd4af3-6eb0-4a3e-9576-58faf69b34ef",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-04-25",
+    "minutes": 14,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "14e1ec44-f914-497f-9c90-1a563d940d57",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-04-27",
+    "minutes": 11,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "fd425370-bbb1-47fd-9687-6d96e1b665ab",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-04-27",
+    "minutes": 25,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "33685d44-c17e-4e41-aff6-dedefebf04a4",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-04-27",
+    "minutes": 28,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "777477d0-ffa3-4fe9-a17a-8df17ad964b4",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-04-27",
+    "minutes": 35,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "04fd1f22-d4d9-44d0-a0d0-b44cd36443c6",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-04-28",
+    "minutes": 360,
+    "type": "ADJUSTMENT",
+    "note": "Esquecimentos"
+  },
+  {
+    "id": "4e3e153a-f701-4a0f-819a-b981c4c4a614",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-04-28",
+    "minutes": -19,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "edfdc579-70f6-4c20-b962-6790c1ff783a",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-04-28",
+    "minutes": -8,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "7e135ea5-f981-4889-9827-6d0c299f9a27",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-04-28",
+    "minutes": 24,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "2a4d2063-e725-484e-9024-ba18e7cc51b4",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-04-29",
+    "minutes": 0,
+    "type": "OFF_DAY",
+    "note": "Folga Compensatória - Feriado 23/04"
+  },
+  {
+    "id": "924d0caf-7d28-4225-b1c0-24cb2235544f",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-04-29",
+    "minutes": 6,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "db279d9f-fa03-44bd-b94d-e319b4af1e7a",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-04-29",
+    "minutes": -37,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "4581d9c1-c567-472c-8495-79f6e204dd6a",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-04-29",
+    "minutes": -9,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "4e9f2d3c-52c2-4818-b79e-cd15fed23bfb",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-04-30",
+    "minutes": -8,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "2d56af3b-c47f-46f9-a699-b25908ef241d",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-04-30",
+    "minutes": -32,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "4fe39f73-6adb-4fa5-b050-aa5ac54b131e",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-04-30",
+    "minutes": 41,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "80b9d72a-fa52-42d6-b651-9370612f4057",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-04-30",
+    "minutes": 14,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "8f2932b8-ee96-4ebc-828e-dc44ca9f3de1",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-05-01",
+    "minutes": 0,
+    "type": "HOLIDAY",
+    "note": "Feriado 1º de Maio"
+  },
+  {
+    "id": "2e47050b-cb04-4e70-835e-c10f947a60df",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-05-01",
+    "minutes": 0,
+    "type": "HOLIDAY",
+    "note": "Feriado 1º de Maio"
+  },
+  {
+    "id": "f2cfe3da-9b57-4347-a17e-efbd8f9e5258",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-05-01",
+    "minutes": 0,
+    "type": "HOLIDAY",
+    "note": "Feriado 1º de Maio"
+  },
+  {
+    "id": "4ba03840-b940-4eff-b57f-6fea191966c8",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-05-01",
+    "minutes": 0,
+    "type": "HOLIDAY",
+    "note": "Feriado 1º de Maio"
+  },
+  {
+    "id": "dff13f8d-8546-48da-b89f-a59ce219490b",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-05-02",
+    "minutes": 0,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "3cc73315-4409-4633-8295-8d308febef27",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-05-02",
+    "minutes": 300,
+    "type": "ADJUSTMENT",
+    "note": "Semana Inglesa"
+  },
+  {
+    "id": "0b43fa34-0a01-4f52-9148-a8b59ebda020",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-05-02",
+    "minutes": 3,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "302a897c-9a50-4222-a96e-a531c3b227eb",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-05-04",
+    "minutes": 3,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "038ecd7b-d4f8-4b14-955e-76616a973b4e",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-05-04",
+    "minutes": 22,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "f70c8c43-d51c-4041-9db1-30d415da5c77",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-05-04",
+    "minutes": 15,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "bcfaa787-02d0-4fd8-ac49-4cc10e2def73",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-05-04",
+    "minutes": 48,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "d3aba0cd-d9bf-4679-96cd-635b2842b8ad",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-05-05",
+    "minutes": 23,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "b442c744-809c-449a-aaae-6562dd3d3470",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-05-05",
+    "minutes": 0,
+    "type": "OFF_DAY",
+    "note": "Folga Compensatória - Domingo 03/05"
+  },
+  {
+    "id": "9eb0fafe-6716-419c-af28-24bcf6409f84",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-05-05",
+    "minutes": 9,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "6ccf1fab-6f6d-4705-b11b-f0a6234a8c3d",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-05-05",
+    "minutes": 29,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "e382c4fd-cfd4-46a0-9d62-addbc107e0dd",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-05-06",
+    "minutes": -26,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "1a54d585-000d-41ee-8d08-4f5f694a3a67",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-05-06",
+    "minutes": 390,
+    "type": "ADJUSTMENT",
+    "note": "Semana Inglesa"
+  },
+  {
+    "id": "f38d32ae-d69f-440c-a0a5-014a79a53cbb",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-05-06",
+    "minutes": 0,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "f73b71d1-3c03-42c8-8209-da68cc5a8a2e",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-05-06",
+    "minutes": 53,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "0672121a-21a0-4ef7-8bae-6dbc9f4e2a54",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-05-07",
+    "minutes": -3,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "ad889664-4285-4ca8-a072-6ecddda8c45e",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-05-07",
+    "minutes": 25,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "5ccc1113-18f2-4576-a91c-3c23ff8c280a",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-05-07",
+    "minutes": -34,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "8f9bb3ac-58e9-4953-b480-233663efb302",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-05-07",
+    "minutes": 15,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "282c08a2-5d74-490b-8849-79f3e2c1d266",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-05-08",
+    "minutes": 42,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "ab9f70c9-ebc7-44aa-b965-6c82e498d3dd",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-05-08",
+    "minutes": -17,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "e28ec14b-94ab-4f3a-8c50-903ac9f913a7",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-05-08",
+    "minutes": 10,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "a2235c3a-b1bb-4e5d-8158-c0ec5335fc4d",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-05-08",
+    "minutes": -12,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "30cc0dc2-2f07-4e87-88ca-1373f0f486fe",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-05-09",
+    "minutes": -27,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "b6853f7e-8dc6-4064-8afd-fd658d50976d",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-05-09",
+    "minutes": -17,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "af071030-a26f-42d3-830c-8837988c6859",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-05-09",
+    "minutes": 56,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "b0dc8800-6a8b-438f-82c2-b38dc3ae25ee",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-05-11",
+    "minutes": 31,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "8a103e15-5093-4445-b34f-439748f5d0a2",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-05-11",
+    "minutes": 24,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "7073b992-0eda-4fa4-86dd-3067cff9f782",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-05-11",
+    "minutes": 27,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "81097ad0-f8a1-42b8-90c6-c15483cbf404",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-05-11",
+    "minutes": 22,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "413d02ad-26c6-4de2-90d1-8d912ac1d04a",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-05-12",
+    "minutes": -16,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "325ebada-b49b-4171-bf16-f6ce779fa5bf",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-05-12",
+    "minutes": 16,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "7de1f3b4-d74b-4963-a640-f72ab6f807ff",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-05-12",
+    "minutes": -21,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "825daac3-e59b-4d52-8f38-9bf6a6b31ac1",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-05-12",
+    "minutes": 34,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "66a55141-3361-41ab-a871-8d009d476400",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-05-13",
+    "minutes": -22,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "2cc9bc22-1092-4776-b8ca-0f3557e48c97",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-05-13",
+    "minutes": 51,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "6078d3a1-bfb2-4e02-ad18-0fac116f27a4",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-05-13",
+    "minutes": 1,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "7b173c47-d91a-4594-9728-450ef991b680",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-05-13",
+    "minutes": -8,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "5f12c3a5-df6b-4951-b4f2-7eb8e284eba8",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-05-14",
+    "minutes": 30,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "98b26e4b-1693-4e26-bb2f-8b45e368b24b",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-05-14",
+    "minutes": 1,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "6ecbb58e-e153-435c-bf0b-d6528c0dab5b",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-05-14",
+    "minutes": -13,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "4de594f7-0705-44f0-bd52-829d7635060c",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-05-14",
+    "minutes": -11,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "302f44b7-f196-42f9-8ec4-82d29caac7a9",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-05-15",
+    "minutes": 14,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "4c58b2bc-91b8-468a-9fca-7e9a20ea02b2",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-05-15",
+    "minutes": 0,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "e1745598-6613-4da2-b8dd-344b2b564919",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-05-15",
+    "minutes": -5,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "c6af6f0e-f2d6-43b4-9a95-f3b1bd529f05",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-05-15",
+    "minutes": -11,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "b67226ba-88d6-445d-8cfe-a45afd9b4418",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-05-16",
+    "minutes": -3,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "dfd090d0-7af8-4d8e-93bc-66b515efb5b2",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-05-16",
+    "minutes": -23,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "f1d280d6-3a0b-4059-83d5-d0812c8a5dd0",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-05-18",
+    "minutes": 2,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "2338e963-b1f9-4c42-9b78-1907a1876795",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-05-18",
+    "minutes": 9,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "b4203b2d-7619-48d7-b295-f6d81d022623",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-05-18",
+    "minutes": 22,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "38f07306-8f19-4d48-bd5c-08afe1a31b05",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-05-19",
+    "minutes": 30,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "833e7e36-2938-4a38-933b-1e4da3ea6ee7",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-05-19",
+    "minutes": -25,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "143d3c48-ce98-4360-82ee-954692a2773e",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-05-19",
+    "minutes": -14,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "f0ae43ea-cdb2-4fa2-86b2-42c26e497dcb",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-05-19",
+    "minutes": 7,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "d3eea39e-f340-4812-a320-6464a3141d1a",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-05-20",
+    "minutes": 480,
+    "type": "ADJUSTMENT",
+    "note": "Erro batidas"
+  },
+  {
+    "id": "5dda5a89-50b9-4391-aac6-0114dbdb84c7",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-05-20",
+    "minutes": 480,
+    "type": "ADJUSTMENT",
+    "note": "Esqueci de bater o ponto"
+  },
+  {
+    "id": "25181381-c590-4579-bb06-78d2a8c51d21",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-05-20",
+    "minutes": -21,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "76768de6-c1ee-4d1a-8c0d-8ee92864b5fb",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-05-21",
+    "minutes": -5,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "e5e71c07-ccec-46bd-8d84-0f61ebd6e655",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-05-21",
+    "minutes": 0,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "b354009f-8ec0-4656-9dc4-2c67c66e8ee3",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-05-21",
+    "minutes": 33,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "58751c27-f45d-41a6-ad57-f59c50256dcc",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-05-21",
+    "minutes": -25,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "a7bfdbb4-fc68-458f-9293-4af83747e287",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-05-22",
+    "minutes": 33,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "36092c01-5c36-4d0f-a673-544ccb50c790",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-05-22",
+    "minutes": 6,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "fed4c0c8-698d-42a8-a568-0093898190d6",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-05-22",
+    "minutes": -2,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "6053296c-c910-4a4b-a811-aa26f1392f27",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-05-22",
+    "minutes": 120,
+    "type": "ADJUSTMENT",
+    "note": "Escala reduzida"
+  },
+  {
+    "id": "ccab9c7d-465e-4c2e-8847-616913de4462",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-05-23",
+    "minutes": -120,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "bb2ff434-8ea1-48f5-847b-54631987510a",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-05-23",
+    "minutes": 480,
+    "type": "ADJUSTMENT",
+    "note": "Esquecimento"
+  },
+  {
+    "id": "55b0fa1a-a3a1-4d79-a706-704f07b53997",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-05-23",
+    "minutes": -7,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "f04a115d-8da1-4646-8d49-c3e07d2fccc7",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-05-25",
+    "minutes": 43,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "1a602027-b047-47a5-a9ad-119f542e8f20",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-05-25",
+    "minutes": 34,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "ef4c9bd7-c38a-42e7-8a7d-29e619f89d6a",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-05-25",
+    "minutes": 111,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "17007a33-e133-45ed-bf3d-f6a23293f055",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-05-25",
+    "minutes": 19,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "a1712a1b-7271-4b81-bdf9-177643f49b4b",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-05-26",
+    "minutes": -31,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "d7c50fb1-49fa-4d6f-96c7-1d6c39487f9a",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-05-26",
+    "minutes": 31,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "883935b4-e5c1-4795-af13-8051f186b382",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-05-26",
+    "minutes": -17,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "1050e3da-28b4-4927-8f22-ec15187f6353",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-05-26",
+    "minutes": 4,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "613b3015-4808-4c91-bccb-b9ed4542b162",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-05-27",
+    "minutes": 3,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "cdbd1af8-36bd-42f8-aa11-15406213d605",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-05-27",
+    "minutes": 46,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "1baa4d97-06ae-4b88-b6a6-148f4fddac9c",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-05-27",
+    "minutes": 10,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "ccd91c5e-ae8f-4fe0-95f1-54de1fbcf2e7",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-05-27",
+    "minutes": -23,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "8707de04-be17-4bd9-a4ed-5ea38bb1efac",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-05-28",
+    "minutes": 52,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "4717100c-a625-49c5-bd5d-169266c36fc3",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-05-28",
+    "minutes": 16,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "4e0569fa-edbe-4381-8100-ddbdf0ffdeb9",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-05-28",
+    "minutes": -1,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "3a86d18f-7126-4dfb-8c37-fd529e136330",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-05-28",
+    "minutes": 24,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "8912dae7-e00a-4276-b416-91efb52c3bd9",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-05-29",
+    "minutes": -20,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "2694d10f-9b53-457d-addb-b67b7e463b91",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-05-29",
+    "minutes": 139,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "c98d44b1-49c4-491c-aabc-385384142f0c",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-05-29",
+    "minutes": -31,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "f0f02872-a190-4007-8af8-6a8b1c62c495",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-05-29",
+    "minutes": 44,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "76b6fa83-7b08-4968-aba1-fabd80c03569",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-05-30",
+    "minutes": 26,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "0028054e-226e-4918-84b8-8b77918e489c",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-06-01",
+    "minutes": 7,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "1f782014-fccf-4533-9408-ed00276f293d",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-06-01",
+    "minutes": -197,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "e8c0fb43-ba4d-403f-9773-2489112a0339",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-06-01",
+    "minutes": 65,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "3fd9d86f-6755-40c4-95b7-20804b0efe20",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-06-01",
+    "minutes": 10,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "e3ea31b3-06b8-4aec-92d6-c99e43e97dc3",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-06-02",
+    "minutes": -18,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "bc7e2e36-8b2e-4ca1-9d4e-d3b18249abd9",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-06-02",
+    "minutes": -30,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "b2bfd627-27fc-44c2-9976-cc17aab8faa1",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-06-02",
+    "minutes": 30,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "86a1ee2d-0919-4c9e-a89d-42874d03e073",
+    "employeeId": "55d4b834-65d7-46a9-952d-e0915aa921b8",
+    "date": "2026-06-02",
+    "minutes": -18,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "85a30860-6859-4ef2-bb8b-73fad230a219",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-06-02",
+    "minutes": 8,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "d6c0c843-2c8e-4ab2-bff9-91122abdb754",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-06-03",
+    "minutes": -29,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "999863ef-0bdb-4324-8795-7320d7736bad",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-06-03",
+    "minutes": -21,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "3adf78aa-2b26-4d1d-91b4-1b826aeeeae4",
+    "employeeId": "55d4b834-65d7-46a9-952d-e0915aa921b8",
+    "date": "2026-06-03",
+    "minutes": -219,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "0c85f27e-52dd-4ac6-b668-dd671f51fe64",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-06-03",
+    "minutes": -2,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "6df6c697-76f8-481f-a959-4e2d8c2fa972",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-06-04",
+    "minutes": -11,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "ccbc453b-5cae-4807-9908-a7882866d459",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-06-04",
+    "minutes": -60,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "b1515835-aac3-484a-9f88-4536d5d7f2b0",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-06-05",
+    "minutes": -56,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "64ee58a1-2d85-4b24-bc82-b5dbf3cc73d4",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-06-05",
+    "minutes": 480,
+    "type": "ADJUSTMENT",
+    "note": "Esqueci de bater a volta do almoço"
+  },
+  {
+    "id": "6fcdf27d-8191-444d-8474-1def357bb91d",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-06-05",
+    "minutes": -6,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "f543c9a4-c1c3-432c-b3d7-b63983b2b730",
+    "employeeId": "55d4b834-65d7-46a9-952d-e0915aa921b8",
+    "date": "2026-06-05",
+    "minutes": -14,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "a3c53b6d-6837-42a8-aca7-d8c72b886886",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-06-06",
+    "minutes": -20,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "db2e9645-2b0c-460c-a006-2c5ef01933f6",
+    "employeeId": "55d4b834-65d7-46a9-952d-e0915aa921b8",
+    "date": "2026-06-06",
+    "minutes": 24,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "2af77e2b-0a9a-41c6-b36e-0f663752d248",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-06-06",
+    "minutes": 17,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "6ba512e4-c385-4759-ac63-085d1c666270",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-06-07",
+    "minutes": 432,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "41a27476-3c4d-42f9-860d-22a60da340e5",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-06-07",
+    "minutes": 453,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "52f1e52e-1e78-4848-b4a6-cba0cd37b006",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-06-08",
+    "minutes": 520,
+    "type": "ADJUSTMENT",
+    "note": "Esqueci de fechar o ponto"
+  },
+  {
+    "id": "16ff9b4e-5c3e-4724-b48b-1eb13859d6e7",
+    "employeeId": "55d4b834-65d7-46a9-952d-e0915aa921b8",
+    "date": "2026-06-08",
+    "minutes": -14,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "7faf6a65-61a6-4275-a769-1a3c47f2d0fc",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-06-08",
+    "minutes": 40,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "81550256-f5d9-4d4c-bebd-6eb6fb7755fc",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-06-09",
+    "minutes": 46,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "255a8254-bf96-4987-aa86-9742667b8ded",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-06-09",
+    "minutes": -28,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "5afb7884-8572-4d64-90ba-a20e2b6d520e",
+    "employeeId": "55d4b834-65d7-46a9-952d-e0915aa921b8",
+    "date": "2026-06-09",
+    "minutes": -21,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "3ab4dd9c-fa5f-4828-afeb-88fdd4962584",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-06-09",
+    "minutes": 0,
+    "type": "MEDICAL",
+    "note": "Atestado"
+  },
+  {
+    "id": "c47f55dd-3032-44a5-8c30-12bba6c0a19d",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-06-09",
+    "minutes": -35,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "5520f120-890c-45d8-b446-096f79d7d588",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-06-10",
+    "minutes": -26,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "4c5362a6-9459-4bab-a645-d7561f0fb5aa",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-06-10",
+    "minutes": -22,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "fc79c247-616b-429f-94c2-3304cbcc435c",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-06-10",
+    "minutes": -24,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "e2712669-5bd8-4f75-aa13-0ee48714b7d6",
+    "employeeId": "55d4b834-65d7-46a9-952d-e0915aa921b8",
+    "date": "2026-06-10",
+    "minutes": -14,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "94b8651e-80a9-4ee0-a087-fefcbbdf87be",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-06-11",
+    "minutes": 13,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "00c23452-ce19-4a33-99cc-eba6d50cf841",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-06-11",
+    "minutes": 41,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "60e13b36-a4d2-4ee9-a282-31ad06e5f9ea",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-06-11",
+    "minutes": -72,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "a4b373c7-954b-4d38-8f67-424d7d738393",
+    "employeeId": "55d4b834-65d7-46a9-952d-e0915aa921b8",
+    "date": "2026-06-11",
+    "minutes": -21,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "f31ccfa8-f885-4575-a53b-8e0eabd7e354",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-06-11",
+    "minutes": -19,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "898ba6b9-9bf4-4bde-884d-4e30568ce8d2",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-06-12",
+    "minutes": -32,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "959fa843-2038-4c25-8c74-bb24accedc07",
+    "employeeId": "55d4b834-65d7-46a9-952d-e0915aa921b8",
+    "date": "2026-06-12",
+    "minutes": -19,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "ee256d46-f422-4467-bb89-6f31bfdff2e7",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-06-12",
+    "minutes": 35,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "9b8b524a-c236-4144-83a2-7509b35ea0dd",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-06-12",
+    "minutes": -19,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "669d3535-d9e4-43e1-b302-60765aacabfb",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-06-12",
+    "minutes": 9,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "428cfd9e-b853-4bdd-b1cd-1e658dcff5be",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-06-13",
+    "minutes": -84,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "1c7a3a22-c4a4-4101-9f0a-d00716eaaf04",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-06-13",
+    "minutes": 61,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "572f5cc4-3bcf-4020-9932-74460f82f62e",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-06-13",
+    "minutes": -95,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "d5c7718f-d2bd-4ce5-b5dc-aff43608fe81",
+    "employeeId": "55d4b834-65d7-46a9-952d-e0915aa921b8",
+    "date": "2026-06-13",
+    "minutes": -75,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "b6400b97-d11c-4719-ae58-8cc27ade692f",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-06-15",
+    "minutes": 36,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "3fcbb3ab-182c-4b78-826e-4922972b4a83",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-06-15",
+    "minutes": -63,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "c0fe7fa7-31a7-454d-ad01-c97a6e969307",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-06-15",
+    "minutes": 18,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "910fd34e-689d-4734-8002-0b8735302ea0",
+    "employeeId": "55d4b834-65d7-46a9-952d-e0915aa921b8",
+    "date": "2026-06-15",
+    "minutes": -6,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "175da5be-db36-4cb9-86a1-95320cc3f5b5",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-06-15",
+    "minutes": 38,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "60fdc3ae-bc62-4e26-8a6f-459446da7610",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-06-16",
+    "minutes": 3,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "30a6c7ed-8103-4aa8-b3af-67f9e9b9498a",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-06-16",
+    "minutes": -7,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "7474468a-b2ae-4fdb-a881-d75e3b4af81f",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-06-16",
+    "minutes": -5,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "dddfde0f-6729-4576-8ffa-08dfa0a68b31",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-06-16",
+    "minutes": 35,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "ae90ad81-e9e9-47cd-9c20-d0e0cbc97da1",
+    "employeeId": "55d4b834-65d7-46a9-952d-e0915aa921b8",
+    "date": "2026-06-16",
+    "minutes": -59,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "571f7df0-89e3-4153-9fcf-b47bcbe57de6",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-06-17",
+    "minutes": -8,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "3bbc610f-1cd8-4070-b07f-be69cf74aecf",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-06-17",
+    "minutes": -146,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "f79a5e91-6cd6-45e4-82f4-4281b6fd6d1b",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-06-17",
+    "minutes": -15,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "0aa7f142-1c53-400e-9ffa-c06d79f211fc",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-06-17",
+    "minutes": -121,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "71fa2cde-45a6-438b-9808-556f8fc71e43",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-06-18",
+    "minutes": 111,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "df28893b-208d-437f-998e-2bc7bbcf18d3",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-06-18",
+    "minutes": -3,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "d0ab7012-cb3d-4a99-a0b6-33ad7dbb3dfc",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-06-18",
+    "minutes": 40,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "504d4348-227e-439c-bd5a-894d9a6ca70a",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-06-19",
+    "minutes": 16,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "ed65b486-a327-4d10-a417-10e50d335c8b",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-06-19",
+    "minutes": -285,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "af0e1b44-dda3-4362-997d-a5585db0ef8d",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-06-19",
+    "minutes": 14,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "0f8e7aa2-701c-4795-83f1-007faa27afab",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-06-20",
+    "minutes": 2,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "2854cd5f-11d1-4a81-a996-45786118acc4",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-06-20",
+    "minutes": -74,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "b4f76d8c-0258-42d2-b6f8-7cc7ca246135",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-06-20",
+    "minutes": 135,
+    "type": "ADJUSTMENT",
+    "note": "Semana Inglesa - Esqueci de fechar o ponto"
+  },
+  {
+    "id": "4b420806-c836-4e63-8704-b7c11e65eb76",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-06-21",
+    "minutes": 464,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "89cd2d31-69ee-4849-aa74-62984d4bd8f3",
+    "employeeId": "55d4b834-65d7-46a9-952d-e0915aa921b8",
+    "date": "2026-06-21",
+    "minutes": 401,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "23d0f855-72c7-4587-ad84-b2f333103255",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-06-21",
+    "minutes": 413,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "6fb0f439-6c90-4a32-9555-a12638d7c21b",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-06-22",
+    "minutes": 55,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "542facb9-d25b-4de4-8746-c9e236c5402d",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-06-22",
+    "minutes": 22,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "8f07e056-fc4d-45b1-9395-cb0d7c587e98",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-06-22",
+    "minutes": 115,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "ab773e3a-81dd-4e57-b3c6-1ac9197aa785",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-06-22",
+    "minutes": 18,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "9db0acf8-7834-4d2c-b31e-c32f79f9f0fa",
+    "employeeId": "55d4b834-65d7-46a9-952d-e0915aa921b8",
+    "date": "2026-06-23",
+    "minutes": -10,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "85125189-1336-4690-a789-a07c6365409b",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-06-23",
+    "minutes": 11,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "bbfcc700-8859-44a0-848b-219b4c9b9688",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-06-23",
+    "minutes": 510,
+    "type": "ADJUSTMENT",
+    "note": "Esqueci de fechar o ponto"
+  },
+  {
+    "id": "0ae6568a-9ada-48da-9130-ecb511409fa0",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-06-23",
+    "minutes": -25,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "36d88efa-8717-42a8-9eba-48bad89b1471",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-06-24",
+    "minutes": 20,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "3c30f63a-6289-4451-a3c8-6a13b752033d",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-06-24",
+    "minutes": -81,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "aa234a10-3fed-497c-a633-ed485875df17",
+    "employeeId": "55d4b834-65d7-46a9-952d-e0915aa921b8",
+    "date": "2026-06-24",
+    "minutes": -93,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "9460e316-4930-485e-a1f9-f26f21f18da5",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-06-24",
+    "minutes": -84,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "87363124-ccff-485e-a9f2-919ee19b22b5",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-06-25",
+    "minutes": -1,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "f74efbb0-0281-4359-a5e4-a5a1e6adb7d8",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-06-25",
+    "minutes": -7,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "9e45a7a6-9e85-4a25-9bdc-81f0cc8384dd",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-06-25",
+    "minutes": 21,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "3bf70541-a3b6-4816-8f36-9ceca0ef1ee6",
+    "employeeId": "55d4b834-65d7-46a9-952d-e0915aa921b8",
+    "date": "2026-06-25",
+    "minutes": -12,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "42753e08-98c2-4660-b062-00be6c94bd72",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-06-25",
+    "minutes": 57,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "383b5e1c-e130-4065-89e4-d960bd9a4b4a",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-06-26",
+    "minutes": -3,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "4bf5ff7d-76a1-4207-83b2-091c03f94b83",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-06-26",
+    "minutes": -19,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "7557d310-b953-474d-955c-b062181a50c0",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-06-26",
+    "minutes": 46,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "66feb486-72ab-451d-bd06-601b107737dd",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-06-26",
+    "minutes": 74,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "0fb1f32a-8fe8-4dcb-9e38-5d1f2f2cbd57",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-06-27",
+    "minutes": -11,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "0ba56ab9-ed21-4ffc-9c7a-61e4574e03cb",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-06-27",
+    "minutes": -3,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "e1a2f2d9-8cb5-4ed4-8f8c-a8d68abc1133",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-06-28",
+    "minutes": 480,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "0c6a30fe-a608-4104-9e32-b95d94c0aa8a",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-06-28",
+    "minutes": 480,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "bcc6feb0-6d92-4ca5-9277-fc5a0620dc9a",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-06-28",
+    "minutes": 480,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "c6acaf41-1d98-4ec2-bb99-486d559c045f",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-06-28",
+    "minutes": 480,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "1b457e96-3335-45e0-b027-581274ad5c9d",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-06-29",
+    "minutes": 0,
+    "type": "HOLIDAY",
+    "note": "Feriado do Colono Alemão - Loja não abriu"
+  },
+  {
+    "id": "642490cb-8fb4-448f-8a9c-d54eacb4540e",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-06-29",
+    "minutes": 0,
+    "type": "HOLIDAY",
+    "note": "Feriado do Colono Alemão - Loja não abriu"
+  },
+  {
+    "id": "d2524af0-3433-4694-a6b3-a3d0d2d6e5f1",
+    "employeeId": "55d4b834-65d7-46a9-952d-e0915aa921b8",
+    "date": "2026-06-29",
+    "minutes": 0,
+    "type": "HOLIDAY",
+    "note": "Feriado do Colono Alemão - Loja não abriu"
+  },
+  {
+    "id": "68f06b66-757b-4b58-b646-53b0d02abb91",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-06-29",
+    "minutes": 0,
+    "type": "HOLIDAY",
+    "note": "Feriado do Colono Alemão - Loja não abriu"
+  },
+  {
+    "id": "21b5460e-fd73-4be9-8c1d-496ac6f53c02",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-06-29",
+    "minutes": 0,
+    "type": "HOLIDAY",
+    "note": "Feriado do Colono Alemão - Loja não abriu"
+  },
+  {
+    "id": "813432b5-bc55-4b44-a727-9628bc7eeaed",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-06-30",
+    "minutes": -9,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "631ba54d-7b64-4f0c-b664-366583db2736",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-06-30",
+    "minutes": -197,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "bf6679f2-8e05-41c1-8b5a-9ea2d3fa66af",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-06-30",
+    "minutes": 95,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "e2e1661a-969c-4cfa-ba83-7948fe14f24e",
+    "employeeId": "55d4b834-65d7-46a9-952d-e0915aa921b8",
+    "date": "2026-06-30",
+    "minutes": -12,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "9cfba640-5016-4929-b060-fc8cc7b14ee3",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-06-30",
+    "minutes": 18,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "09aeb5a8-f200-4fcc-ba03-ff5e09df4fb0",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-07-01",
+    "minutes": 510,
+    "type": "ADJUSTMENT",
+    "note": "Esqueci de fechar o ponto"
+  },
+  {
+    "id": "ccbeee32-4f1b-417e-b525-fecf4a75fe42",
+    "employeeId": "55d4b834-65d7-46a9-952d-e0915aa921b8",
+    "date": "2026-07-01",
+    "minutes": -64,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "9d78431d-1d78-4280-a6b8-bd94f5fa7fb8",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-07-01",
+    "minutes": 27,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "c8716431-c1ed-4067-a705-cd2f5552fd64",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-07-01",
+    "minutes": 2,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "37f10084-435c-42f4-b458-7068f96f37b4",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-07-02",
+    "minutes": 45,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "2acecfa2-31a8-4779-9580-6a315a52144d",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-07-02",
+    "minutes": 1,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "ee393ce3-adc7-4dda-b641-2fbc6de648a6",
+    "employeeId": "55d4b834-65d7-46a9-952d-e0915aa921b8",
+    "date": "2026-07-02",
+    "minutes": -8,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "3ef72f81-f181-46b1-bd7a-77e0a7ed8c80",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-07-02",
+    "minutes": 510,
+    "type": "ADJUSTMENT",
+    "note": "Esqueci de bater a volta do almoço"
+  },
+  {
+    "id": "be5ea081-cb81-484e-ba1e-cdee6484dbf7",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-07-03",
+    "minutes": 26,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "10fa73a7-658e-4518-9434-37897551409a",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-07-03",
+    "minutes": 105,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "433a5c05-ec5d-4d09-ab3d-c2ba4dba1b5f",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-07-04",
+    "minutes": -5,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "62c6d1b9-26e2-4ac1-ae62-c415539a3f02",
+    "employeeId": "55d4b834-65d7-46a9-952d-e0915aa921b8",
+    "date": "2026-07-04",
+    "minutes": 3,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "03840009-f800-43ab-8f76-9de714113e9a",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-07-05",
+    "minutes": 327,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "e63bb64e-8637-4aba-89d0-8aec5e875368",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-07-05",
+    "minutes": 344,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "2d1b7c12-6b39-4985-809a-dd0f3674bbad",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-07-06",
+    "minutes": 36,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "b154237d-a486-4bcd-98f2-391087bf1d19",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-07-06",
+    "minutes": 39,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "8ec7dcb2-678a-4066-a846-78e0c2768a66",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-07-06",
+    "minutes": -97,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "028a5a88-cc0f-4a60-8b22-0994af21a20a",
+    "employeeId": "55d4b834-65d7-46a9-952d-e0915aa921b8",
+    "date": "2026-07-06",
+    "minutes": 23,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "9c0d3a25-5791-46b0-ba0a-60f764a829a5",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-07-07",
+    "minutes": -8,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "87ad5964-95ca-42d1-ac9c-21250ae3faed",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-07-07",
+    "minutes": 31,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "553e9c2b-b6cf-4891-b660-38643d9ed6a9",
+    "employeeId": "55d4b834-65d7-46a9-952d-e0915aa921b8",
+    "date": "2026-07-07",
+    "minutes": 16,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "886a9135-489a-4b44-a4e0-28989e32823f",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-07-07",
+    "minutes": 166,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "1734855c-bbdb-4b22-885f-ba1d36ecd4f3",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-07-08",
+    "minutes": 510,
+    "type": "ADJUSTMENT",
+    "note": "Esqueci de fechar o ponto no dia"
+  },
+  {
+    "id": "8391d8c0-3061-45a9-89aa-79a1f8d6bac2",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-07-08",
+    "minutes": 34,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "ef40f64f-83b4-4102-8dc7-c6c026769e57",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-07-08",
+    "minutes": -4,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "fb47ec74-6241-4cf3-a412-96005de408e4",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-07-09",
+    "minutes": -9,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "173161ac-d350-4b43-a8eb-cb52a1d03211",
+    "employeeId": "55d4b834-65d7-46a9-952d-e0915aa921b8",
+    "date": "2026-07-09",
+    "minutes": 253,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "e88bc39b-b573-46eb-a45c-52d29bd4c3d6",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-07-09",
+    "minutes": -179,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "2054b717-e815-4289-ac6f-fae952e54d6e",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-07-09",
+    "minutes": 285,
+    "type": "ADJUSTMENT",
+    "note": "Esqueci de fechar o ponto no dia"
+  },
+  {
+    "id": "1f9069b3-4d09-4763-8b3a-c598669cbf24",
+    "employeeId": "55d4b834-65d7-46a9-952d-e0915aa921b8",
+    "date": "2026-07-10",
+    "minutes": -214,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "41d9fdf5-11f0-4267-b785-1db2974ae4fc",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-07-10",
+    "minutes": -10,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "c28fbda1-c163-4643-82fb-fb69b02d18b8",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-07-11",
+    "minutes": -4,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "b6b89fae-8fdb-4a70-820b-354ca0ac8a1b",
+    "employeeId": "55d4b834-65d7-46a9-952d-e0915aa921b8",
+    "date": "2026-07-11",
+    "minutes": -23,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "d819f70e-795c-4d5e-a27b-424d3ea5ce82",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-07-13",
+    "minutes": 76,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "f3c0f88c-1830-4fcf-bad6-e6791ad0b819",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-07-13",
+    "minutes": 30,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "ace171b4-6feb-45c7-89aa-9a03eab9b32b",
+    "employeeId": "55d4b834-65d7-46a9-952d-e0915aa921b8",
+    "date": "2026-07-13",
+    "minutes": 26,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "c183f556-c753-4307-af6f-932fb5bb620d",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-07-14",
+    "minutes": -1,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "e1eda3d3-0262-460b-9ed0-b175df5fdae1",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-07-14",
+    "minutes": 79,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "535747eb-aa8d-4cff-a5e4-22617493b1cd",
+    "employeeId": "55d4b834-65d7-46a9-952d-e0915aa921b8",
+    "date": "2026-07-14",
+    "minutes": 18,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "448e8291-75af-4833-98fb-5a33d469ba33",
+    "employeeId": "55d4b834-65d7-46a9-952d-e0915aa921b8",
+    "date": "2026-07-15",
+    "minutes": -66,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "4c8d91b4-2db6-4a1c-97df-284366acec57",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-07-15",
+    "minutes": 37,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "454b7be6-6ef5-44d8-87de-727e6061bc44",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-07-15",
+    "minutes": 3,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "2852f972-4ad7-4ebf-adf9-b54e4dbdc5b3",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-07-15",
+    "minutes": 530,
+    "type": "ADJUSTMENT",
+    "note": "Esqueci de bater a volta do almoço"
+  },
+  {
+    "id": "4b6b83e1-ca28-475e-a39b-911ae666e2d7",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-07-16",
+    "minutes": 91,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "ce8c8a2f-ddda-4243-ac86-885520789d8b",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-07-16",
+    "minutes": -6,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "b4084cb7-3acd-4e7b-9d8b-cdc33be31fc7",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-07-16",
+    "minutes": -330,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "4ca99cbd-f011-41d8-9283-12ea1e0c512c",
+    "employeeId": "55d4b834-65d7-46a9-952d-e0915aa921b8",
+    "date": "2026-07-16",
+    "minutes": -13,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "dfd3d57b-40f1-4d0f-831b-111979cc4bb2",
+    "employeeId": "55d4b834-65d7-46a9-952d-e0915aa921b8",
+    "date": "2026-07-17",
+    "minutes": 74,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "13848787-eccd-40fe-97d4-9757cea2de06",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-07-17",
+    "minutes": 111,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "9b0f1d8d-c613-475a-b24b-853c98d5634d",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-07-17",
+    "minutes": 65,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "520ea2ee-acfc-4d74-8820-e488eb7f51d1",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-07-18",
+    "minutes": -19,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "76fb54a6-20b3-4b1d-b087-19477c82a2f2",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-07-18",
+    "minutes": 525,
+    "type": "ADJUSTMENT",
+    "note": "Esqueci de fechar o ponto no dia"
+  },
+  {
+    "id": "411dc7c1-ba60-4b63-8ac3-72191a3afc50",
+    "employeeId": "55d4b834-65d7-46a9-952d-e0915aa921b8",
+    "date": "2026-07-18",
+    "minutes": -12,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "a5211c46-293e-49ea-9815-f2efcfeeb2ac",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-07-20",
+    "minutes": 29,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "80809bdb-89ae-43b2-9577-383d0ebbc827",
+    "employeeId": "55d4b834-65d7-46a9-952d-e0915aa921b8",
+    "date": "2026-07-20",
+    "minutes": 29,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "86b01a9c-058c-4469-9edd-387caf43ac4d",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-07-20",
+    "minutes": 137,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "f14acf76-8bee-4261-8107-d5eba303e836",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-07-20",
+    "minutes": 1,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "e7906d52-fce4-4493-9abb-587f2a08b978",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-07-21",
+    "minutes": 27,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "5aa5833f-b6ac-4887-b19e-6aa9a7a149ed",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-07-21",
+    "minutes": 22,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "b817d6b2-969e-414c-b1a3-2b9a1159b3da",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-07-21",
+    "minutes": 4,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "b99c1c0a-79c8-432c-a349-a9708e7abf7f",
+    "employeeId": "55d4b834-65d7-46a9-952d-e0915aa921b8",
+    "date": "2026-07-21",
+    "minutes": -10,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "bd8ba099-d71a-41a3-ab67-362c70d8324e",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-07-22",
+    "minutes": 145,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "872d4517-d561-4b1a-9601-efecab601ded",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-07-22",
+    "minutes": 266,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "9a4955d0-87ca-4c70-85f9-32eaa3e109e3",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-07-22",
+    "minutes": 15,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "6ef433df-2adb-4e10-8df9-e1f823a04798",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-07-23",
+    "minutes": 119,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "c4ba198d-b2db-48d7-9d54-62a25719be92",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-07-23",
+    "minutes": 14,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "877a2c13-4894-4e71-b1fe-131db5df5ed3",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-07-23",
+    "minutes": 272,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "dd5c2266-79da-4cfc-a334-c86faf57d219",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-07-24",
+    "minutes": 19,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "1416e9ee-0fe0-42f4-95fb-abb05e17c342",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-07-24",
+    "minutes": 540,
+    "type": "ADJUSTMENT",
+    "note": "Festival do Chocolate"
+  },
+  {
+    "id": "b04c398c-20e6-4fe0-9645-fc5caa3d751f",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-07-24",
+    "minutes": -69,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "c554b180-7588-46bc-b200-cf9fd0a23e82",
+    "employeeId": "55d4b834-65d7-46a9-952d-e0915aa921b8",
+    "date": "2026-07-25",
+    "minutes": -10,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "22104f6a-8df6-4d29-a4f9-94075a4cedf7",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-07-25",
+    "minutes": 4,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "a652cbf8-34cb-4246-9491-06b0df4c61d5",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-07-25",
+    "minutes": 780,
+    "type": "ADJUSTMENT",
+    "note": "Festival do Chocolate"
+  },
+  {
+    "id": "9179dbce-1aeb-49b0-b3ea-83987d81006a",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-07-26",
+    "minutes": 480,
+    "type": "ADJUSTMENT",
+    "note": "Festival do Chocolate"
+  },
+  {
+    "id": "cc4cfb83-8f53-413f-b70f-23f6ba3fe881",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-07-27",
+    "minutes": 480,
+    "type": "ADJUSTMENT",
+    "note": "Ia ser minha folga, mas vim fazer ML e fiquei"
+  },
+  {
+    "id": "837efc45-4402-437e-8a03-82c40d4a9911",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-07-27",
+    "minutes": 30,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "9a9541cf-3b1e-4732-a54f-3899af4bc9c2",
+    "employeeId": "55d4b834-65d7-46a9-952d-e0915aa921b8",
+    "date": "2026-07-27",
+    "minutes": 10,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "70d57d6c-df50-48cc-bb92-aaaf80908cf3",
+    "employeeId": "55d4b834-65d7-46a9-952d-e0915aa921b8",
+    "date": "2026-07-28",
+    "minutes": 18,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "9dba23c6-8db3-424f-b648-6eb12b31a2d3",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-07-28",
+    "minutes": 41,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "2a1117e4-4b80-4734-a118-22daa0ed28b4",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-07-28",
+    "minutes": 3,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "8430afcb-f564-4ab9-9542-df031b07f27b",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-07-29",
+    "minutes": 261,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "4493e9f3-34d8-43fd-86a2-43f727c72aa9",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-07-29",
+    "minutes": 11,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "81dc4ca3-14af-459c-acdb-51ad3e605a01",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-07-29",
+    "minutes": 30,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "2e2fbd5b-03d6-47b0-9d3a-1f3b1a415f33",
+    "employeeId": "55d4b834-65d7-46a9-952d-e0915aa921b8",
+    "date": "2026-07-29",
+    "minutes": 49,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "18566417-5fc7-4855-8645-06a7f6e386f6",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-07-30",
+    "minutes": -10,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "b1502a17-16c0-43d9-b6b3-6af27bc653de",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-07-30",
+    "minutes": 245,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "e2e75333-616c-4dbd-b546-0fa1ae9b22bf",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-07-30",
+    "minutes": -301,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "d6a93280-c35f-4545-9f4c-a9e71a91aca9",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-07-31",
+    "minutes": 9,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "b0d2d6ac-9a8f-4009-862a-51e4933f79ee",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-07-31",
+    "minutes": 720,
+    "type": "ADJUSTMENT",
+    "note": "Festival do Chocolate"
+  },
+  {
+    "id": "6f1a3c3a-0b53-4291-825f-fdd37388a0ea",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-07-31",
+    "minutes": 72,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "2baa2d37-2dbc-4381-9e39-9fcca673bea8",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-08-01",
+    "minutes": 690,
+    "type": "ADJUSTMENT",
+    "note": "Festival do Chocolate"
+  },
+  {
+    "id": "299756da-18fa-4e4d-a84f-818c9f794cc2",
+    "employeeId": "55d4b834-65d7-46a9-952d-e0915aa921b8",
+    "date": "2026-08-01",
+    "minutes": 4,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "2db0bec9-23ad-4794-be60-4e4ee66150b4",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-08-01",
+    "minutes": -50,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "520d8de5-5355-4d09-91f1-13e51955f3a9",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-08-02",
+    "minutes": 431,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "1e714c32-fcbf-4a2d-a84a-39d1babb9f36",
+    "employeeId": "55d4b834-65d7-46a9-952d-e0915aa921b8",
+    "date": "2026-08-02",
+    "minutes": 405,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "199f1dbf-5717-4c15-877a-562270571160",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-08-02",
+    "minutes": 600,
+    "type": "ADJUSTMENT",
+    "note": "Festival do Chocolate"
+  },
+  {
+    "id": "89e3402b-6040-4be6-82ab-696a5e918937",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-08-03",
+    "minutes": -2,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "cbeacc5b-39a5-4df2-8d45-c10648646355",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-08-03",
+    "minutes": 5,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "0c7a6938-8dac-4d7d-854f-967802fe1851",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-08-03",
+    "minutes": 174,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "79e3e0d4-8837-491b-a22d-4e7d7875f4a1",
+    "employeeId": "55d4b834-65d7-46a9-952d-e0915aa921b8",
+    "date": "2026-08-03",
+    "minutes": -21,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "13672e05-0242-4b2b-969c-4bce3619a103",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-08-04",
+    "minutes": 0,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "0b4387d2-1ddd-4db8-8aec-9208ef6fc66d",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-08-04",
+    "minutes": -201,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "255ad993-9405-4c8a-9f6a-235ae5a1adf0",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-08-04",
+    "minutes": 36,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "171eacc1-5d37-451c-af70-9998e98752c9",
+    "employeeId": "55d4b834-65d7-46a9-952d-e0915aa921b8",
+    "date": "2026-08-04",
+    "minutes": 21,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "c62359f2-0742-44b1-8739-6066462f8c56",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-08-04",
+    "minutes": 480,
+    "type": "ADJUSTMENT",
+    "note": "Esqueci de fechar o ponto."
+  },
+  {
+    "id": "57dd5d48-aaf8-471b-b801-f88311a5e94d",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-08-05",
+    "minutes": 24,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "fc0770e1-89cf-47a4-aafd-a518e5600874",
+    "employeeId": "55d4b834-65d7-46a9-952d-e0915aa921b8",
+    "date": "2026-08-05",
+    "minutes": 10,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "f985c357-35a4-4145-b29a-c24308fbae7b",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-08-06",
+    "minutes": 16,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "6267b45f-a9f4-4a6a-8cd8-88cce38741f6",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-08-06",
+    "minutes": -417,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "0bdf8632-c46a-494a-a93f-61c27ddacb39",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-08-06",
+    "minutes": 480,
+    "type": "ADJUSTMENT",
+    "note": "Esqueci de bater o ponto"
+  },
+  {
+    "id": "e59a6d3b-09ee-4b99-9471-3a723d0d9cca",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-08-06",
+    "minutes": 7,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "9edeb728-b0ad-49b0-9a7a-e6f639e1832c",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-08-07",
+    "minutes": 19,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "a5a47e9d-5e6f-445e-bd4d-62867ba472d3",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-08-07",
+    "minutes": -17,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "3417d840-392f-41a3-a03e-96b9115b1522",
+    "employeeId": "55d4b834-65d7-46a9-952d-e0915aa921b8",
+    "date": "2026-08-07",
+    "minutes": -19,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "80b78e6a-e705-485c-a219-9bd8cb993f4d",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-08-07",
+    "minutes": -5,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "1423a00d-6632-409f-958d-20d8eb85d3c5",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-08-07",
+    "minutes": 10,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "9965f6a8-b4a4-4e72-b4ce-ee179a7d01b0",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-08-08",
+    "minutes": 371,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "23bbcbc3-d24e-48a4-a1de-6f3b1cf2a366",
+    "employeeId": "55d4b834-65d7-46a9-952d-e0915aa921b8",
+    "date": "2026-08-08",
+    "minutes": -23,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "b36a6d58-dae5-4128-8ada-9d253cc9b5d6",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-08-08",
+    "minutes": -4,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "1dedfb31-f2e1-4b79-918c-3ef2d2dac5b9",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-08-08",
+    "minutes": -30,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "fa564618-2eec-4037-8ba1-faeb328e11f2",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-08-08",
+    "minutes": 360,
+    "type": "ADJUSTMENT",
+    "note": "Esqueci de fechar o ponto. Saí 17h."
+  },
+  {
+    "id": "0a40b9f1-0966-4b4a-870d-9742a48a522c",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-08-10",
+    "minutes": 81,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "24a35a12-80af-474f-8c26-6d821244892a",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-08-10",
+    "minutes": 31,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "2d1b4b47-9e8c-4784-87b6-70b3b97f56fc",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-08-10",
+    "minutes": 19,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "287407e5-7367-4c2d-aeb1-34ecf454b310",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-08-10",
+    "minutes": 79,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "ded3e072-dcce-4277-b4f6-ca3559ac027c",
+    "employeeId": "55d4b834-65d7-46a9-952d-e0915aa921b8",
+    "date": "2026-08-10",
+    "minutes": 16,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "8949f1c0-3321-4a99-9e0d-80a89c9b6ab0",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-08-11",
+    "minutes": 6,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "5d1c86c1-da48-4268-a138-4cb6594b3fe4",
+    "employeeId": "55d4b834-65d7-46a9-952d-e0915aa921b8",
+    "date": "2026-08-11",
+    "minutes": -9,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "af03ebf9-6e6a-425f-b434-5263f30bf80f",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-08-11",
+    "minutes": -26,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "51f3cc69-3467-483e-86a9-8fef6990325e",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-08-11",
+    "minutes": 24,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "a3a76ea2-2354-44d4-865d-774f8d56d889",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-08-11",
+    "minutes": -12,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "fc39d430-ef3c-49f7-811e-370ae6c773ad",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-08-12",
+    "minutes": 480,
+    "type": "ADJUSTMENT",
+    "note": "Não bati a volta do almoço"
+  },
+  {
+    "id": "6d24a019-f567-46c3-8ad3-d3f450687419",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-08-12",
+    "minutes": -9,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "2602abd9-c196-41be-8b71-013ad380d651",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-08-12",
+    "minutes": 4,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "356adf5e-3535-469e-8aee-7408a5c8c0bd",
+    "employeeId": "01f9409f-d074-4c85-b8aa-96be02f6ba07",
+    "date": "2026-08-13",
+    "minutes": 12,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "bebffaa4-ff2b-4df5-bea9-25fc46af8df9",
+    "employeeId": "55d4b834-65d7-46a9-952d-e0915aa921b8",
+    "date": "2026-08-13",
+    "minutes": 225,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "80fa4a25-7263-4f11-a504-c41eb1e5f12c",
+    "employeeId": "10af27b6-820d-4142-a168-b43e8f261518",
+    "date": "2026-08-13",
+    "minutes": -10,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "1636223b-4c94-4719-8e56-295295b23211",
+    "employeeId": "27d83b80-0073-41d6-82f3-c7c9dc341db8",
+    "date": "2026-08-13",
+    "minutes": 38,
+    "type": "WORK",
+    "note": null
+  },
+  {
+    "id": "1544a50d-aac6-4cf9-a3e4-f8b4bde4e99f",
+    "employeeId": "6c62ccbf-5719-4a03-89cf-3506e5200dd2",
+    "date": "2026-08-13",
+    "minutes": 46,
+    "type": "WORK",
+    "note": null
+  }
+]
