@@ -70,9 +70,12 @@ export interface QueueAttendance {
   id: string;
   employeeId: string;
   date: string;
-  startedAt: string;
-  endedAt?: string;
-  status: 'IN_PROGRESS' | 'COMPLETED' | 'PASSED';
+  startedAt: string; // HH:MM ou ISO
+  endedAt?: string;   // HH:MM ou ISO
+  durationMinutes?: number;
+  type: 'NORMAL' | 'DIRECT'; // NORMAL = Vez da Fila, DIRECT = Cliente Fidelizado / Preferência
+  status: 'IN_PROGRESS' | 'COMPLETED' | 'CANCELLED';
+  saleNote?: string; // Nº do Cupom / Valor / Obs da Venda
 }
 
 export interface AppSettings {

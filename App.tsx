@@ -22,7 +22,8 @@ import {
   Calendar, BrainCircuit, HeartPulse, Palmtree, ShieldCheck,
   History, SlidersHorizontal, Info, Database, AlertTriangle,
   GraduationCap, Briefcase, Minus, Flame, CalendarDays, ArrowRight,
-  Play, Check, SkipForward, Pause, Award, Bell, HelpCircle
+  Play, Check, SkipForward, Pause, Award, Bell, HelpCircle,
+  Star, Smartphone, Copy, RotateCcw, Receipt, CheckSquare, Share2
 } from 'lucide-react';
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL || "https://pbvtbwzswkhgeazhwqfa.supabase.co"; 
@@ -55,7 +56,15 @@ const App: React.FC = () => {
     settings: { managerPin: "1234" }
   });
   
-  const [activeTab, setActiveTab] = useState('clock'); 
+  // Detecção de Modo Somente Fila (para acesso no celular do vendedor sem acesso ao ponto)
+  const isQueueUrlDetected = typeof window !== 'undefined' && (
+    window.location.search.includes('view=queue') || 
+    window.location.search.includes('fila') || 
+    window.location.hash.includes('queue') || 
+    window.location.hash.includes('fila')
+  );
+  const [isQueueOnlyMode, setIsQueueOnlyMode] = useState(isQueueUrlDetected);
+  const [activeTab, setActiveTab] = useState(isQueueUrlDetected ? 'queue' : 'clock'); 
   const [currentTime, setCurrentTime] = useState(new Date());
   const [selectedClockEmployeeId, setSelectedClockEmployeeId] = useState<string | null>(null);
   const [isManagerAuthenticated, setIsManagerAuthenticated] = useState(false);
@@ -78,10 +87,54 @@ const App: React.FC = () => {
   const [selfDeclareTime, setSelfDeclareTime] = useState('10:00');
   const [selfDeclareNote, setSelfDeclareNote] = useState('');
 
-  // Estados da Fila da Vez
-  const [activeAttendance, setActiveAttendance] = useState<{ employeeId: string; startedAt: string } | null>(null);
-  const [attendanceCounts, setAttendanceCounts] = useState<Record<string, number>>({});
-  const [customQueueOrder, setCustomQueueOrder] = useState<string[]>([]);
+  // Estados Avançados da Fila da Vez (Vendas & Rodízio)
+  const [activeAttendances, setActiveAttendances] = useState<Record<string, {
+    id: string;
+    employeeId: string;
+    startedAt: string;
+    startedTimestamp: number;
+    type: 'NORMAL' | 'DIRECT';
+    originalPosition?: number;
+  }>>(() => {
+    try {
+      const today = getLocalDateString(new Date());
+      const stored = localStorage.getItem(`ponto_active_attendances_v2_${today}`);
+      return stored ? JSON.parse(stored) : {};
+    } catch (e) {
+      return {};
+    }
+  });
+
+  const [todayAttendances, setTodayAttendances] = useState<QueueAttendance[]>(() => {
+    try {
+      const today = getLocalDateString(new Date());
+      const stored = localStorage.getItem(`ponto_attendances_v2_${today}`);
+      return stored ? JSON.parse(stored) : [];
+    } catch (e) {
+      return [];
+    }
+  });
+
+  const [customQueueOrder, setCustomQueueOrder] = useState<string[]>(() => {
+    try {
+      const today = getLocalDateString(new Date());
+      const stored = localStorage.getItem(`ponto_queue_order_v2_${today}`);
+      return stored ? JSON.parse(stored) : [];
+    } catch (e) {
+      return [];
+    }
+  });
+
+  // Modais de Fila (Finalização de Atendimento com Cupom & Compartilhar Link Mobile)
+  const [finishingAttendance, setFinishingAttendance] = useState<{
+    employeeId: string;
+    startedAt: string;
+    startedTimestamp: number;
+    type: 'NORMAL' | 'DIRECT';
+  } | null>(null);
+  const [finishSaleNote, setFinishSaleNote] = useState('');
+  const [isShareQueueModalOpen, setIsShareQueueModalOpen] = useState(false);
+  const [copiedLinkFeedback, setCopiedLinkFeedback] = useState(false);
 
   // Formulário de Novo Feriado
   const [newHoliday, setNewHoliday] = useState({ date: getLocalDateString(new Date()), name: '', type: 'MUNICIPAL' as const });
@@ -226,73 +279,250 @@ const App: React.FC = () => {
     });
   }, [data.employees, data.records, data.holidays, currentTime]);
 
+  // Efeitos de persistência local da Fila e Atendimentos do Dia
+  useEffect(() => {
+    const today = getLocalDateString(currentTime);
+    try {
+      localStorage.setItem(`ponto_active_attendances_v2_${today}`, JSON.stringify(activeAttendances));
+    } catch (e) {}
+  }, [activeAttendances, currentTime]);
+
+  useEffect(() => {
+    const today = getLocalDateString(currentTime);
+    try {
+      localStorage.setItem(`ponto_attendances_v2_${today}`, JSON.stringify(todayAttendances));
+    } catch (e) {}
+  }, [todayAttendances, currentTime]);
+
+  useEffect(() => {
+    const today = getLocalDateString(currentTime);
+    try {
+      localStorage.setItem(`ponto_queue_order_v2_${today}`, JSON.stringify(customQueueOrder));
+    } catch (e) {}
+  }, [customQueueOrder, currentTime]);
+
   // Fila da Vez: Vendedores presentes hoje ordenados por ordem de chegada no ponto
   const salesQueue = useMemo(() => {
     const todayStr = getLocalDateString(currentTime);
     const salesEmployees = data.employees.filter(e => e.isActive !== false && e.isSalesperson !== false);
     const todayRecords = data.records.filter(r => r.date === todayStr);
 
-    const queuedList: {
+    const currentlyAttending: {
       employee: Employee;
       record?: ClockRecord;
-      status: 'AVAILABLE' | 'ATTENDING' | 'IN_LUNCH' | 'IN_SNACK' | 'LEFT' | 'NOT_ARRIVED';
+      attendance: {
+        id: string;
+        employeeId: string;
+        startedAt: string;
+        startedTimestamp: number;
+        type: 'NORMAL' | 'DIRECT';
+        originalPosition?: number;
+      };
+    }[] = [];
+
+    const waitingList: {
+      employee: Employee;
+      record?: ClockRecord;
       orderKey: number;
+    }[] = [];
+
+    const inBreak: {
+      employee: Employee;
+      record?: ClockRecord;
+      status: 'IN_LUNCH' | 'IN_SNACK';
+    }[] = [];
+
+    const others: {
+      employee: Employee;
+      record?: ClockRecord;
+      status: 'LEFT' | 'NOT_ARRIVED';
     }[] = [];
 
     salesEmployees.forEach(emp => {
       const rec = todayRecords.find(r => r.employeeId === emp.id);
+      const activeAtt = activeAttendances[emp.id];
+
       if (!rec || !rec.clockIn) {
-        queuedList.push({ employee: emp, record: rec, status: 'NOT_ARRIVED', orderKey: 9999999999999 });
+        others.push({ employee: emp, record: rec, status: 'NOT_ARRIVED' });
       } else if (rec.clockOut) {
-        queuedList.push({ employee: emp, record: rec, status: 'LEFT', orderKey: 8888888888888 });
+        others.push({ employee: emp, record: rec, status: 'LEFT' });
       } else if (rec.snackStart && !rec.snackEnd) {
-        queuedList.push({ employee: emp, record: rec, status: 'IN_SNACK', orderKey: 7777777777777 });
+        inBreak.push({ employee: emp, record: rec, status: 'IN_SNACK' });
       } else if (rec.lunchStart && !rec.lunchEnd) {
-        queuedList.push({ employee: emp, record: rec, status: 'IN_LUNCH', orderKey: 6666666666666 });
-      } else if (activeAttendance && activeAttendance.employeeId === emp.id) {
-        queuedList.push({ employee: emp, record: rec, status: 'ATTENDING', orderKey: 0 });
+        inBreak.push({ employee: emp, record: rec, status: 'IN_LUNCH' });
+      } else if (activeAtt) {
+        currentlyAttending.push({ employee: emp, record: rec, attendance: activeAtt });
       } else {
         const customIdx = customQueueOrder.indexOf(emp.id);
         const clockTime = new Date(rec.clockIn).getTime();
         const baseKey = customIdx !== -1 ? customIdx : clockTime;
-        queuedList.push({ employee: emp, record: rec, status: 'AVAILABLE', orderKey: baseKey });
+        waitingList.push({ employee: emp, record: rec, orderKey: baseKey });
       }
     });
 
-    const activeInStore = queuedList.filter(q => q.status === 'AVAILABLE' || q.status === 'ATTENDING').sort((a, b) => a.orderKey - b.orderKey);
-    const inBreak = queuedList.filter(q => q.status === 'IN_LUNCH' || q.status === 'IN_SNACK');
-    const others = queuedList.filter(q => q.status === 'LEFT' || q.status === 'NOT_ARRIVED');
+    const waitingSorted = waitingList.sort((a, b) => a.orderKey - b.orderKey);
 
-    return { activeInStore, inBreak, others };
-  }, [data.employees, data.records, currentTime, activeAttendance, customQueueOrder]);
+    return { 
+      waitingQueue: waitingSorted, 
+      currentlyAttending, 
+      inBreak, 
+      others 
+    };
+  }, [data.employees, data.records, currentTime, activeAttendances, customQueueOrder]);
 
-  const handleStartAttendance = (employeeId: string) => {
-    setActiveAttendance({ employeeId, startedAt: new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }) });
+  // Estatísticas e Balanço Diário de Atendimentos + Alerta de Atendimentos Consecutivos
+  const attendanceStats = useMemo(() => {
+    const completedToday = todayAttendances.filter(a => a.status === 'COMPLETED');
+    const counts: Record<string, { total: number; normal: number; direct: number; totalMinutes: number }> = {};
+    let grandTotalMinutes = 0;
+
+    completedToday.forEach(a => {
+      if (!counts[a.employeeId]) {
+        counts[a.employeeId] = { total: 0, normal: 0, direct: 0, totalMinutes: 0 };
+      }
+      counts[a.employeeId].total += 1;
+      if (a.type === 'DIRECT') {
+        counts[a.employeeId].direct += 1;
+      } else {
+        counts[a.employeeId].normal += 1;
+      }
+      const dur = a.durationMinutes || 0;
+      counts[a.employeeId].totalMinutes += dur;
+      grandTotalMinutes += dur;
+    });
+
+    const totalAttendances = completedToday.length;
+    const totalNormal = completedToday.filter(a => a.type === 'NORMAL').length;
+    const totalDirect = completedToday.filter(a => a.type === 'DIRECT').length;
+    const avgDuration = totalAttendances > 0 ? Math.round(grandTotalMinutes / totalAttendances) : 0;
+
+    // Alerta de Atendimentos Consecutivos (Suspeita de Furar Fila)
+    let consecutiveAlert: { employeeName: string; count: number } | null = null;
+    if (completedToday.length >= 3) {
+      const lastEmpId = completedToday[completedToday.length - 1].employeeId;
+      let seq = 0;
+      for (let i = completedToday.length - 1; i >= 0; i--) {
+        if (completedToday[i].employeeId === lastEmpId) {
+          seq++;
+        } else {
+          break;
+        }
+      }
+      if (seq >= 3) {
+        const emp = data.employees.find(e => e.id === lastEmpId);
+        consecutiveAlert = {
+          employeeName: emp ? emp.name.split(' ')[0] : 'Vendedor',
+          count: seq
+        };
+      }
+    }
+
+    return {
+      counts,
+      completedToday,
+      totalAttendances,
+      totalNormal,
+      totalDirect,
+      avgDuration,
+      consecutiveAlert
+    };
+  }, [todayAttendances, data.employees]);
+
+  // Iniciar Atendimento (Vez da Fila ou Cliente Fidelizado)
+  const handleStartAttendance = (employeeId: string, type: 'NORMAL' | 'DIRECT' = 'NORMAL') => {
+    const currentPos = salesQueue.waitingQueue.findIndex(q => q.employee.id === employeeId);
+    const now = new Date();
+    const startedAt = now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+    
+    const item = {
+      id: generateId(),
+      employeeId,
+      startedAt,
+      startedTimestamp: Date.now(),
+      type,
+      originalPosition: currentPos >= 0 ? currentPos : undefined
+    };
+
+    setActiveAttendances(prev => ({ ...prev, [employeeId]: item }));
   };
 
-  const handleCompleteAttendance = (employeeId: string) => {
-    setAttendanceCounts(prev => ({ ...prev, [employeeId]: (prev[employeeId] || 0) + 1 }));
-    setActiveAttendance(null);
+  // Cancelar Atendimento acidental (devolve à posição original sem prejuízo)
+  const handleCancelAttendance = (employeeId: string) => {
+    if (confirm("Deseja cancelar este atendimento e retornar o vendedor à sua posição na fila?")) {
+      setActiveAttendances(prev => {
+        const copy = { ...prev };
+        delete copy[employeeId];
+        return copy;
+      });
+    }
+  };
+
+  // Abrir Modal de Finalização (com cupom/obs opcional)
+  const handleOpenFinishAttendance = (employeeId: string) => {
+    const item = activeAttendances[employeeId];
+    if (!item) return;
+    setFinishingAttendance(item);
+    setFinishSaleNote('');
+  };
+
+  // Finalizar Atendimento e Mover Colaborador para o Fim da Fila
+  const handleCompleteAttendance = (employeeId: string, saleNote?: string) => {
+    const item = activeAttendances[employeeId] || (finishingAttendance?.employeeId === employeeId ? finishingAttendance : null);
+    if (!item) return;
+
+    const now = new Date();
+    const endedAt = now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+    const diffMinutes = Math.max(1, Math.round((Date.now() - item.startedTimestamp) / 60000));
+    const todayStr = getLocalDateString(currentTime);
+
+    const completedRecord: QueueAttendance = {
+      id: item.id || generateId(),
+      employeeId,
+      date: todayStr,
+      startedAt: item.startedAt,
+      endedAt,
+      durationMinutes: diffMinutes,
+      type: item.type,
+      status: 'COMPLETED',
+      saleNote: (saleNote || finishSaleNote).trim() || undefined
+    };
+
+    setTodayAttendances(prev => [...prev, completedRecord]);
+
+    // Remover de atendimentos ativos
+    setActiveAttendances(prev => {
+      const copy = { ...prev };
+      delete copy[employeeId];
+      return copy;
+    });
+
+    // Mover vendedor para o FINAL da fila de espera
     setCustomQueueOrder(prev => {
-      const currentActiveIds = salesQueue.activeInStore.map(q => q.employee.id);
-      const filtered = currentActiveIds.filter(id => id !== employeeId);
+      const currentWaitingIds = salesQueue.waitingQueue.map(q => q.employee.id);
+      const filtered = currentWaitingIds.filter(id => id !== employeeId);
       return [...filtered, employeeId];
     });
+
+    setFinishingAttendance(null);
+    setFinishSaleNote('');
   };
 
+  // Atualizar Nº do Cupom / Obs de um atendimento no Balanço
+  const handleUpdateAttendanceSaleNote = (attendanceId: string, note: string) => {
+    setTodayAttendances(prev => prev.map(att => att.id === attendanceId ? { ...att, saleNote: note.trim() || undefined } : att));
+  };
+
+  // Passar a vez caso o colaborador precise ir para o fim da fila sem registrar atendimento
   const handlePassTurn = (employeeId: string) => {
     setCustomQueueOrder(prev => {
-      const currentActiveIds = salesQueue.activeInStore.map(q => q.employee.id);
-      const index = currentActiveIds.indexOf(employeeId);
-      if (index === -1 || currentActiveIds.length <= 1) return currentActiveIds;
-      const reordered = [...currentActiveIds];
+      const currentWaitingIds = salesQueue.waitingQueue.map(q => q.employee.id);
+      const index = currentWaitingIds.indexOf(employeeId);
+      if (index === -1 || currentWaitingIds.length <= 1) return currentWaitingIds;
+      const reordered = [...currentWaitingIds];
       const [moved] = reordered.splice(index, 1);
       reordered.push(moved);
       return reordered;
     });
-    if (activeAttendance && activeAttendance.employeeId === employeeId) {
-      setActiveAttendance(null);
-    }
   };
 
   // Salvar Autodeclaração de Chegada Esquecida pelo Colaborador
@@ -838,43 +1068,69 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#0f172a] flex flex-col md:flex-row text-slate-200 overflow-x-hidden">
       
-      {/* SIDEBAR */}
-      <aside className="w-full md:w-64 bg-[#1e293b] flex flex-col shadow-2xl md:fixed md:inset-y-0 z-50 overflow-y-auto">
-        <div className="p-6 border-b border-white/5 flex flex-col items-center">
-          <div className="bg-indigo-600 p-2.5 rounded-xl text-white shadow-xl mb-3"><BookOpen size={24}/></div>
-          <span className="text-white font-serif italic text-lg tracking-tight">Ponto & Banco</span>
-        </div>
-        <nav className="flex-1 p-3 space-y-1">
-          {/* Módulos Públicos da Loja */}
-          <button onClick={() => { setActiveTab('clock'); setIsManagerAuthenticated(false); setSelectedClockEmployeeId(null); }} className={`w-full flex items-center gap-3 px-5 py-3 rounded-xl font-bold text-xs transition-all ${activeTab === 'clock' && !isManagerAuthenticated ? 'bg-white text-slate-900 shadow-lg' : 'text-slate-400 hover:bg-white/5'}`}>
-            <ClockIcon size={18}/> Bater Ponto
-          </button>
-          <button onClick={() => { setActiveTab('queue'); setIsManagerAuthenticated(false); }} className={`w-full flex items-center gap-3 px-5 py-3 rounded-xl font-bold text-xs transition-all ${activeTab === 'queue' ? 'bg-amber-500 text-slate-900 shadow-lg font-black' : 'text-amber-400 hover:bg-white/5'}`}>
-            <Flame size={18}/> Fila da Vez (Vendas)
-          </button>
-
-          {/* Módulos de Gestão */}
-          <div className="pt-6 opacity-30 px-5 text-[9px] font-black uppercase tracking-widest mb-1">Gestão</div>
-          {[
-            { id: 'dashboard', label: 'Painel Geral', icon: <TrendingUp size={18}/> },
-            { id: 'employees', label: 'Equipe', icon: <Users size={18}/> },
-            { id: 'holidays', label: 'Feriados', icon: <CalendarDays size={18}/> },
-            { id: 'justifications', label: 'Justificativas', icon: <ShieldCheck size={18}/> },
-            { id: 'admin', label: 'Ajustes', icon: <SlidersHorizontal size={18}/> },
-            { id: 'reports', label: 'Relatórios', icon: <FileText size={18}/> },
-          ].map(item => (
-            <button key={item.id} onClick={() => isManagerAuthenticated ? setActiveTab(item.id) : setIsLoginModalOpen(true)} className={`w-full flex items-center gap-3 px-5 py-3 rounded-xl font-bold text-xs transition-all ${activeTab === item.id && isManagerAuthenticated ? 'bg-indigo-600 text-white' : 'text-slate-400 hover:bg-white/5'}`}>
-              {item.icon} {item.label}
+      {/* SIDEBAR (Oculta no Modo Somente Fila / Mobile dos Vendedores) */}
+      {!isQueueOnlyMode && (
+        <aside className="w-full md:w-64 bg-[#1e293b] flex flex-col shadow-2xl md:fixed md:inset-y-0 z-50 overflow-y-auto">
+          <div className="p-6 border-b border-white/5 flex flex-col items-center">
+            <div className="bg-indigo-600 p-2.5 rounded-xl text-white shadow-xl mb-3"><BookOpen size={24}/></div>
+            <span className="text-white font-serif italic text-lg tracking-tight">Ponto & Banco</span>
+          </div>
+          <nav className="flex-1 p-3 space-y-1">
+            {/* Módulos Públicos da Loja */}
+            <button onClick={() => { setActiveTab('clock'); setIsManagerAuthenticated(false); setSelectedClockEmployeeId(null); }} className={`w-full flex items-center gap-3 px-5 py-3 rounded-xl font-bold text-xs transition-all ${activeTab === 'clock' && !isManagerAuthenticated ? 'bg-white text-slate-900 shadow-lg' : 'text-slate-400 hover:bg-white/5'}`}>
+              <ClockIcon size={18}/> Bater Ponto
             </button>
-          ))}
-        </nav>
-      </aside>
+            <button onClick={() => { setActiveTab('queue'); setIsManagerAuthenticated(false); }} className={`w-full flex items-center gap-3 px-5 py-3 rounded-xl font-bold text-xs transition-all ${activeTab === 'queue' ? 'bg-amber-500 text-slate-900 shadow-lg font-black' : 'text-amber-400 hover:bg-white/5'}`}>
+              <Flame size={18}/> Fila da Vez (Vendas)
+            </button>
+
+            {/* Módulos de Gestão */}
+            <div className="pt-6 opacity-30 px-5 text-[9px] font-black uppercase tracking-widest mb-1">Gestão</div>
+            {[
+              { id: 'dashboard', label: 'Painel Geral', icon: <TrendingUp size={18}/> },
+              { id: 'employees', label: 'Equipe', icon: <Users size={18}/> },
+              { id: 'holidays', label: 'Feriados', icon: <CalendarDays size={18}/> },
+              { id: 'justifications', label: 'Justificativas', icon: <ShieldCheck size={18}/> },
+              { id: 'admin', label: 'Ajustes', icon: <SlidersHorizontal size={18}/> },
+              { id: 'reports', label: 'Relatórios', icon: <FileText size={18}/> },
+            ].map(item => (
+              <button key={item.id} onClick={() => isManagerAuthenticated ? setActiveTab(item.id) : setIsLoginModalOpen(true)} className={`w-full flex items-center gap-3 px-5 py-3 rounded-xl font-bold text-xs transition-all ${activeTab === item.id && isManagerAuthenticated ? 'bg-indigo-600 text-white' : 'text-slate-400 hover:bg-white/5'}`}>
+                {item.icon} {item.label}
+              </button>
+            ))}
+          </nav>
+        </aside>
+      )}
 
       {/* MAIN CONTENT */}
-      <main className="flex-1 p-6 md:p-10 md:ml-64 bg-slate-50 text-slate-900 min-h-screen">
-        <header className="mb-10 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
+      <main className={`flex-1 p-4 md:p-10 bg-slate-50 text-slate-900 min-h-screen ${isQueueOnlyMode ? 'max-w-5xl mx-auto' : 'md:ml-64'}`}>
+        <header className="mb-8 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
           <div>
-            <p className="text-slate-400 text-[10px] font-black uppercase tracking-widest mb-1">Sistema de Ponto</p>
+            <div className="flex items-center gap-2 mb-1">
+              <span className="text-slate-400 text-[10px] font-black uppercase tracking-widest">
+                {isQueueOnlyMode ? '📱 Modo Fila Mobile (Sem Ponto)' : 'Sistema de Ponto & Fila'}
+              </span>
+              {isQueueOnlyMode ? (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsQueueOnlyMode(false);
+                    setActiveTab('clock');
+                  }}
+                  className="px-2 py-0.5 rounded-full bg-slate-200 hover:bg-slate-300 text-slate-700 text-[9px] font-bold uppercase transition-all"
+                >
+                  Abrir Terminal Completo
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => setIsShareQueueModalOpen(true)}
+                  className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-[9px] font-black uppercase transition-all"
+                >
+                  <Smartphone size={10}/> Link Celular
+                </button>
+              )}
+            </div>
             <h1 className="text-3xl font-black font-serif italic capitalize leading-none">
               {activeTab === 'queue' ? 'Fila da Vez de Atendimento' : activeTab === 'holidays' ? 'Calendário de Feriados' : activeTab}
             </h1>
@@ -1089,109 +1345,232 @@ const App: React.FC = () => {
           {/* TAB: FILA DA VEZ (VENDAS) */}
           {activeTab === 'queue' && (
             <div className="space-y-8 animate-in fade-in duration-300">
-              <div className="bg-gradient-to-r from-amber-500 to-orange-600 text-white p-8 rounded-[2.5rem] shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
-                <div>
+              
+              {/* BANNER PRINCIPAL DA FILA */}
+              <div className="bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 text-white p-8 rounded-[2.5rem] shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden">
+                <div className="relative z-10">
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 text-xs font-black uppercase tracking-wider mb-2">
                     <Flame size={14}/> Fila de Atendimento em Loja
                   </div>
                   <h2 className="text-3xl font-black font-serif italic">Ordem de Atendimento</h2>
-                  <p className="text-amber-100 text-xs mt-1">Organizada automaticamente pela ordem de chegada no ponto. Vendedores em pausa saem da fila sozinhos.</p>
+                  <p className="text-amber-100 text-xs mt-1 max-w-xl">
+                    Organizada pela chegada no ponto. Ao iniciar atendimento, o próximo assume a vez imediatamente. Ao finalizar, o vendedor vai para o fim da fila.
+                  </p>
                 </div>
-                <div className="bg-white/10 backdrop-blur-md px-6 py-4 rounded-2xl text-center border border-white/20">
-                  <span className="text-[10px] font-black uppercase tracking-widest text-amber-200">Na Loja Agora</span>
-                  <p className="text-3xl font-black font-mono mt-0.5">{salesQueue.activeInStore.length} Vendedores</p>
+
+                <div className="flex items-center gap-3 relative z-10 flex-wrap justify-end">
+                  <button
+                    type="button"
+                    onClick={() => setIsShareQueueModalOpen(true)}
+                    className="px-4 py-3 rounded-2xl bg-white/20 hover:bg-white/30 text-white text-xs font-black uppercase tracking-wider transition-all flex items-center gap-2 border border-white/20 backdrop-blur-sm"
+                  >
+                    <Smartphone size={16}/> Celular da Equipe
+                  </button>
+
+                  <div className="bg-white/10 backdrop-blur-md px-5 py-3 rounded-2xl text-center border border-white/20">
+                    <span className="text-[10px] font-black uppercase tracking-widest text-amber-200">Na Loja</span>
+                    <p className="text-2xl font-black font-mono mt-0.5">
+                      {salesQueue.waitingQueue.length + salesQueue.currentlyAttending.length}
+                    </p>
+                  </div>
                 </div>
               </div>
 
-              {/* VENDEDOR DA VEZ (1º LUGAR) */}
-              {salesQueue.activeInStore.length > 0 ? (
+              {/* ALERTA DE AUDITORIA: ATENDIMENTOS CONSECUTIVOS */}
+              {attendanceStats.consecutiveAlert && (
+                <div className="bg-amber-50 border-2 border-amber-400 p-5 rounded-[2rem] shadow-sm flex items-start gap-4 animate-in slide-in-from-top-2 duration-300">
+                  <div className="p-3 bg-amber-500 text-slate-950 rounded-2xl shrink-0">
+                    <AlertTriangle size={24}/>
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="text-sm font-black text-amber-950 uppercase tracking-wide">
+                      Alerta de Rodízio da Fila: {attendanceStats.consecutiveAlert.count} Atendimentos Consecutivos
+                    </h4>
+                    <p className="text-xs text-amber-800 mt-0.5">
+                      O vendedor <strong className="font-bold underline">{attendanceStats.consecutiveAlert.employeeName}</strong> realizou {attendanceStats.consecutiveAlert.count} atendimentos seguidos. Verifique se o rodízio e a vez dos colegas estão sendo cumpridos.
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {/* SEÇÃO 1: ATENDIMENTOS EM ANDAMENTO AGORA */}
+              {salesQueue.currentlyAttending.length > 0 && (
+                <div className="bg-slate-900 text-white p-6 md:p-8 rounded-[2.5rem] shadow-xl border border-slate-800 space-y-6">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-amber-400">
+                      <Flame size={18} className="animate-pulse"/> Atendendo Clientes Agora ({salesQueue.currentlyAttending.length})
+                    </div>
+                    <span className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">
+                      Ao concluir, o colaborador irá para o final da fila
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {salesQueue.currentlyAttending.map(({ employee, record, attendance }) => {
+                      const isDirect = attendance.type === 'DIRECT';
+                      const elapsedMin = Math.max(0, Math.round((currentTime.getTime() - attendance.startedTimestamp) / 60000));
+
+                      return (
+                        <div 
+                          key={employee.id} 
+                          className={`p-6 rounded-[2rem] border-2 transition-all flex flex-col justify-between gap-4 ${isDirect ? 'bg-gradient-to-br from-amber-950/40 to-slate-900 border-amber-500/50' : 'bg-slate-800/80 border-indigo-500/40'}`}
+                        >
+                          <div className="flex items-start justify-between gap-2">
+                            <div>
+                              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider mb-2 shadow-sm ${isDirect ? 'bg-amber-400 text-slate-950' : 'bg-indigo-500 text-white'}">
+                                {isDirect ? <Star size={12}/> : <Award size={12}/>}
+                                {isDirect ? 'Cliente Fidelizado (Preferência)' : 'Vez da Fila'}
+                              </div>
+                              <h4 className="text-2xl font-black font-serif italic text-white">{employee.name}</h4>
+                              <p className="text-xs text-slate-400 mt-0.5">
+                                Iniciou às <strong className="text-white font-mono">{attendance.startedAt}</strong> • ⏱️ há ~{elapsedMin} min
+                              </p>
+                            </div>
+                          </div>
+
+                          <div className="flex items-center gap-2 pt-2 border-t border-white/10">
+                            <button
+                              type="button"
+                              onClick={() => handleOpenFinishAttendance(employee.id)}
+                              className="flex-1 py-3 px-4 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-black text-xs uppercase tracking-wider shadow-lg flex items-center justify-center gap-2 transition-all active:scale-95"
+                            >
+                              <Check size={16}/> Finalizar Atendimento
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => handleCancelAttendance(employee.id)}
+                              className="py-3 px-3 rounded-xl bg-white/10 hover:bg-rose-500/20 text-slate-400 hover:text-rose-300 font-bold text-xs uppercase transition-all"
+                              title="Cancelar atendimento acidental e retornar à posição na fila"
+                            >
+                              <RotateCcw size={15}/>
+                            </button>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+
+              {/* SEÇÃO 2: VENDEDOR DA VEZ (1º LUGAR DA FILA DE ESPERA) */}
+              {salesQueue.waitingQueue.length > 0 ? (
                 (() => {
-                  const firstInLine = salesQueue.activeInStore[0];
-                  const isAttending = activeAttendance && activeAttendance.employeeId === firstInLine.employee.id;
-                  const count = attendanceCounts[firstInLine.employee.id] || 0;
+                  const firstInLine = salesQueue.waitingQueue[0];
+                  const stats = attendanceStats.counts[firstInLine.employee.id] || { total: 0, normal: 0, direct: 0, totalMinutes: 0 };
+
                   return (
-                    <div className={`p-8 md:p-10 rounded-[3rem] shadow-xl border-2 transition-all text-center relative overflow-hidden ${isAttending ? 'bg-indigo-600 border-indigo-700 text-white shadow-indigo-200' : 'bg-white border-amber-400 text-slate-800'}`}>
+                    <div className="bg-white border-2 border-amber-400 text-slate-800 p-8 md:p-10 rounded-[3rem] shadow-xl text-center relative overflow-hidden transition-all">
                       <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-400 text-slate-950 text-xs font-black uppercase tracking-widest mb-4 shadow-sm">
-                        <Award size={14}/> {isAttending ? 'ATENDENDO CLIENTE AGORA' : '1º LUGAR • VENDEDOR DA VEZ'}
+                        <Award size={14}/> 1º LUGAR • PRÓXIMO DA VEZ
                       </div>
                       <h3 className="text-4xl font-black font-serif italic mb-1">{firstInLine.employee.name}</h3>
-                      <p className={`text-xs font-bold uppercase tracking-wider mb-6 ${isAttending ? 'text-indigo-200' : 'text-slate-400'}`}>
-                        {firstInLine.employee.role} • Chegou às {formatTime(firstInLine.record?.clockIn)} • {count} atendimentos hoje
+                      <p className="text-xs font-bold uppercase tracking-wider mb-6 text-slate-400">
+                        {firstInLine.employee.role} • Chegou às {formatTime(firstInLine.record?.clockIn)} • {stats.total} atendimentos hoje ({stats.normal} vez / {stats.direct} fidelizado)
                       </p>
 
-                      <div className="flex flex-wrap items-center justify-center gap-4 max-w-lg mx-auto">
-                        {!isAttending ? (
-                          <>
-                            <button
-                              onClick={() => handleStartAttendance(firstInLine.employee.id)}
-                              className="flex-1 py-4 px-6 rounded-2xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-black text-sm uppercase tracking-wider shadow-lg flex items-center justify-center gap-2 transition-all active:scale-95"
-                            >
-                              <Play size={18}/> Iniciar Atendimento
-                            </button>
-                            <button
-                              onClick={() => handlePassTurn(firstInLine.employee.id)}
-                              className="py-4 px-5 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-600 font-black text-xs uppercase tracking-wider transition-all flex items-center gap-1.5"
-                              title="Passar a vez caso o vendedor esteja ocupado"
-                            >
-                              <SkipForward size={16}/> Passar a Vez
-                            </button>
-                          </>
-                        ) : (
-                          <>
-                            <button
-                              onClick={() => handleCompleteAttendance(firstInLine.employee.id)}
-                              className="flex-1 py-4 px-6 rounded-2xl bg-emerald-500 hover:bg-emerald-600 text-white font-black text-sm uppercase tracking-wider shadow-lg flex items-center justify-center gap-2 transition-all active:scale-95"
-                            >
-                              <Check size={20}/> Concluir Atendimento
-                            </button>
-                            <button
-                              onClick={() => setActiveAttendance(null)}
-                              className="py-4 px-5 rounded-2xl bg-white/20 hover:bg-white/30 text-white font-black text-xs uppercase tracking-wider transition-all"
-                            >
-                              Cancelar
-                            </button>
-                          </>
-                        )}
+                      <div className="flex flex-wrap items-center justify-center gap-3 max-w-xl mx-auto">
+                        <button
+                          type="button"
+                          onClick={() => handleStartAttendance(firstInLine.employee.id, 'NORMAL')}
+                          className="flex-1 min-w-[200px] py-4 px-6 rounded-2xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-black text-sm uppercase tracking-wider shadow-lg flex items-center justify-center gap-2 transition-all active:scale-95"
+                        >
+                          <Play size={18}/> Iniciar Atendimento da Vez
+                        </button>
+                        
+                        <button
+                          type="button"
+                          onClick={() => handleStartAttendance(firstInLine.employee.id, 'DIRECT')}
+                          className="py-4 px-5 rounded-2xl bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 font-black text-xs uppercase tracking-wider transition-all flex items-center gap-1.5 active:scale-95"
+                          title="Quando o cliente procurou especificamente este vendedor"
+                        >
+                          <Star size={15} className="text-amber-600 fill-amber-500"/> Cliente Fidelizado
+                        </button>
+
+                        <button
+                          type="button"
+                          onClick={() => handlePassTurn(firstInLine.employee.id)}
+                          className="py-4 px-4 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-600 font-black text-xs uppercase tracking-wider transition-all flex items-center gap-1"
+                          title="Passar a vez caso o vendedor esteja ocupado no momento"
+                        >
+                          <SkipForward size={16}/> Passar Vez
+                        </button>
                       </div>
                     </div>
                   );
                 })()
               ) : (
-                <div className="bg-white p-12 rounded-[2.5rem] shadow-sm border border-slate-100 text-center">
+                <div className="bg-white p-10 rounded-[2.5rem] shadow-sm border border-slate-100 text-center">
                   <ClockIcon size={48} className="mx-auto text-slate-300 mb-3"/>
-                  <h3 className="text-lg font-black text-slate-700">Nenhum vendedor disponível na fila no momento</h3>
-                  <p className="text-xs text-slate-400 mt-1">Conforme os vendedores baterem o ponto de entrada, eles entrarão aqui automaticamente.</p>
+                  <h3 className="text-lg font-black text-slate-700">
+                    {salesQueue.currentlyAttending.length > 0 
+                      ? 'Todos os vendedores presentes estão em atendimento no momento' 
+                      : 'Nenhum vendedor disponível na fila no momento'}
+                  </h3>
+                  <p className="text-xs text-slate-400 mt-1">
+                    Conforme os vendedores baterem o ponto de entrada ou finalizarem atendimentos, eles reingressam aqui automaticamente.
+                  </p>
                 </div>
               )}
 
-              {/* PRÓXIMOS NA FILA */}
-              {salesQueue.activeInStore.length > 1 && (
+              {/* SEÇÃO 3: PRÓXIMOS NA FILA (2º LUGAR EM DIANTE) */}
+              {salesQueue.waitingQueue.length > 1 && (
                 <div className="bg-white p-6 md:p-8 rounded-[2.5rem] shadow-sm border border-slate-100 space-y-4">
-                  <h4 className="text-xs font-black uppercase text-slate-400 tracking-widest">Próximos na Fila</h4>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                    {salesQueue.activeInStore.slice(1).map((q, idx) => (
-                      <div key={q.employee.id} className="p-4 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-between">
-                        <div className="flex items-center gap-3">
-                          <span className="w-7 h-7 rounded-xl bg-slate-200 text-slate-700 text-xs font-black flex items-center justify-center">{idx + 2}º</span>
-                          <div>
-                            <p className="font-bold text-xs text-slate-800">{q.employee.name.split(' ')[0]}</p>
-                            <p className="text-[9px] text-slate-400">{attendanceCounts[q.employee.id] || 0} atendimentos</p>
+                  <div className="flex items-center justify-between">
+                    <h4 className="text-xs font-black uppercase text-slate-400 tracking-widest">
+                      Próximos na Fila de Espera ({salesQueue.waitingQueue.length - 1})
+                    </h4>
+                    <span className="text-[10px] text-slate-400 font-bold">
+                      Clique em "Cliente Fidelizado" se o cliente procurou o vendedor diretamente
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {salesQueue.waitingQueue.slice(1).map((q, idx) => {
+                      const stats = attendanceStats.counts[q.employee.id] || { total: 0, normal: 0, direct: 0 };
+
+                      return (
+                        <div key={q.employee.id} className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 flex flex-col justify-between gap-3 hover:border-amber-300 transition-all">
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-3">
+                              <span className="w-8 h-8 rounded-xl bg-slate-200 text-slate-800 text-xs font-black flex items-center justify-center">
+                                {idx + 2}º
+                              </span>
+                              <div>
+                                <p className="font-bold text-sm text-slate-900">{q.employee.name.split(' ')[0]}</p>
+                                <p className="text-[10px] text-slate-500 font-medium">
+                                  {stats.total} atend. ({stats.direct} fidelizados)
+                                </p>
+                              </div>
+                            </div>
+                            
+                            <button
+                              type="button"
+                              onClick={() => handlePassTurn(q.employee.id)}
+                              className="p-1.5 text-slate-400 hover:text-amber-600 rounded-lg hover:bg-white transition-all"
+                              title="Passar para o fim da fila"
+                            >
+                              <SkipForward size={14}/>
+                            </button>
+                          </div>
+
+                          <div className="pt-2 border-t border-slate-200 flex items-center justify-end">
+                            <button
+                              type="button"
+                              onClick={() => handleStartAttendance(q.employee.id, 'DIRECT')}
+                              className="w-full py-2 px-3 rounded-xl bg-amber-100 hover:bg-amber-200 text-amber-950 text-xs font-black uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all shadow-sm active:scale-95"
+                              title="Iniciar atendimento de cliente que procurou este vendedor diretamente"
+                            >
+                              <Star size={13} className="text-amber-600 fill-amber-500"/> Cliente Fidelizado
+                            </button>
                           </div>
                         </div>
-                        <button
-                          onClick={() => handlePassTurn(q.employee.id)}
-                          className="p-1.5 text-slate-400 hover:text-amber-600 rounded-lg hover:bg-white transition-all"
-                          title="Passar para o fim da fila"
-                        >
-                          <SkipForward size={14}/>
-                        </button>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 </div>
               )}
 
-              {/* VENDEDORES EM PAUSA (ALMOÇO OU LANCHE) */}
+              {/* SEÇÃO 4: VENDEDORES EM PAUSA (ALMOÇO OU LANCHE) */}
               {salesQueue.inBreak.length > 0 && (
                 <div className="bg-amber-50/70 border border-amber-200 p-6 rounded-[2rem] space-y-3">
                   <div className="flex items-center gap-2 text-amber-800 text-xs font-black uppercase tracking-wider">
@@ -1202,12 +1581,118 @@ const App: React.FC = () => {
                       <div key={q.employee.id} className="px-4 py-2 rounded-xl bg-white border border-amber-200 shadow-sm flex items-center gap-2 text-xs font-bold text-amber-950">
                         <span>{q.status === 'IN_LUNCH' ? '🍽️' : '☕'}</span>
                         <span>{q.employee.name.split(' ')[0]}</span>
-                        <span className="text-[10px] text-amber-600 uppercase font-black">({q.status === 'IN_LUNCH' ? 'Almoço' : 'Lanche'})</span>
+                        <span className="text-[10px] text-amber-600 uppercase font-black">
+                          ({q.status === 'IN_LUNCH' ? 'Almoço' : 'Lanche'})
+                        </span>
                       </div>
                     ))}
                   </div>
                 </div>
               )}
+
+              {/* SEÇÃO 5: BALANÇO DIÁRIO DE ATENDIMENTOS & CONFERÊNCIA COM CUPONS PDV */}
+              <div className="bg-white p-6 md:p-8 rounded-[2.5rem] shadow-sm border border-slate-100 space-y-6">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                  <div>
+                    <h3 className="text-xl font-black font-serif italic text-slate-800 flex items-center gap-2">
+                      <Receipt size={20} className="text-indigo-600"/> Balanço do Dia & Conferência de Cupons
+                    </h3>
+                    <p className="text-xs text-slate-400 mt-0.5">
+                      Horários exatos de início e término para cruzar e validar com os cupons fiscais do sistema PDV.
+                    </p>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const text = attendanceStats.completedToday.map(a => {
+                          const emp = data.employees.find(e => e.id === a.employeeId)?.name || 'Vendedor';
+                          return `${a.startedAt} às ${a.endedAt || '--:--'} (${a.durationMinutes || 0}m) | ${emp} | ${a.type === 'DIRECT' ? 'FIDELIZADO' : 'VEZ'} | Cupom: ${a.saleNote || 'N/A'}`;
+                        }).join('\n');
+                        navigator.clipboard.writeText(`BALANÇO DE ATENDIMENTOS - ${getLocalDateString(currentTime)}\n\n` + text);
+                        alert("Balanço copiado para a área de transferência!");
+                      }}
+                      className="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-black uppercase tracking-wider transition-all flex items-center gap-1.5"
+                    >
+                      <Copy size={14}/> Copiar Balanço
+                    </button>
+                  </div>
+                </div>
+
+                {/* MÉTRICAS RÁPIDAS */}
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                  <div className="bg-slate-50 p-4 rounded-2xl border border-slate-100">
+                    <span className="text-[10px] font-black uppercase text-slate-400">Total Atendimentos</span>
+                    <p className="text-2xl font-black font-mono text-slate-900">{attendanceStats.totalAttendances}</p>
+                  </div>
+                  <div className="bg-indigo-50/50 p-4 rounded-2xl border border-indigo-100">
+                    <span className="text-[10px] font-black uppercase text-indigo-500">Pela Vez da Fila</span>
+                    <p className="text-2xl font-black font-mono text-indigo-700">{attendanceStats.totalNormal}</p>
+                  </div>
+                  <div className="bg-amber-50/50 p-4 rounded-2xl border border-amber-100">
+                    <span className="text-[10px] font-black uppercase text-amber-600">Clientes Fidelizados</span>
+                    <p className="text-2xl font-black font-mono text-amber-800">{attendanceStats.totalDirect}</p>
+                  </div>
+                  <div className="bg-emerald-50/50 p-4 rounded-2xl border border-emerald-100">
+                    <span className="text-[10px] font-black uppercase text-emerald-600">Duração Média</span>
+                    <p className="text-2xl font-black font-mono text-emerald-800">{attendanceStats.avgDuration} min</p>
+                  </div>
+                </div>
+
+                {/* TABELA DE ATENDIMENTOS DO DIA */}
+                {attendanceStats.completedToday.length > 0 ? (
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-left text-xs border-collapse">
+                      <thead>
+                        <tr className="border-b border-slate-100 text-[10px] font-black uppercase text-slate-400 tracking-wider">
+                          <th className="py-3 px-3">Vendedor</th>
+                          <th className="py-3 px-3">Tipo</th>
+                          <th className="py-3 px-3">Início</th>
+                          <th className="py-3 px-3">Término</th>
+                          <th className="py-3 px-3">Duração</th>
+                          <th className="py-3 px-3">Nº Cupom / Obs PDV</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-slate-100 font-medium text-slate-700">
+                        {attendanceStats.completedToday.map(a => {
+                          const emp = data.employees.find(e => e.id === a.employeeId);
+                          const isDirect = a.type === 'DIRECT';
+
+                          return (
+                            <tr key={a.id} className="hover:bg-slate-50/80 transition-colors">
+                              <td className="py-3 px-3 font-bold text-slate-900">
+                                {emp?.name || 'Vendedor'}
+                              </td>
+                              <td className="py-3 px-3">
+                                <span className={`px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider ${isDirect ? 'bg-amber-100 text-amber-900 border border-amber-200' : 'bg-indigo-100 text-indigo-900'}`}>
+                                  {isDirect ? '⭐ Fidelizado' : '👥 Vez da Fila'}
+                                </span>
+                              </td>
+                              <td className="py-3 px-3 font-mono font-bold text-slate-800">{a.startedAt}</td>
+                              <td className="py-3 px-3 font-mono font-bold text-slate-800">{a.endedAt || '--:--'}</td>
+                              <td className="py-3 px-3 font-mono text-slate-600">{a.durationMinutes || 0} min</td>
+                              <td className="py-3 px-3">
+                                <input
+                                  type="text"
+                                  placeholder="Inserir Nº do Cupom..."
+                                  defaultValue={a.saleNote || ''}
+                                  onBlur={(e) => handleUpdateAttendanceSaleNote(a.id, e.target.value)}
+                                  className="w-full max-w-[200px] px-2.5 py-1 text-xs rounded-lg border border-slate-200 focus:border-indigo-500 focus:outline-none bg-slate-50/50 hover:bg-white"
+                                />
+                              </td>
+                            </tr>
+                          );
+                        })}
+                      </tbody>
+                    </table>
+                  </div>
+                ) : (
+                  <p className="text-center py-6 text-xs text-slate-400 italic">
+                    Nenhum atendimento finalizado registrado hoje ainda. Conforme os atendimentos forem concluídos, eles serão listados aqui cronologicamente.
+                  </p>
+                )}
+              </div>
             </div>
           )}
 
@@ -2090,6 +2575,169 @@ const App: React.FC = () => {
           </div>
         </div>
       )}
+
+      {/* MODAL DE FINALIZAR ATENDIMENTO (COM CUPOM / OBS DA VENDA) */}
+      {finishingAttendance && (() => {
+        const emp = data.employees.find(e => e.id === finishingAttendance.employeeId);
+        const now = new Date();
+        const currentEndedAt = now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+        const diffMin = Math.max(1, Math.round((Date.now() - finishingAttendance.startedTimestamp) / 60000));
+        const isDirect = finishingAttendance.type === 'DIRECT';
+
+        return (
+          <div className="fixed inset-0 z-[110] flex items-center justify-center bg-slate-950/80 backdrop-blur-md p-4 animate-in fade-in">
+            <div className="bg-white text-slate-800 w-full max-w-md p-8 rounded-[2.5rem] shadow-2xl relative border border-slate-100">
+              <button 
+                type="button"
+                onClick={() => setFinishingAttendance(null)} 
+                className="absolute top-6 right-6 text-slate-400 hover:text-slate-900 p-2 rounded-full hover:bg-slate-100 transition-all"
+              >
+                <X size={20}/>
+              </button>
+
+              <div className="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center mb-4 shadow-sm">
+                <CheckSquare size={28}/>
+              </div>
+
+              <h3 className="text-2xl font-black font-serif italic text-slate-900 mb-1">
+                Finalizar Atendimento
+              </h3>
+              <p className="text-xs text-slate-400 mb-6">
+                Ao confirmar, o colaborador <strong className="text-slate-800 font-bold">{emp?.name}</strong> será posicionado no final da fila de espera.
+              </p>
+
+              <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100 space-y-2 mb-6">
+                <div className="flex justify-between text-xs font-bold text-slate-700">
+                  <span>Tipo:</span>
+                  <span className={`px-2 py-0.5 rounded-full text-[10px] font-black uppercase ${isDirect ? 'bg-amber-100 text-amber-900' : 'bg-indigo-100 text-indigo-900'}`}>
+                    {isDirect ? '⭐ Cliente Fidelizado' : '👥 Vez da Fila'}
+                  </span>
+                </div>
+                <div className="flex justify-between text-xs text-slate-600">
+                  <span>Horário Início:</span>
+                  <span className="font-mono font-bold text-slate-800">{finishingAttendance.startedAt}</span>
+                </div>
+                <div className="flex justify-between text-xs text-slate-600">
+                  <span>Horário Término:</span>
+                  <span className="font-mono font-bold text-slate-800">{currentEndedAt}</span>
+                </div>
+                <div className="flex justify-between text-xs font-bold text-slate-800 pt-2 border-t border-slate-200/80">
+                  <span>Duração Estimada:</span>
+                  <span className="font-mono text-emerald-700 font-black">~{diffMin} minutos</span>
+                </div>
+              </div>
+
+              <form onSubmit={(e) => {
+                e.preventDefault();
+                handleCompleteAttendance(finishingAttendance.employeeId, finishSaleNote);
+              }} className="space-y-4">
+                <label className="space-y-1 block">
+                  <span className="text-[10px] font-black uppercase text-slate-400">
+                    Nº do Cupom Fiscal / Venda PDV (Opcional)
+                  </span>
+                  <input
+                    type="text"
+                    autoFocus
+                    value={finishSaleNote}
+                    onChange={(e) => setFinishSaleNote(e.target.value)}
+                    placeholder="Ex: Cupom #1042 / Venda R$ 350,00"
+                    className="w-full p-3 rounded-xl bg-slate-50 border border-slate-200 font-bold text-xs outline-none focus:ring-2 focus:ring-emerald-500"
+                  />
+                  <span className="text-[9px] text-slate-400 block mt-0.5">
+                    Permite cruzar depois com o relatório do sistema de caixa.
+                  </span>
+                </label>
+
+                <div className="flex gap-3 pt-2">
+                  <button
+                    type="button"
+                    onClick={() => setFinishingAttendance(null)}
+                    className="flex-1 py-3.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-600 font-black uppercase text-xs transition-all"
+                  >
+                    Cancelar
+                  </button>
+                  <button
+                    type="submit"
+                    className="flex-1 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-black uppercase text-xs shadow-lg flex items-center justify-center gap-1.5 transition-all active:scale-95"
+                  >
+                    <Check size={18}/> Concluir
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        );
+      })()}
+
+      {/* MODAL DE COMPARTILHAR LINK DA FILA PARA O CELULAR DA EQUIPE */}
+      {isShareQueueModalOpen && (() => {
+        const queueUrl = typeof window !== 'undefined' 
+          ? `${window.location.origin}${window.location.pathname}?view=queue` 
+          : '?view=queue';
+
+        return (
+          <div className="fixed inset-0 z-[110] flex items-center justify-center bg-slate-950/80 backdrop-blur-md p-4 animate-in fade-in">
+            <div className="bg-white text-slate-800 w-full max-w-lg p-8 md:p-10 rounded-[2.5rem] shadow-2xl relative border border-slate-100">
+              <button 
+                type="button"
+                onClick={() => {
+                  setIsShareQueueModalOpen(false);
+                  setCopiedLinkFeedback(false);
+                }} 
+                className="absolute top-6 right-6 text-slate-400 hover:text-slate-900 p-2 rounded-full hover:bg-slate-100 transition-all"
+              >
+                <X size={20}/>
+              </button>
+
+              <div className="w-14 h-14 bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center mb-4 shadow-sm">
+                <Smartphone size={28}/>
+              </div>
+
+              <h3 className="text-2xl font-black font-serif italic text-slate-900 mb-1">
+                Fila da Vez no Celular da Equipe
+              </h3>
+              <p className="text-xs text-slate-500 mb-6 leading-relaxed">
+                Envie este link para o WhatsApp ou celular dos vendedores. Ele abre <strong>apenas a Fila de Atendimento</strong> (sem acesso a bater ponto, sem acesso à gerência e sem ocupar espaço no aparelho).
+              </p>
+
+              <div className="space-y-4">
+                <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-between gap-3">
+                  <span className="font-mono text-xs text-slate-700 truncate select-all">{queueUrl}</span>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      navigator.clipboard.writeText(queueUrl);
+                      setCopiedLinkFeedback(true);
+                      setTimeout(() => setCopiedLinkFeedback(false), 2500);
+                    }}
+                    className="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-black text-xs uppercase tracking-wider shrink-0 transition-all flex items-center gap-1.5 shadow-sm"
+                  >
+                    {copiedLinkFeedback ? <Check size={14}/> : <Copy size={14}/>}
+                    {copiedLinkFeedback ? 'Copiado!' : 'Copiar'}
+                  </button>
+                </div>
+
+                <div className="p-4 rounded-2xl bg-amber-50/60 border border-amber-100 space-y-2 text-xs text-amber-950">
+                  <p className="font-black flex items-center gap-1.5 text-amber-900">
+                    <Star size={14} className="text-amber-600 fill-amber-500"/> Dica para o Vendedor:
+                  </p>
+                  <p className="leading-relaxed">
+                    O vendedor pode abrir este link no Chrome ou Safari e clicar em <strong>"Adicionar à tela de início"</strong>. Um ícone será criado no celular dele como um aplicativo leve, sem ocupar memória.
+                  </p>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => setIsShareQueueModalOpen(false)}
+                  className="w-full py-3.5 rounded-xl bg-slate-900 text-white font-black uppercase text-xs hover:bg-slate-800 transition-all mt-2"
+                >
+                  Fechar
+                </button>
+              </div>
+            </div>
+          </div>
+        );
+      })()}
 
     </div>
   );
