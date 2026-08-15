@@ -1031,7 +1031,7 @@ const App: React.FC = () => {
   });
 
   const getNextAction = (record?: ClockRecord) => {
-    if (!record?.clockIn) return { label: 'Entrada', stage: 'in', color: 'bg-indigo-600', icon: <LogIn size={20}/> };
+    if (!record?.clockIn) return { label: 'Entrada', stage: 'in', color: 'bg-zinc-950 text-amber-400 hover:bg-zinc-900 border-2 border-amber-400/40 shadow-amber-400/10', icon: <LogIn size={20}/> };
     if (!record.lunchStart) return { label: 'Início Almoço', stage: 'l_start', color: 'bg-amber-600', icon: <Utensils size={20}/> };
     if (!record.lunchEnd) return { label: 'Retorno Almoço', stage: 'l_end', color: 'bg-emerald-600', icon: <Utensils size={20}/> };
     if (!record.snackStart) return { label: 'Início Lanche', stage: 's_start', color: 'bg-orange-500', icon: <Coffee size={20}/> };
@@ -1065,27 +1065,48 @@ const App: React.FC = () => {
     return `${parts[2]}/${parts[1]}/${parts[0]}`;
   };
 
+  const TAB_INFOS: Record<string, { title: string; subtitle: string }> = {
+    clock: { title: 'Registro de Ponto', subtitle: 'Toque no seu nome para registrar entrada, pausas ou saída' },
+    queue: { title: 'Fila da Vez (Vendas)', subtitle: 'Rodízio de atendimento em loja por ordem de chegada no ponto' },
+    dashboard: { title: 'Painel Geral & Saldos', subtitle: 'Visão em tempo real da equipe e do banco de horas' },
+    employees: { title: 'Gestão da Equipe', subtitle: 'Contratos, jornadas diárias e semana inglesa' },
+    holidays: { title: 'Calendário de Feriados', subtitle: 'Feriados municipais e nacionais com regras de compensação' },
+    justifications: { title: 'Justificativas & Atestados', subtitle: 'Lançamento de atestados, férias e eventos externos' },
+    admin: { title: 'Ajustes Administrativos', subtitle: 'Correções manuais de batidas e auditoria do banco de horas' },
+    reports: { title: 'Relatórios & Espelho de Ponto', subtitle: 'Exportação para contabilidade e fechamento mensal' }
+  };
+
   return (
-    <div className="min-h-screen bg-[#0f172a] flex flex-col md:flex-row text-slate-200 overflow-x-hidden">
+    <div className="min-h-screen bg-[#f8fafc] flex flex-col md:flex-row text-zinc-900 overflow-x-hidden">
       
-      {/* SIDEBAR (Oculta no Modo Somente Fila / Mobile dos Vendedores) */}
+      {/* SIDEBAR (Identidade Visual Nobel: Preto Nobre & Amarelo Ouro) */}
       {!isQueueOnlyMode && (
-        <aside className="w-full md:w-64 bg-[#1e293b] flex flex-col shadow-2xl md:fixed md:inset-y-0 z-50 overflow-y-auto">
-          <div className="p-6 border-b border-white/5 flex flex-col items-center">
-            <div className="bg-indigo-600 p-2.5 rounded-xl text-white shadow-xl mb-3"><BookOpen size={24}/></div>
-            <span className="text-white font-serif italic text-lg tracking-tight">Ponto & Banco</span>
+        <aside className="w-full md:w-64 bg-[#09090b] text-zinc-100 flex flex-col shadow-2xl md:fixed md:inset-y-0 z-50 overflow-y-auto border-r border-zinc-800/80">
+          <div className="p-6 border-b border-zinc-800/60 flex flex-col items-center">
+            <div className="bg-gradient-to-br from-amber-400 via-amber-300 to-yellow-500 p-3 rounded-2xl text-zinc-950 shadow-lg shadow-amber-400/20 mb-3 flex items-center justify-center">
+              <BookOpen size={26} className="stroke-[2.5]"/>
+            </div>
+            <span className="text-white font-serif italic text-xl tracking-tight font-black">Livraria Nobel</span>
+            <span className="text-[10px] text-amber-400 uppercase font-black tracking-widest mt-0.5">Petrópolis • Ponto & Fila</span>
           </div>
-          <nav className="flex-1 p-3 space-y-1">
+          
+          <nav className="flex-1 p-3 space-y-1.5">
             {/* Módulos Públicos da Loja */}
-            <button onClick={() => { setActiveTab('clock'); setIsManagerAuthenticated(false); setSelectedClockEmployeeId(null); }} className={`w-full flex items-center gap-3 px-5 py-3 rounded-xl font-bold text-xs transition-all ${activeTab === 'clock' && !isManagerAuthenticated ? 'bg-white text-slate-900 shadow-lg' : 'text-slate-400 hover:bg-white/5'}`}>
+            <button 
+              onClick={() => { setActiveTab('clock'); setIsManagerAuthenticated(false); setSelectedClockEmployeeId(null); }} 
+              className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-black text-xs transition-all ${activeTab === 'clock' && !isManagerAuthenticated ? 'bg-gradient-to-r from-amber-400 to-yellow-400 text-zinc-950 shadow-lg shadow-amber-400/25 scale-[1.02]' : 'text-zinc-400 hover:text-amber-300 hover:bg-zinc-900/80'}`}
+            >
               <ClockIcon size={18}/> Bater Ponto
             </button>
-            <button onClick={() => { setActiveTab('queue'); setIsManagerAuthenticated(false); }} className={`w-full flex items-center gap-3 px-5 py-3 rounded-xl font-bold text-xs transition-all ${activeTab === 'queue' ? 'bg-amber-500 text-slate-900 shadow-lg font-black' : 'text-amber-400 hover:bg-white/5'}`}>
+            <button 
+              onClick={() => { setActiveTab('queue'); setIsManagerAuthenticated(false); }} 
+              className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-black text-xs transition-all ${activeTab === 'queue' ? 'bg-gradient-to-r from-amber-400 to-yellow-400 text-zinc-950 shadow-lg shadow-amber-400/25 scale-[1.02]' : 'text-zinc-400 hover:text-amber-300 hover:bg-zinc-900/80'}`}
+            >
               <Flame size={18}/> Fila da Vez (Vendas)
             </button>
 
             {/* Módulos de Gestão */}
-            <div className="pt-6 opacity-30 px-5 text-[9px] font-black uppercase tracking-widest mb-1">Gestão</div>
+            <div className="pt-5 pb-1 px-4 text-[9px] font-black uppercase tracking-widest text-zinc-600">Gestão da Loja</div>
             {[
               { id: 'dashboard', label: 'Painel Geral', icon: <TrendingUp size={18}/> },
               { id: 'employees', label: 'Equipe', icon: <Users size={18}/> },
@@ -1094,21 +1115,29 @@ const App: React.FC = () => {
               { id: 'admin', label: 'Ajustes', icon: <SlidersHorizontal size={18}/> },
               { id: 'reports', label: 'Relatórios', icon: <FileText size={18}/> },
             ].map(item => (
-              <button key={item.id} onClick={() => isManagerAuthenticated ? setActiveTab(item.id) : setIsLoginModalOpen(true)} className={`w-full flex items-center gap-3 px-5 py-3 rounded-xl font-bold text-xs transition-all ${activeTab === item.id && isManagerAuthenticated ? 'bg-indigo-600 text-white' : 'text-slate-400 hover:bg-white/5'}`}>
+              <button 
+                key={item.id} 
+                onClick={() => isManagerAuthenticated ? setActiveTab(item.id) : setIsLoginModalOpen(true)} 
+                className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-xl font-bold text-xs transition-all ${activeTab === item.id && isManagerAuthenticated ? 'bg-gradient-to-r from-amber-400 to-yellow-400 text-zinc-950 font-black shadow-md shadow-amber-400/20' : 'text-zinc-400 hover:text-amber-300 hover:bg-zinc-900/80'}`}
+              >
                 {item.icon} {item.label}
               </button>
             ))}
           </nav>
+
+          <div className="p-4 border-t border-zinc-800/60 text-center">
+            <span className="text-[9px] text-zinc-600 uppercase font-black tracking-widest">Sistema Nobel V2.5</span>
+          </div>
         </aside>
       )}
 
       {/* MAIN CONTENT */}
-      <main className={`flex-1 p-4 md:p-10 bg-slate-50 text-slate-900 min-h-screen ${isQueueOnlyMode ? 'max-w-5xl mx-auto' : 'md:ml-64'}`}>
+      <main className={`flex-1 p-4 md:p-10 bg-[#f8fafc] text-zinc-900 min-h-screen ${isQueueOnlyMode ? 'max-w-5xl mx-auto' : 'md:ml-64'}`}>
         <header className="mb-8 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <span className="text-slate-400 text-[10px] font-black uppercase tracking-widest">
-                {isQueueOnlyMode ? '📱 Modo Fila Mobile (Sem Ponto)' : 'Sistema de Ponto & Fila'}
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-100/80 text-amber-950 text-[10px] font-black uppercase tracking-wider border border-amber-300/60">
+                <BookOpen size={11} className="text-amber-700"/> {isQueueOnlyMode ? '📱 Modo Celular (Somente Fila)' : 'Livraria Nobel Petrópolis'}
               </span>
               {isQueueOnlyMode ? (
                 <button
@@ -1117,7 +1146,7 @@ const App: React.FC = () => {
                     setIsQueueOnlyMode(false);
                     setActiveTab('clock');
                   }}
-                  className="px-2 py-0.5 rounded-full bg-slate-200 hover:bg-slate-300 text-slate-700 text-[9px] font-bold uppercase transition-all"
+                  className="px-2.5 py-0.5 rounded-full bg-zinc-200 hover:bg-zinc-300 text-zinc-800 text-[9px] font-bold uppercase transition-all"
                 >
                   Abrir Terminal Completo
                 </button>
@@ -1125,18 +1154,26 @@ const App: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setIsShareQueueModalOpen(true)}
-                  className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-[9px] font-black uppercase transition-all"
+                  className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-zinc-900 hover:bg-zinc-800 text-amber-300 text-[9px] font-black uppercase transition-all shadow-sm"
                 >
                   <Smartphone size={10}/> Link Celular
                 </button>
               )}
             </div>
-            <h1 className="text-3xl font-black font-serif italic capitalize leading-none">
-              {activeTab === 'queue' ? 'Fila da Vez de Atendimento' : activeTab === 'holidays' ? 'Calendário de Feriados' : activeTab}
+            <h1 className="text-3xl font-black font-serif italic capitalize leading-none text-zinc-900">
+              {TAB_INFOS[activeTab]?.title || activeTab}
             </h1>
+            <p className="text-xs text-zinc-400 font-medium mt-1">
+              {TAB_INFOS[activeTab]?.subtitle || ''}
+            </p>
           </div>
-          <div className="bg-white px-6 py-3 rounded-2xl shadow-sm border border-slate-100 text-right w-full sm:w-auto">
-            <p className="text-xl font-mono font-black text-slate-800 leading-none">{currentTime.toLocaleTimeString('pt-BR', {hour:'2-digit', minute:'2-digit', second: '2-digit'})}</p>
+          <div className="bg-white px-6 py-3 rounded-2xl shadow-sm border border-zinc-200/80 text-right w-full sm:w-auto">
+            <p className="text-xl font-mono font-black text-zinc-900 leading-none tracking-tight">
+              {currentTime.toLocaleTimeString('pt-BR', {hour:'2-digit', minute:'2-digit', second: '2-digit'})}
+            </p>
+            <span className="text-[9px] text-zinc-400 font-bold uppercase tracking-widest block mt-0.5">
+              {currentTime.toLocaleDateString('pt-BR', { weekday: 'short', day: '2-digit', month: 'short' })}
+            </span>
           </div>
         </header>
 
@@ -1172,15 +1209,24 @@ const App: React.FC = () => {
                     const todayRec = data.records.find(r => r.employeeId === emp.id && r.date === getLocalDateString(currentTime));
                     const isPending = pendingArrivals.some(p => p.id === emp.id);
                     return (
-                      <button key={emp.id} onClick={() => setSelectedClockEmployeeId(emp.id)} className={`bg-white p-6 rounded-3xl shadow-sm hover:shadow-md transition-all border flex flex-col items-center group relative ${isPending ? 'border-amber-300' : 'border-slate-100'}`}>
+                      <button 
+                        key={emp.id} 
+                        onClick={() => setSelectedClockEmployeeId(emp.id)} 
+                        className={`bg-white p-6 rounded-[2rem] shadow-sm hover:shadow-xl hover:shadow-amber-400/10 transition-all border flex flex-col items-center group relative active:scale-95 ${isPending ? 'border-amber-400/80 ring-2 ring-amber-400/20' : 'border-zinc-200/80 hover:border-amber-400'}`}
+                      >
                         {isPending && (
-                          <span className="absolute top-3 right-3 w-2.5 h-2.5 rounded-full bg-amber-500 animate-ping"></span>
+                          <span className="absolute top-3.5 right-3.5 flex h-3 w-3">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-3 w-3 bg-amber-500"></span>
+                          </span>
                         )}
-                        <div className="w-16 h-16 bg-slate-50 text-slate-300 rounded-2xl flex items-center justify-center text-2xl font-black mb-3 group-hover:bg-indigo-600 group-hover:text-white transition-all">{emp.name.charAt(0)}</div>
-                        <span className="font-bold text-slate-700 truncate w-full text-center text-sm">{emp.name.split(' ')[0]}</span>
-                        <span className="text-[10px] text-slate-400 truncate w-full text-center mt-0.5">{emp.role || 'Colaborador'}</span>
+                        <div className="w-16 h-16 bg-zinc-900 text-amber-400 rounded-2xl flex items-center justify-center text-2xl font-black mb-3 shadow-md group-hover:bg-gradient-to-br group-hover:from-amber-400 group-hover:to-yellow-500 group-hover:text-zinc-950 transition-all">
+                          {emp.name.charAt(0)}
+                        </div>
+                        <span className="font-black text-zinc-900 truncate w-full text-center text-sm">{emp.name.split(' ')[0]}</span>
+                        <span className="text-[10px] text-zinc-400 font-bold uppercase truncate w-full text-center mt-0.5">{emp.role || 'Colaborador'}</span>
                         {todayRec?.clockIn && (
-                          <span className="mt-2 text-[9px] font-mono font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md">
+                          <span className="mt-2.5 text-[9px] font-mono font-bold text-emerald-800 bg-emerald-100/70 border border-emerald-200 px-2.5 py-0.5 rounded-full">
                             Entrada {formatTime(todayRec.clockIn)}
                           </span>
                         )}
@@ -1190,34 +1236,38 @@ const App: React.FC = () => {
                 </div>
               ) : (
                 <div className="max-w-3xl mx-auto w-full space-y-6">
-                  <button onClick={() => setSelectedClockEmployeeId(null)} className="flex items-center gap-2 text-slate-400 font-black uppercase text-[10px] hover:text-indigo-600"><ChevronLeft size={14}/> Voltar para lista</button>
+                  <button onClick={() => setSelectedClockEmployeeId(null)} className="flex items-center gap-2 text-zinc-500 font-black uppercase text-[10px] hover:text-amber-600 transition-all"><ChevronLeft size={14}/> Voltar para lista</button>
                   {data.employees.filter(e => e.id === selectedClockEmployeeId).map(emp => {
                     const balance = getCumulativeBalance(emp.id);
                     const record = data.records.find(r => r.employeeId === emp.id && r.date === getLocalDateString(currentTime));
                     const action = getNextAction(record);
                     return (
                       <div key={emp.id} className="space-y-6">
-                        <div className="bg-white p-8 md:p-12 rounded-[3rem] shadow-xl border border-slate-100 flex flex-col items-center text-center">
-                          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 text-xs font-black uppercase tracking-wider mb-3">
+                        <div className="bg-white p-8 md:p-12 rounded-[3rem] shadow-xl border border-zinc-200/80 flex flex-col items-center text-center relative overflow-hidden">
+                          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-950 text-xs font-black uppercase tracking-wider mb-3">
                             <span>{getGreeting(currentTime).emoji}</span>
                             <span>{getGreeting(currentTime).text}, {emp.name.split(' ')[0]}!</span>
                           </div>
-                          <h2 className="text-3xl font-black font-serif italic mb-1">{emp.name}</h2>
-                          <p className="text-slate-400 font-bold uppercase text-[10px] mb-4 tracking-widest">{emp.role}</p>
+                          <h2 className="text-3xl font-black font-serif italic mb-1 text-zinc-900">{emp.name}</h2>
+                          <p className="text-zinc-400 font-bold uppercase text-[10px] mb-4 tracking-widest">{emp.role}</p>
                           
                           <div className="flex flex-wrap items-center justify-center gap-3 mb-8">
                             <button
                               type="button"
                               onClick={() => setIsCltModalOpen(true)}
-                              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition-all"
+                              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-zinc-100 hover:bg-zinc-200 text-zinc-800 text-xs font-bold transition-all"
                             >
-                              <BookOpen size={14} className="text-indigo-600"/>
+                              <BookOpen size={14} className="text-amber-600"/>
                               <span>Regras CLT & Direitos de Ponto</span>
                             </button>
                           </div>
 
-                          <button disabled={action.stage === 'done' || clockActionEmployeeId !== null} onClick={() => handleClockAction(emp.id)} className={`w-full max-w-md py-10 rounded-[2.5rem] font-black text-2xl shadow-xl transition-all flex items-center justify-center gap-4 ${action.color} text-white active:scale-95 mb-4 disabled:opacity-60`}>
-                            {clockActionEmployeeId === emp.id ? <RefreshCw className="animate-spin" size={20}/> : action.icon} {clockActionEmployeeId === emp.id ? 'Salvando...' : action.label}
+                          <button 
+                            disabled={action.stage === 'done' || clockActionEmployeeId !== null} 
+                            onClick={() => handleClockAction(emp.id)} 
+                            className={`w-full max-w-md py-9 rounded-[2.5rem] font-black text-2xl shadow-xl transition-all flex items-center justify-center gap-4 ${action.stage === 'in' ? 'bg-zinc-950 hover:bg-zinc-900 text-amber-400 border-2 border-amber-400/40 shadow-amber-400/10' : action.color + ' text-white'} active:scale-95 mb-4 disabled:opacity-60`}
+                          >
+                            {clockActionEmployeeId === emp.id ? <RefreshCw className="animate-spin" size={22}/> : action.icon} {clockActionEmployeeId === emp.id ? 'Salvando...' : action.label}
                           </button>
 
                           {/* BOTÃO AUTODECLARAÇÃO: ESQUECI DE BATER AO CHEGAR */}
@@ -1229,7 +1279,7 @@ const App: React.FC = () => {
                                 setSelfDeclareTime(currentTime.getDay() === emp.englishWeekDay ? '14:30' : '10:00');
                                 setIsSelfDeclareModalOpen(true);
                               }}
-                              className="inline-flex items-center gap-1.5 text-slate-400 hover:text-indigo-600 text-xs font-bold transition-all py-1 mb-8"
+                              className="inline-flex items-center gap-1.5 text-zinc-500 hover:text-amber-700 text-xs font-bold transition-all py-1 mb-8"
                             >
                               <HelpCircle size={14}/>
                               <span>Esqueceu de bater ao chegar? <strong className="underline">Informar horário exato</strong></span>
@@ -1245,31 +1295,31 @@ const App: React.FC = () => {
                                { l: 'R. Lanche', v: record?.snackEnd, i: <Coffee size={14}/> },
                                { l: 'Saída', v: record?.clockOut, i: <LogOut size={14}/> },
                              ].map((t, idx) => (
-                               <div key={idx} className={`p-4 rounded-2xl border transition-all ${t.v ? 'bg-indigo-50 border-indigo-100' : 'bg-slate-50 border-slate-100 opacity-40'}`}>
+                               <div key={idx} className={`p-4 rounded-2xl border transition-all ${t.v ? 'bg-amber-50/60 border-amber-200' : 'bg-zinc-50 border-zinc-100 opacity-50'}`}>
                                   <div className="flex items-center justify-center gap-2 mb-1">
-                                    <span className="text-indigo-400">{t.i}</span>
-                                    <p className="text-[8px] font-black text-slate-400 uppercase">{t.l}</p>
+                                    <span className="text-amber-700">{t.i}</span>
+                                    <p className="text-[8px] font-black text-zinc-500 uppercase">{t.l}</p>
                                   </div>
-                                  <p className="font-mono font-black text-lg text-slate-800">{formatTime(t.v)}</p>
+                                  <p className="font-mono font-black text-lg text-zinc-900">{formatTime(t.v)}</p>
                                </div>
                              ))}
                           </div>
                         </div>
-                        <div className="bg-[#1e293b] text-white p-8 rounded-[2.5rem] flex flex-col items-center justify-center shadow-xl text-center relative overflow-hidden">
-                          <p className="text-[10px] font-black text-indigo-400 uppercase tracking-widest mb-2 relative z-10">Saldo Acumulado</p>
-                          <p className={`text-5xl font-mono font-black relative z-10 ${balance >= 0 ? 'text-emerald-400' : 'text-rose-400'}`}>{formatMinutes(balance)}</p>
+                        <div className="bg-[#09090b] text-white p-8 rounded-[2.5rem] flex flex-col items-center justify-center shadow-xl text-center relative overflow-hidden border border-zinc-800">
+                          <p className="text-[10px] font-black text-amber-400 uppercase tracking-widest mb-2 relative z-10">Saldo Acumulado no Banco</p>
+                          <p className={`text-5xl font-mono font-black relative z-10 ${balance >= 0 ? 'text-amber-400' : 'text-rose-400'}`}>{formatMinutes(balance)}</p>
                           <div className="absolute top-0 right-0 p-4 opacity-5"><ClockIcon size={120}/></div>
                         </div>
 
                         {/* Employee History Table */}
-                        <div className="bg-white rounded-[2rem] shadow-sm border border-slate-100 overflow-hidden">
-                          <div className="bg-slate-50/50 px-6 py-4 border-b border-slate-100 flex items-center justify-between">
-                            <h3 className="text-sm font-black uppercase text-slate-400 tracking-widest">Meu Histórico Recente</h3>
+                        <div className="bg-white rounded-[2rem] shadow-sm border border-zinc-200/80 overflow-hidden">
+                          <div className="bg-zinc-50/70 px-6 py-4 border-b border-zinc-200/80 flex items-center justify-between">
+                            <h3 className="text-xs font-black uppercase text-zinc-400 tracking-widest">Meu Histórico Recente</h3>
                             <div className="flex items-center gap-2">
                               <button
                                 type="button"
                                 onClick={() => window.print()}
-                                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white border border-slate-200 hover:bg-indigo-50 hover:border-indigo-200 hover:text-indigo-600 text-slate-600 text-[10px] font-black uppercase tracking-wider transition-all shadow-sm"
+                                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white border border-zinc-200 hover:bg-amber-50 hover:border-amber-200 hover:text-amber-900 text-zinc-700 text-[10px] font-black uppercase tracking-wider transition-all shadow-sm"
                                 title="Imprimir meu extrato de ponto"
                               >
                                 <Download size={12}/>
@@ -1321,10 +1371,10 @@ const App: React.FC = () => {
                                     } else {
                                       const t = item.data;
                                       return (
-                                        <tr key={`abs-${t.id}-${index}`} className="bg-indigo-50/40">
-                                          <td className="px-6 py-3 font-mono text-slate-500">{safeFormatDate(t.date)}</td>
-                                          <td colSpan={3} className="px-6 py-3 text-center text-indigo-600 font-black uppercase text-[9px] tracking-widest">{ENTRY_TYPE_LABELS[t.type as keyof typeof ENTRY_TYPE_LABELS]} {t.note ? `• ${t.note}` : ''}</td>
-                                          <td className="px-6 py-3 text-center font-mono text-slate-400">Abonado</td>
+                                        <tr key={`abs-${t.id}-${index}`} className="bg-amber-50/50">
+                                          <td className="px-6 py-3 font-mono text-zinc-500">{safeFormatDate(t.date)}</td>
+                                          <td colSpan={3} className="px-6 py-3 text-center text-amber-900 font-black uppercase text-[9px] tracking-widest">{ENTRY_TYPE_LABELS[t.type as keyof typeof ENTRY_TYPE_LABELS]} {t.note ? `• ${t.note}` : ''}</td>
+                                          <td className="px-6 py-3 text-center font-mono text-zinc-400">Abonado</td>
                                         </tr>
                                       );
                                     }
@@ -1413,16 +1463,16 @@ const App: React.FC = () => {
                       return (
                         <div 
                           key={employee.id} 
-                          className={`p-6 rounded-[2rem] border-2 transition-all flex flex-col justify-between gap-4 ${isDirect ? 'bg-gradient-to-br from-amber-950/40 to-slate-900 border-amber-500/50' : 'bg-slate-800/80 border-indigo-500/40'}`}
+                          className={`p-6 rounded-[2rem] border-2 transition-all flex flex-col justify-between gap-4 ${isDirect ? 'bg-gradient-to-br from-amber-950/40 to-zinc-900 border-amber-400/60' : 'bg-zinc-900 border-zinc-700'}`}
                         >
                           <div className="flex items-start justify-between gap-2">
                             <div>
-                              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider mb-2 shadow-sm ${isDirect ? 'bg-amber-400 text-slate-950' : 'bg-indigo-500 text-white'}">
+                              <div className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider mb-2 shadow-sm ${isDirect ? 'bg-amber-400 text-zinc-950' : 'bg-zinc-800 text-amber-300 border border-zinc-700'}`}>
                                 {isDirect ? <Star size={12}/> : <Award size={12}/>}
                                 {isDirect ? 'Cliente Fidelizado (Preferência)' : 'Vez da Fila'}
                               </div>
                               <h4 className="text-2xl font-black font-serif italic text-white">{employee.name}</h4>
-                              <p className="text-xs text-slate-400 mt-0.5">
+                              <p className="text-xs text-zinc-400 mt-0.5">
                                 Iniciou às <strong className="text-white font-mono">{attendance.startedAt}</strong> • ⏱️ há ~{elapsedMin} min
                               </p>
                             </div>
@@ -1439,7 +1489,7 @@ const App: React.FC = () => {
                             <button
                               type="button"
                               onClick={() => handleCancelAttendance(employee.id)}
-                              className="py-3 px-3 rounded-xl bg-white/10 hover:bg-rose-500/20 text-slate-400 hover:text-rose-300 font-bold text-xs uppercase transition-all"
+                              className="py-3 px-3 rounded-xl bg-white/10 hover:bg-rose-500/20 text-zinc-400 hover:text-rose-300 font-bold text-xs uppercase transition-all"
                               title="Cancelar atendimento acidental e retornar à posição na fila"
                             >
                               <RotateCcw size={15}/>
@@ -1459,12 +1509,12 @@ const App: React.FC = () => {
                   const stats = attendanceStats.counts[firstInLine.employee.id] || { total: 0, normal: 0, direct: 0, totalMinutes: 0 };
 
                   return (
-                    <div className="bg-white border-2 border-amber-400 text-slate-800 p-8 md:p-10 rounded-[3rem] shadow-xl text-center relative overflow-hidden transition-all">
-                      <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-400 text-slate-950 text-xs font-black uppercase tracking-widest mb-4 shadow-sm">
+                    <div className="bg-white border-2 border-amber-400 text-zinc-900 p-8 md:p-10 rounded-[3rem] shadow-xl text-center relative overflow-hidden transition-all">
+                      <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-400 text-zinc-950 text-xs font-black uppercase tracking-widest mb-4 shadow-sm">
                         <Award size={14}/> 1º LUGAR • PRÓXIMO DA VEZ
                       </div>
                       <h3 className="text-4xl font-black font-serif italic mb-1">{firstInLine.employee.name}</h3>
-                      <p className="text-xs font-bold uppercase tracking-wider mb-6 text-slate-400">
+                      <p className="text-xs font-bold uppercase tracking-wider mb-6 text-zinc-400">
                         {firstInLine.employee.role} • Chegou às {formatTime(firstInLine.record?.clockIn)} • {stats.total} atendimentos hoje ({stats.normal} vez / {stats.direct} fidelizado)
                       </p>
 
@@ -1472,15 +1522,15 @@ const App: React.FC = () => {
                         <button
                           type="button"
                           onClick={() => handleStartAttendance(firstInLine.employee.id, 'NORMAL')}
-                          className="flex-1 min-w-[200px] py-4 px-6 rounded-2xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-black text-sm uppercase tracking-wider shadow-lg flex items-center justify-center gap-2 transition-all active:scale-95"
+                          className="flex-1 min-w-[200px] py-4 px-6 rounded-2xl bg-zinc-950 hover:bg-zinc-900 text-amber-400 border border-amber-400/40 font-black text-sm uppercase tracking-wider shadow-lg shadow-amber-400/10 flex items-center justify-center gap-2 transition-all active:scale-95"
                         >
-                          <Play size={18}/> Iniciar Atendimento da Vez
+                          <Play size={18} className="fill-amber-400"/> Iniciar Atendimento da Vez
                         </button>
                         
                         <button
                           type="button"
                           onClick={() => handleStartAttendance(firstInLine.employee.id, 'DIRECT')}
-                          className="py-4 px-5 rounded-2xl bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 font-black text-xs uppercase tracking-wider transition-all flex items-center gap-1.5 active:scale-95"
+                          className="py-4 px-5 rounded-2xl bg-amber-50 hover:bg-amber-100 text-amber-950 border border-amber-300 font-black text-xs uppercase tracking-wider transition-all flex items-center gap-1.5 active:scale-95"
                           title="Quando o cliente procurou especificamente este vendedor"
                         >
                           <Star size={15} className="text-amber-600 fill-amber-500"/> Cliente Fidelizado
@@ -1489,7 +1539,7 @@ const App: React.FC = () => {
                         <button
                           type="button"
                           onClick={() => handlePassTurn(firstInLine.employee.id)}
-                          className="py-4 px-4 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-600 font-black text-xs uppercase tracking-wider transition-all flex items-center gap-1"
+                          className="py-4 px-4 rounded-2xl bg-zinc-100 hover:bg-zinc-200 text-zinc-700 font-black text-xs uppercase tracking-wider transition-all flex items-center gap-1"
                           title="Passar a vez caso o vendedor esteja ocupado no momento"
                         >
                           <SkipForward size={16}/> Passar Vez
@@ -1499,14 +1549,14 @@ const App: React.FC = () => {
                   );
                 })()
               ) : (
-                <div className="bg-white p-10 rounded-[2.5rem] shadow-sm border border-slate-100 text-center">
-                  <ClockIcon size={48} className="mx-auto text-slate-300 mb-3"/>
-                  <h3 className="text-lg font-black text-slate-700">
+                <div className="bg-white p-10 rounded-[2.5rem] shadow-sm border border-zinc-200/80 text-center">
+                  <ClockIcon size={48} className="mx-auto text-zinc-300 mb-3"/>
+                  <h3 className="text-lg font-black text-zinc-800">
                     {salesQueue.currentlyAttending.length > 0 
                       ? 'Todos os vendedores presentes estão em atendimento no momento' 
                       : 'Nenhum vendedor disponível na fila no momento'}
                   </h3>
-                  <p className="text-xs text-slate-400 mt-1">
+                  <p className="text-xs text-zinc-400 mt-1">
                     Conforme os vendedores baterem o ponto de entrada ou finalizarem atendimentos, eles reingressam aqui automaticamente.
                   </p>
                 </div>
@@ -1514,12 +1564,12 @@ const App: React.FC = () => {
 
               {/* SEÇÃO 3: PRÓXIMOS NA FILA (2º LUGAR EM DIANTE) */}
               {salesQueue.waitingQueue.length > 1 && (
-                <div className="bg-white p-6 md:p-8 rounded-[2.5rem] shadow-sm border border-slate-100 space-y-4">
+                <div className="bg-white p-6 md:p-8 rounded-[2.5rem] shadow-sm border border-zinc-200/80 space-y-4">
                   <div className="flex items-center justify-between">
-                    <h4 className="text-xs font-black uppercase text-slate-400 tracking-widest">
+                    <h4 className="text-xs font-black uppercase text-zinc-400 tracking-widest">
                       Próximos na Fila de Espera ({salesQueue.waitingQueue.length - 1})
                     </h4>
-                    <span className="text-[10px] text-slate-400 font-bold">
+                    <span className="text-[10px] text-zinc-400 font-bold">
                       Clique em "Cliente Fidelizado" se o cliente procurou o vendedor diretamente
                     </span>
                   </div>
@@ -1529,15 +1579,15 @@ const App: React.FC = () => {
                       const stats = attendanceStats.counts[q.employee.id] || { total: 0, normal: 0, direct: 0 };
 
                       return (
-                        <div key={q.employee.id} className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 flex flex-col justify-between gap-3 hover:border-amber-300 transition-all">
+                        <div key={q.employee.id} className="p-4 rounded-2xl bg-zinc-50 border border-zinc-200/80 flex flex-col justify-between gap-3 hover:border-amber-400 transition-all">
                           <div className="flex items-center justify-between">
                             <div className="flex items-center gap-3">
-                              <span className="w-8 h-8 rounded-xl bg-slate-200 text-slate-800 text-xs font-black flex items-center justify-center">
+                              <span className="w-8 h-8 rounded-xl bg-zinc-900 text-amber-400 text-xs font-black flex items-center justify-center shadow-sm">
                                 {idx + 2}º
                               </span>
                               <div>
-                                <p className="font-bold text-sm text-slate-900">{q.employee.name.split(' ')[0]}</p>
-                                <p className="text-[10px] text-slate-500 font-medium">
+                                <p className="font-bold text-sm text-zinc-900">{q.employee.name.split(' ')[0]}</p>
+                                <p className="text-[10px] text-zinc-500 font-medium">
                                   {stats.total} atend. ({stats.direct} fidelizados)
                                 </p>
                               </div>
@@ -1546,18 +1596,18 @@ const App: React.FC = () => {
                             <button
                               type="button"
                               onClick={() => handlePassTurn(q.employee.id)}
-                              className="p-1.5 text-slate-400 hover:text-amber-600 rounded-lg hover:bg-white transition-all"
+                              className="p-1.5 text-zinc-400 hover:text-amber-600 rounded-lg hover:bg-white transition-all"
                               title="Passar para o fim da fila"
                             >
                               <SkipForward size={14}/>
                             </button>
                           </div>
 
-                          <div className="pt-2 border-t border-slate-200 flex items-center justify-end">
+                          <div className="pt-2 border-t border-zinc-200 flex items-center justify-end">
                             <button
                               type="button"
                               onClick={() => handleStartAttendance(q.employee.id, 'DIRECT')}
-                              className="w-full py-2 px-3 rounded-xl bg-amber-100 hover:bg-amber-200 text-amber-950 text-xs font-black uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all shadow-sm active:scale-95"
+                              className="w-full py-2 px-3 rounded-xl bg-amber-100 hover:bg-amber-200 text-amber-950 text-xs font-black uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all shadow-sm active:scale-95 border border-amber-200"
                               title="Iniciar atendimento de cliente que procurou este vendedor diretamente"
                             >
                               <Star size={13} className="text-amber-600 fill-amber-500"/> Cliente Fidelizado
@@ -1581,7 +1631,7 @@ const App: React.FC = () => {
                       <div key={q.employee.id} className="px-4 py-2 rounded-xl bg-white border border-amber-200 shadow-sm flex items-center gap-2 text-xs font-bold text-amber-950">
                         <span>{q.status === 'IN_LUNCH' ? '🍽️' : '☕'}</span>
                         <span>{q.employee.name.split(' ')[0]}</span>
-                        <span className="text-[10px] text-amber-600 uppercase font-black">
+                        <span className="text-[10px] text-amber-700 uppercase font-black">
                           ({q.status === 'IN_LUNCH' ? 'Almoço' : 'Lanche'})
                         </span>
                       </div>
@@ -1591,13 +1641,13 @@ const App: React.FC = () => {
               )}
 
               {/* SEÇÃO 5: BALANÇO DIÁRIO DE ATENDIMENTOS & CONFERÊNCIA COM CUPONS PDV */}
-              <div className="bg-white p-6 md:p-8 rounded-[2.5rem] shadow-sm border border-slate-100 space-y-6">
+              <div className="bg-white p-6 md:p-8 rounded-[2.5rem] shadow-sm border border-zinc-200/80 space-y-6">
                 <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                   <div>
-                    <h3 className="text-xl font-black font-serif italic text-slate-800 flex items-center gap-2">
-                      <Receipt size={20} className="text-indigo-600"/> Balanço do Dia & Conferência de Cupons
+                    <h3 className="text-xl font-black font-serif italic text-zinc-900 flex items-center gap-2">
+                      <Receipt size={20} className="text-amber-600"/> Balanço do Dia & Conferência de Cupons
                     </h3>
-                    <p className="text-xs text-slate-400 mt-0.5">
+                    <p className="text-xs text-zinc-400 mt-0.5">
                       Horários exatos de início e término para cruzar e validar com os cupons fiscais do sistema PDV.
                     </p>
                   </div>
@@ -1613,7 +1663,7 @@ const App: React.FC = () => {
                         navigator.clipboard.writeText(`BALANÇO DE ATENDIMENTOS - ${getLocalDateString(currentTime)}\n\n` + text);
                         alert("Balanço copiado para a área de transferência!");
                       }}
-                      className="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-black uppercase tracking-wider transition-all flex items-center gap-1.5"
+                      className="px-4 py-2 rounded-xl bg-zinc-100 hover:bg-zinc-200 text-zinc-800 text-xs font-black uppercase tracking-wider transition-all flex items-center gap-1.5"
                     >
                       <Copy size={14}/> Copiar Balanço
                     </button>
@@ -1622,21 +1672,21 @@ const App: React.FC = () => {
 
                 {/* MÉTRICAS RÁPIDAS */}
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                  <div className="bg-slate-50 p-4 rounded-2xl border border-slate-100">
-                    <span className="text-[10px] font-black uppercase text-slate-400">Total Atendimentos</span>
-                    <p className="text-2xl font-black font-mono text-slate-900">{attendanceStats.totalAttendances}</p>
+                  <div className="bg-zinc-50 p-4 rounded-2xl border border-zinc-200/80">
+                    <span className="text-[10px] font-black uppercase text-zinc-400">Total Atendimentos</span>
+                    <p className="text-2xl font-black font-mono text-zinc-900">{attendanceStats.totalAttendances}</p>
                   </div>
-                  <div className="bg-indigo-50/50 p-4 rounded-2xl border border-indigo-100">
-                    <span className="text-[10px] font-black uppercase text-indigo-500">Pela Vez da Fila</span>
-                    <p className="text-2xl font-black font-mono text-indigo-700">{attendanceStats.totalNormal}</p>
+                  <div className="bg-zinc-950 p-4 rounded-2xl border border-zinc-800 text-white">
+                    <span className="text-[10px] font-black uppercase text-amber-400">Pela Vez da Fila</span>
+                    <p className="text-2xl font-black font-mono text-amber-400">{attendanceStats.totalNormal}</p>
                   </div>
-                  <div className="bg-amber-50/50 p-4 rounded-2xl border border-amber-100">
-                    <span className="text-[10px] font-black uppercase text-amber-600">Clientes Fidelizados</span>
-                    <p className="text-2xl font-black font-mono text-amber-800">{attendanceStats.totalDirect}</p>
+                  <div className="bg-amber-50 p-4 rounded-2xl border border-amber-200">
+                    <span className="text-[10px] font-black uppercase text-amber-700">Clientes Fidelizados</span>
+                    <p className="text-2xl font-black font-mono text-amber-950">{attendanceStats.totalDirect}</p>
                   </div>
-                  <div className="bg-emerald-50/50 p-4 rounded-2xl border border-emerald-100">
-                    <span className="text-[10px] font-black uppercase text-emerald-600">Duração Média</span>
-                    <p className="text-2xl font-black font-mono text-emerald-800">{attendanceStats.avgDuration} min</p>
+                  <div className="bg-emerald-50 p-4 rounded-2xl border border-emerald-200">
+                    <span className="text-[10px] font-black uppercase text-emerald-700">Duração Média</span>
+                    <p className="text-2xl font-black font-mono text-emerald-900">{attendanceStats.avgDuration} min</p>
                   </div>
                 </div>
 
@@ -1645,7 +1695,7 @@ const App: React.FC = () => {
                   <div className="overflow-x-auto">
                     <table className="w-full text-left text-xs border-collapse">
                       <thead>
-                        <tr className="border-b border-slate-100 text-[10px] font-black uppercase text-slate-400 tracking-wider">
+                        <tr className="border-b border-zinc-200 text-[10px] font-black uppercase text-zinc-400 tracking-wider bg-zinc-50/70">
                           <th className="py-3 px-3">Vendedor</th>
                           <th className="py-3 px-3">Tipo</th>
                           <th className="py-3 px-3">Início</th>
@@ -1654,31 +1704,31 @@ const App: React.FC = () => {
                           <th className="py-3 px-3">Nº Cupom / Obs PDV</th>
                         </tr>
                       </thead>
-                      <tbody className="divide-y divide-slate-100 font-medium text-slate-700">
+                      <tbody className="divide-y divide-zinc-100 font-medium text-zinc-700">
                         {attendanceStats.completedToday.map(a => {
                           const emp = data.employees.find(e => e.id === a.employeeId);
                           const isDirect = a.type === 'DIRECT';
 
                           return (
-                            <tr key={a.id} className="hover:bg-slate-50/80 transition-colors">
-                              <td className="py-3 px-3 font-bold text-slate-900">
+                            <tr key={a.id} className="hover:bg-zinc-50/80 transition-colors">
+                              <td className="py-3 px-3 font-bold text-zinc-900">
                                 {emp?.name || 'Vendedor'}
                               </td>
                               <td className="py-3 px-3">
-                                <span className={`px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider ${isDirect ? 'bg-amber-100 text-amber-900 border border-amber-200' : 'bg-indigo-100 text-indigo-900'}`}>
+                                <span className={`px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider ${isDirect ? 'bg-amber-100 text-amber-900 border border-amber-200' : 'bg-zinc-900 text-amber-400 border border-zinc-800'}`}>
                                   {isDirect ? '⭐ Fidelizado' : '👥 Vez da Fila'}
                                 </span>
                               </td>
-                              <td className="py-3 px-3 font-mono font-bold text-slate-800">{a.startedAt}</td>
-                              <td className="py-3 px-3 font-mono font-bold text-slate-800">{a.endedAt || '--:--'}</td>
-                              <td className="py-3 px-3 font-mono text-slate-600">{a.durationMinutes || 0} min</td>
+                              <td className="py-3 px-3 font-mono font-bold text-zinc-900">{a.startedAt}</td>
+                              <td className="py-3 px-3 font-mono font-bold text-zinc-900">{a.endedAt || '--:--'}</td>
+                              <td className="py-3 px-3 font-mono text-zinc-600">{a.durationMinutes || 0} min</td>
                               <td className="py-3 px-3">
                                 <input
                                   type="text"
                                   placeholder="Inserir Nº do Cupom..."
                                   defaultValue={a.saleNote || ''}
                                   onBlur={(e) => handleUpdateAttendanceSaleNote(a.id, e.target.value)}
-                                  className="w-full max-w-[200px] px-2.5 py-1 text-xs rounded-lg border border-slate-200 focus:border-indigo-500 focus:outline-none bg-slate-50/50 hover:bg-white"
+                                  className="w-full max-w-[200px] px-2.5 py-1 text-xs rounded-lg border border-zinc-200 focus:border-amber-400 focus:outline-none bg-zinc-50/50 hover:bg-white"
                                 />
                               </td>
                             </tr>
@@ -1688,7 +1738,7 @@ const App: React.FC = () => {
                     </table>
                   </div>
                 ) : (
-                  <p className="text-center py-6 text-xs text-slate-400 italic">
+                  <p className="text-center py-6 text-xs text-zinc-400 italic">
                     Nenhum atendimento finalizado registrado hoje ainda. Conforme os atendimentos forem concluídos, eles serão listados aqui cronologicamente.
                   </p>
                 )}
@@ -1699,48 +1749,48 @@ const App: React.FC = () => {
           {/* TAB: CALENDÁRIO DE FERIADOS */}
           {activeTab === 'holidays' && (
             <div className="space-y-8 animate-in fade-in duration-300">
-              <div className="bg-white p-8 rounded-[2.5rem] shadow-sm border border-slate-100 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+              <div className="bg-white p-8 rounded-[2.5rem] shadow-sm border border-zinc-200/80 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
                 <div>
-                  <h2 className="text-2xl font-black font-serif italic text-slate-800">Calendário de Feriados</h2>
-                  <p className="text-xs text-slate-400 mt-0.5">Feriados cadastrados aqui têm meta automática de 0h para quem folgar, sem gerar faltas ou débitos.</p>
+                  <h2 className="text-2xl font-black font-serif italic text-zinc-900">Calendário de Feriados</h2>
+                  <p className="text-xs text-zinc-400 mt-0.5">Feriados cadastrados aqui têm meta automática de 0h para quem folgar, sem gerar faltas ou débitos.</p>
                 </div>
                 <button
                   type="button"
                   onClick={handleLoadOfficialHolidays}
-                  className="px-4 py-2.5 rounded-xl bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs font-black uppercase tracking-wider transition-all flex items-center gap-2"
+                  className="px-4 py-2.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-950 border border-amber-200 text-xs font-black uppercase tracking-wider transition-all flex items-center gap-2"
                 >
                   <RefreshCw size={14}/> Carregar Feriados de Petrópolis (2026)
                 </button>
               </div>
 
               {/* Form Adicionar Feriado */}
-              <div className="bg-white p-6 md:p-8 rounded-[2rem] shadow-sm border border-slate-100">
-                <h3 className="text-xs font-black uppercase text-slate-400 tracking-widest mb-4">Adicionar Novo Feriado</h3>
+              <div className="bg-white p-6 md:p-8 rounded-[2rem] shadow-sm border border-zinc-200/80">
+                <h3 className="text-xs font-black uppercase text-zinc-400 tracking-widest mb-4">Adicionar Novo Feriado</h3>
                 <form onSubmit={handleAddHoliday} className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-4 items-end">
                   <label className="space-y-1">
-                    <span className="text-[10px] font-black uppercase text-slate-400">Data *</span>
+                    <span className="text-[10px] font-black uppercase text-zinc-400">Data *</span>
                     <input
                       type="date"
                       required
                       value={newHoliday.date}
                       onChange={e => setNewHoliday({ ...newHoliday, date: e.target.value })}
-                      className="w-full p-3 rounded-xl bg-slate-50 border border-slate-200 font-black text-xs outline-none focus:ring-2 focus:ring-indigo-500"
+                      className="w-full p-3 rounded-xl bg-zinc-50 border border-zinc-200 font-black text-xs outline-none focus:ring-2 focus:ring-amber-400"
                     />
                   </label>
                   <label className="space-y-1 sm:col-span-2">
-                    <span className="text-[10px] font-black uppercase text-slate-400">Nome do Feriado *</span>
+                    <span className="text-[10px] font-black uppercase text-zinc-400">Nome do Feriado *</span>
                     <input
                       type="text"
                       required
                       placeholder="Ex: Aniversário de Petrópolis"
                       value={newHoliday.name}
                       onChange={e => setNewHoliday({ ...newHoliday, name: e.target.value })}
-                      className="w-full p-3 rounded-xl bg-slate-50 border border-slate-200 font-bold text-xs outline-none focus:ring-2 focus:ring-indigo-500"
+                      className="w-full p-3 rounded-xl bg-zinc-50 border border-zinc-200 font-bold text-xs outline-none focus:ring-2 focus:ring-amber-400"
                     />
                   </label>
                   <button
                     type="submit"
-                    className="py-3 px-5 rounded-xl bg-indigo-600 text-white font-black text-xs uppercase tracking-wider shadow-md hover:bg-indigo-700 transition-all flex items-center justify-center gap-2"
+                    className="py-3 px-5 rounded-xl bg-zinc-950 hover:bg-zinc-900 text-amber-400 font-black text-xs uppercase tracking-wider shadow-md transition-all flex items-center justify-center gap-2 border border-amber-400/30"
                   >
                     <Plus size={16}/> Salvar Feriado
                   </button>
@@ -1748,24 +1798,24 @@ const App: React.FC = () => {
               </div>
 
               {/* Lista de Feriados Cadastrados */}
-              <div className="bg-white rounded-[2rem] shadow-sm border border-slate-100 overflow-hidden">
-                <div className="px-6 py-4 bg-slate-50 border-b border-slate-100 flex items-center justify-between">
-                  <h3 className="text-xs font-black uppercase text-slate-400 tracking-widest">Feriados Ativos ({data.holidays.length})</h3>
-                  <CalendarDays size={16} className="text-slate-300"/>
+              <div className="bg-white rounded-[2rem] shadow-sm border border-zinc-200/80 overflow-hidden">
+                <div className="px-6 py-4 bg-zinc-50/70 border-b border-zinc-200/80 flex items-center justify-between">
+                  <h3 className="text-xs font-black uppercase text-zinc-400 tracking-widest">Feriados Ativos ({data.holidays.length})</h3>
+                  <CalendarDays size={16} className="text-zinc-300"/>
                 </div>
-                <div className="divide-y divide-slate-100">
+                <div className="divide-y divide-zinc-100">
                   {data.holidays.map(h => (
-                    <div key={h.id} className="px-6 py-4 flex items-center justify-between hover:bg-slate-50/50 transition-all">
+                    <div key={h.id} className="px-6 py-4 flex items-center justify-between hover:bg-zinc-50/80 transition-all">
                       <div className="flex items-center gap-4">
-                        <span className="font-mono font-black text-sm text-indigo-600 bg-indigo-50 px-3 py-1.5 rounded-xl">{safeFormatDate(h.date)}</span>
+                        <span className="font-mono font-black text-sm text-amber-950 bg-amber-100 border border-amber-200 px-3 py-1.5 rounded-xl">{safeFormatDate(h.date)}</span>
                         <div>
-                          <p className="font-bold text-sm text-slate-800">{h.name}</p>
-                          <span className="text-[9px] font-black uppercase tracking-wider text-slate-400">{h.type === 'MUNICIPAL' ? 'Feriado Municipal de Petrópolis' : 'Feriado Nacional'}</span>
+                          <p className="font-bold text-sm text-zinc-800">{h.name}</p>
+                          <span className="text-[9px] font-black uppercase tracking-wider text-zinc-400">{h.type === 'MUNICIPAL' ? 'Feriado Municipal de Petrópolis' : 'Feriado Nacional'}</span>
                         </div>
                       </div>
                       <button
                         onClick={() => handleDeleteHoliday(h.id)}
-                        className="p-2 text-slate-300 hover:text-rose-600 rounded-lg hover:bg-rose-50 transition-all"
+                        className="p-2 text-zinc-300 hover:text-rose-600 rounded-lg hover:bg-rose-50 transition-all"
                         title="Excluir feriado"
                       >
                         <Trash2 size={16}/>
@@ -1792,14 +1842,14 @@ const App: React.FC = () => {
                     {managerPendingItems.map((item, idx) => (
                       <div key={idx} className="bg-white p-4 rounded-2xl border border-amber-200/60 shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
                         <div>
-                          <p className="font-bold text-xs text-slate-800">{item.employee.name} • {item.description}</p>
+                          <p className="font-bold text-xs text-zinc-800">{item.employee.name} • {item.description}</p>
                         </div>
                         <button
                           onClick={() => {
                             const rec = data.records.find(r => r.id === item.recordId);
                             if (rec) openClockEditor(rec);
                           }}
-                          className="px-3 py-1.5 rounded-xl bg-indigo-600 text-white font-black text-[10px] uppercase tracking-wider hover:bg-indigo-700 transition-all flex items-center gap-1 shrink-0"
+                          className="px-3 py-1.5 rounded-xl bg-zinc-950 text-amber-400 font-black text-[10px] uppercase tracking-wider hover:bg-zinc-800 transition-all flex items-center gap-1 shrink-0 border border-amber-400/30"
                         >
                           <Edit2 size={12}/> Corrigir Horário
                         </button>
@@ -1811,55 +1861,55 @@ const App: React.FC = () => {
 
               {/* CARDS RESUMO DO DIA */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                <div className="bg-white p-6 rounded-[2rem] shadow-sm border border-slate-100">
-                  <span className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Presentes na Loja</span>
-                  <p className="text-3xl font-black font-mono text-indigo-600 mt-2">
+                <div className="bg-white p-6 rounded-[2rem] shadow-sm border border-zinc-200/80">
+                  <span className="text-[10px] font-black uppercase text-zinc-400 tracking-widest">Presentes na Loja</span>
+                  <p className="text-3xl font-black font-mono text-zinc-900 mt-2">
                     {data.records.filter(r => r.date === getLocalDateString(currentTime) && r.clockIn && !r.clockOut).length}
                   </p>
                 </div>
-                <div className="bg-white p-6 rounded-[2rem] shadow-sm border border-slate-100">
-                  <span className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Em Intervalo</span>
+                <div className="bg-white p-6 rounded-[2rem] shadow-sm border border-zinc-200/80">
+                  <span className="text-[10px] font-black uppercase text-zinc-400 tracking-widest">Em Intervalo</span>
                   <p className="text-3xl font-black font-mono text-amber-600 mt-2">
                     {data.records.filter(r => r.date === getLocalDateString(currentTime) && ((r.lunchStart && !r.lunchEnd) || (r.snackStart && !r.snackEnd))).length}
                   </p>
                 </div>
-                <div className="bg-white p-6 rounded-[2rem] shadow-sm border border-slate-100">
-                  <span className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Feriados Ativos</span>
+                <div className="bg-white p-6 rounded-[2rem] shadow-sm border border-zinc-200/80">
+                  <span className="text-[10px] font-black uppercase text-zinc-400 tracking-widest">Feriados Ativos</span>
                   <p className="text-3xl font-black font-mono text-emerald-600 mt-2">{data.holidays.length}</p>
                 </div>
-                <div className="bg-white p-6 rounded-[2rem] shadow-sm border border-slate-100">
-                  <span className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Colaboradores</span>
-                  <p className="text-3xl font-black font-mono text-slate-800 mt-2">{data.employees.filter(e => e.isActive !== false).length}</p>
+                <div className="bg-white p-6 rounded-[2rem] shadow-sm border border-zinc-200/80">
+                  <span className="text-[10px] font-black uppercase text-zinc-400 tracking-widest">Colaboradores</span>
+                  <p className="text-3xl font-black font-mono text-zinc-900 mt-2">{data.employees.filter(e => e.isActive !== false).length}</p>
                 </div>
               </div>
 
               {/* QUADRO GERAL DOS COLABORADORES */}
-              <div className="bg-white rounded-[2rem] shadow-sm border border-slate-100 overflow-hidden">
-                <div className="px-6 py-4 bg-slate-50 border-b border-slate-100 flex items-center justify-between">
-                  <h3 className="text-xs font-black uppercase text-slate-400 tracking-widest">Status Geral da Equipe Hoje</h3>
-                  <Users size={16} className="text-slate-300"/>
+              <div className="bg-white rounded-[2rem] shadow-sm border border-zinc-200/80 overflow-hidden">
+                <div className="px-6 py-4 bg-zinc-50/70 border-b border-zinc-200/80 flex items-center justify-between">
+                  <h3 className="text-xs font-black uppercase text-zinc-400 tracking-widest">Status Geral da Equipe Hoje</h3>
+                  <Users size={16} className="text-zinc-300"/>
                 </div>
-                <div className="divide-y divide-slate-100">
+                <div className="divide-y divide-zinc-100">
                   {data.employees.map(emp => {
                     const todayRec = data.records.find(r => r.employeeId === emp.id && r.date === getLocalDateString(currentTime));
                     const balance = getCumulativeBalance(emp.id);
                     return (
-                      <div key={emp.id} className="px-6 py-4 flex items-center justify-between">
+                      <div key={emp.id} className="px-6 py-4 flex items-center justify-between hover:bg-zinc-50/80 transition-all">
                         <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-xl bg-slate-100 text-slate-600 font-black text-sm flex items-center justify-center">{emp.name.charAt(0)}</div>
+                          <div className="w-10 h-10 rounded-xl bg-zinc-900 text-amber-400 font-black text-sm flex items-center justify-center shadow-sm">{emp.name.charAt(0)}</div>
                           <div>
-                            <p className="font-bold text-sm text-slate-800">{emp.name}</p>
-                            <p className="text-[10px] text-slate-400">{emp.role || 'Sem Cargo'}</p>
+                            <p className="font-bold text-sm text-zinc-900">{emp.name}</p>
+                            <p className="text-[10px] text-zinc-400 font-bold uppercase">{emp.role || 'Sem Cargo'}</p>
                           </div>
                         </div>
                         <div className="flex items-center gap-6">
                           <div className="text-right">
-                            <span className="text-[9px] font-black uppercase text-slate-400 block">Entrada Hoje</span>
-                            <span className="font-mono font-bold text-xs text-slate-700">{formatTime(todayRec?.clockIn)}</span>
+                            <span className="text-[9px] font-black uppercase text-zinc-400 block">Entrada Hoje</span>
+                            <span className="font-mono font-bold text-xs text-zinc-800">{formatTime(todayRec?.clockIn)}</span>
                           </div>
                           <div className="text-right">
-                            <span className="text-[9px] font-black uppercase text-slate-400 block">Saldo Banco</span>
-                            <span className={`font-mono font-black text-xs ${balance >= 0 ? 'text-emerald-500' : 'text-rose-500'}`}>{formatMinutes(balance)}</span>
+                            <span className="text-[9px] font-black uppercase text-zinc-400 block">Saldo Banco</span>
+                            <span className={`font-mono font-black text-xs ${balance >= 0 ? 'text-emerald-600' : 'text-rose-600'}`}>{formatMinutes(balance)}</span>
                           </div>
                         </div>
                       </div>
@@ -1873,8 +1923,8 @@ const App: React.FC = () => {
           {/* TAB: EQUIPE (FUNCIONÁRIOS) */}
           {activeTab === 'employees' && (
             <div className="space-y-8 animate-in fade-in duration-300">
-              <div className="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-100">
-                <h3 className="text-xl font-black font-serif italic mb-4">{editingEmployeeId ? 'Editar Colaborador' : 'Novo Colaborador'}</h3>
+              <div className="bg-white p-8 rounded-[2rem] shadow-sm border border-zinc-200/80">
+                <h3 className="text-xl font-black font-serif italic mb-4 text-zinc-900">{editingEmployeeId ? 'Editar Colaborador' : 'Novo Colaborador'}</h3>
                 <form onSubmit={async (e) => {
                   e.preventDefault();
                   if (!supabase) return;
@@ -1915,33 +1965,33 @@ const App: React.FC = () => {
                 }} className="space-y-4">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <label className="space-y-1">
-                      <span className="text-[10px] font-black uppercase text-slate-400">Nome Completo *</span>
-                      <input required value={newEmp.name} onChange={e => setNewEmp({ ...newEmp, name: e.target.value })} className="w-full p-3 rounded-xl bg-slate-50 border border-slate-200 font-bold text-xs outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Nome do colaborador"/>
+                      <span className="text-[10px] font-black uppercase text-zinc-400">Nome Completo *</span>
+                      <input required value={newEmp.name} onChange={e => setNewEmp({ ...newEmp, name: e.target.value })} className="w-full p-3 rounded-xl bg-zinc-50 border border-zinc-200 font-bold text-xs outline-none focus:ring-2 focus:ring-amber-400" placeholder="Nome do colaborador"/>
                     </label>
                     <label className="space-y-1">
-                      <span className="text-[10px] font-black uppercase text-slate-400">Cargo / Função</span>
-                      <input value={newEmp.role} onChange={e => setNewEmp({ ...newEmp, role: e.target.value })} className="w-full p-3 rounded-xl bg-slate-50 border border-slate-200 font-bold text-xs outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Ex: Vendedor, Gerente"/>
+                      <span className="text-[10px] font-black uppercase text-zinc-400">Cargo / Função</span>
+                      <input value={newEmp.role} onChange={e => setNewEmp({ ...newEmp, role: e.target.value })} className="w-full p-3 rounded-xl bg-zinc-50 border border-zinc-200 font-bold text-xs outline-none focus:ring-2 focus:ring-amber-400" placeholder="Ex: Vendedor, Gerente"/>
                     </label>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <label className="space-y-1">
-                      <span className="text-[10px] font-black uppercase text-slate-400">Jornada Padrão</span>
-                      <select value={newEmp.dailyHours} onChange={e => setNewEmp({ ...newEmp, dailyHours: e.target.value })} className="w-full p-3 rounded-xl bg-slate-50 border border-slate-200 font-bold text-xs outline-none focus:ring-2 focus:ring-indigo-500">
+                      <span className="text-[10px] font-black uppercase text-zinc-400">Jornada Padrão</span>
+                      <select value={newEmp.dailyHours} onChange={e => setNewEmp({ ...newEmp, dailyHours: e.target.value })} className="w-full p-3 rounded-xl bg-zinc-50 border border-zinc-200 font-bold text-xs outline-none focus:ring-2 focus:ring-amber-400">
                         <option value="8">8 horas / dia (CLT)</option>
                         <option value="6">6 horas / dia (Estágio - Patrícia)</option>
                         <option value="4">4 horas / dia</option>
                       </select>
                     </label>
                     <label className="space-y-1">
-                      <span className="text-[10px] font-black uppercase text-slate-400">Dia Curto ou Folga Semanal</span>
+                      <span className="text-[10px] font-black uppercase text-zinc-400">Dia Curto ou Folga Semanal</span>
                       <select 
                         value={`${newEmp.englishDay}_${newEmp.shortDayHours}`} 
                         onChange={e => {
                           const [d, h] = e.target.value.split('_');
                           setNewEmp({ ...newEmp, englishDay: d, shortDayHours: h });
                         }} 
-                        className="w-full p-3 rounded-xl bg-slate-50 border border-slate-200 font-bold text-xs outline-none focus:ring-2 focus:ring-indigo-500"
+                        className="w-full p-3 rounded-xl bg-zinc-50 border border-zinc-200 font-bold text-xs outline-none focus:ring-2 focus:ring-amber-400"
                       >
                         <optgroup label="Semana Inglesa (4 horas no dia)">
                           <option value="1_4">Segunda-feira (4h)</option>
@@ -1962,30 +2012,30 @@ const App: React.FC = () => {
                       </select>
                     </label>
                     <label className="space-y-1">
-                      <span className="text-[10px] font-black uppercase text-slate-400">Saldo Inicial</span>
-                      <input value={newEmp.initialBalanceStr} onChange={e => setNewEmp({ ...newEmp, initialBalanceStr: e.target.value })} className="w-full p-3 rounded-xl bg-slate-50 border border-slate-200 font-mono font-bold text-xs outline-none focus:ring-2 focus:ring-indigo-500" placeholder="00:00"/>
+                      <span className="text-[10px] font-black uppercase text-zinc-400">Saldo Inicial</span>
+                      <input value={newEmp.initialBalanceStr} onChange={e => setNewEmp({ ...newEmp, initialBalanceStr: e.target.value })} className="w-full p-3 rounded-xl bg-zinc-50 border border-zinc-200 font-mono font-bold text-xs outline-none focus:ring-2 focus:ring-amber-400" placeholder="00:00"/>
                     </label>
                   </div>
 
                   {/* Opção Fila da Vez */}
-                  <div className="p-4 rounded-xl bg-amber-50/70 border border-amber-200 flex items-center justify-between">
+                  <div className="p-4 rounded-xl bg-amber-50/80 border border-amber-200 flex items-center justify-between">
                     <div>
                       <p className="font-bold text-xs text-amber-950">Participa da Fila da Vez (Vendas em Loja)</p>
-                      <p className="text-[10px] text-amber-700">Marque para vendedores de atendimento. Desmarque para cargos administrativos e estagiários.</p>
+                      <p className="text-[10px] text-amber-750">Marque para vendedores de atendimento. Desmarque para cargos administrativos e estagiários.</p>
                     </div>
                     <input
                       type="checkbox"
                       checked={newEmp.isSalesperson}
                       onChange={e => setNewEmp({ ...newEmp, isSalesperson: e.target.checked })}
-                      className="w-5 h-5 accent-amber-600 rounded cursor-pointer"
+                      className="w-5 h-5 accent-amber-500 rounded cursor-pointer"
                     />
                   </div>
 
                   <div className="flex gap-3 pt-2">
                     {editingEmployeeId && (
-                      <button type="button" onClick={() => { setEditingEmployeeId(null); setNewEmp({ name: '', role: '', dailyHours: '8', englishDay: '6', shortDayHours: '4', initialBalanceStr: '00:00', isHourly: false, isSalesperson: true, startDate: DEFAULT_START_DATE }); }} className="py-3 px-5 rounded-xl bg-slate-100 text-slate-600 font-black text-xs uppercase">Cancelar</button>
+                      <button type="button" onClick={() => { setEditingEmployeeId(null); setNewEmp({ name: '', role: '', dailyHours: '8', englishDay: '6', shortDayHours: '4', initialBalanceStr: '00:00', isHourly: false, isSalesperson: true, startDate: DEFAULT_START_DATE }); }} className="py-3 px-5 rounded-xl bg-zinc-100 text-zinc-600 font-black text-xs uppercase">Cancelar</button>
                     )}
-                    <button type="submit" disabled={isSaving} className="py-3 px-6 rounded-xl bg-indigo-600 text-white font-black text-xs uppercase tracking-wider shadow-md hover:bg-indigo-700 transition-all flex items-center gap-2">
+                    <button type="submit" disabled={isSaving} className="py-3 px-6 rounded-xl bg-zinc-950 hover:bg-zinc-900 text-amber-400 font-black text-xs uppercase tracking-wider shadow-md transition-all flex items-center gap-2 border border-amber-400/30">
                       {isSaving ? <RefreshCw className="animate-spin" size={14}/> : <UserPlus size={14}/>} {editingEmployeeId ? 'Atualizar Colaborador' : 'Cadastrar Colaborador'}
                     </button>
                   </div>
@@ -1993,20 +2043,20 @@ const App: React.FC = () => {
               </div>
 
               {/* Lista de Colaboradores */}
-              <div className="bg-white rounded-[2rem] shadow-sm border border-slate-100 overflow-hidden">
-                <div className="px-6 py-4 bg-slate-50 border-b border-slate-100 flex items-center justify-between">
-                  <h3 className="text-xs font-black uppercase text-slate-400 tracking-widest">Equipe Ativa ({data.employees.length})</h3>
-                  <Users size={16} className="text-slate-300"/>
+              <div className="bg-white rounded-[2rem] shadow-sm border border-zinc-200/80 overflow-hidden">
+                <div className="px-6 py-4 bg-zinc-50/70 border-b border-zinc-200/80 flex items-center justify-between">
+                  <h3 className="text-xs font-black uppercase text-zinc-400 tracking-widest">Equipe Ativa ({data.employees.length})</h3>
+                  <Users size={16} className="text-zinc-300"/>
                 </div>
-                <div className="divide-y divide-slate-100">
+                <div className="divide-y divide-zinc-100">
                   {data.employees.map(emp => (
-                    <div key={emp.id} className="px-6 py-4 flex items-center justify-between hover:bg-slate-50/50 transition-all">
+                    <div key={emp.id} className="px-6 py-4 flex items-center justify-between hover:bg-zinc-50/80 transition-all">
                       <div>
-                        <p className="font-bold text-sm text-slate-800 flex items-center gap-2">
+                        <p className="font-bold text-sm text-zinc-900 flex items-center gap-2">
                           {emp.name}
-                          {emp.isSalesperson && <span className="px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 text-[8px] font-black uppercase tracking-wider">Fila da Vez</span>}
+                          {emp.isSalesperson && <span className="px-2 py-0.5 rounded-full bg-amber-100 text-amber-900 text-[8px] font-black uppercase tracking-wider border border-amber-200">Fila da Vez</span>}
                         </p>
-                        <p className="text-[10px] text-slate-400">
+                        <p className="text-[10px] text-zinc-400">
                           {emp.role} • {(emp.baseDailyMinutes || 480)/60}h/dia • {emp.englishWeekMinutes === 0 ? `Folga Fixa: ${WEEK_DAYS_BR[emp.englishWeekDay]}` : `Semana Inglesa: ${WEEK_DAYS_BR[emp.englishWeekDay]} (4h)`}
                         </p>
                       </div>
@@ -2026,7 +2076,7 @@ const App: React.FC = () => {
                               startDate: emp.startDate
                             });
                           }}
-                          className="p-2 text-slate-400 hover:text-indigo-600 rounded-lg hover:bg-indigo-50 transition-all"
+                          className="p-2 text-zinc-400 hover:text-amber-600 rounded-lg hover:bg-amber-50 transition-all"
                         >
                           <Edit2 size={16}/>
                         </button>
@@ -2041,19 +2091,19 @@ const App: React.FC = () => {
           {/* TAB: JUSTIFICATIVAS / EVENTOS EXTERNOS */}
           {activeTab === 'justifications' && (
             <div className="space-y-8 animate-in fade-in duration-300">
-              <div className="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-100">
-                <h3 className="text-xl font-black font-serif italic mb-4">Lançar Justificativa ou Evento Externo</h3>
+              <div className="bg-white p-8 rounded-[2rem] shadow-sm border border-zinc-200/80">
+                <h3 className="text-xl font-black font-serif italic mb-4 text-zinc-900">Lançar Justificativa ou Evento Externo</h3>
                 <form onSubmit={handleSaveJustification} className="space-y-4">
                   <div className={`grid grid-cols-1 ${justificationForm.type === 'VACATION' || justificationForm.type === 'MEDICAL' ? 'sm:grid-cols-4' : 'sm:grid-cols-3'} gap-4`}>
                     <label className="space-y-1">
-                      <span className="text-[10px] font-black uppercase text-slate-400">Colaborador *</span>
-                      <select required value={justificationForm.employeeId} onChange={e => setJustificationForm({ ...justificationForm, employeeId: e.target.value })} className="w-full p-3 rounded-xl bg-slate-50 border border-slate-200 font-bold text-xs outline-none focus:ring-2 focus:ring-indigo-500">
+                      <span className="text-[10px] font-black uppercase text-zinc-400">Colaborador *</span>
+                      <select required value={justificationForm.employeeId} onChange={e => setJustificationForm({ ...justificationForm, employeeId: e.target.value })} className="w-full p-3 rounded-xl bg-zinc-50 border border-zinc-200 font-bold text-xs outline-none focus:ring-2 focus:ring-amber-400">
                         <option value="">Selecione...</option>
                         {data.employees.map(emp => <option key={emp.id} value={emp.id}>{emp.name}</option>)}
                       </select>
                     </label>
                     <label className="space-y-1">
-                      <span className="text-[10px] font-black uppercase text-slate-400">Tipo de Lançamento *</span>
+                      <span className="text-[10px] font-black uppercase text-zinc-400">Tipo de Lançamento *</span>
                       <select value={justificationForm.type} onChange={e => {
                         const newType = e.target.value as EntryType;
                         setJustificationForm(prev => ({
@@ -2061,7 +2111,7 @@ const App: React.FC = () => {
                           type: newType,
                           endDate: prev.endDate < prev.date ? prev.date : prev.endDate
                         }));
-                      }} className="w-full p-3 rounded-xl bg-slate-50 border border-slate-200 font-bold text-xs outline-none focus:ring-2 focus:ring-indigo-500">
+                      }} className="w-full p-3 rounded-xl bg-zinc-50 border border-zinc-200 font-bold text-xs outline-none focus:ring-2 focus:ring-amber-400">
                         <option value="VACATION">🌴 Férias (Período)</option>
                         <option value="MEDICAL">🩺 Atestado Médico</option>
                         <option value="OFF_DAY">🏖️ Folga Compensatória (de Domingo/Feriado)</option>
@@ -2071,7 +2121,7 @@ const App: React.FC = () => {
                       </select>
                     </label>
                     <label className="space-y-1">
-                      <span className="text-[10px] font-black uppercase text-slate-400">{justificationForm.type === 'VACATION' || justificationForm.type === 'MEDICAL' ? 'Data Início *' : 'Data *'}</span>
+                      <span className="text-[10px] font-black uppercase text-zinc-400">{justificationForm.type === 'VACATION' || justificationForm.type === 'MEDICAL' ? 'Data Início *' : 'Data *'}</span>
                       <input type="date" required value={justificationForm.date} onChange={e => {
                         const newStart = e.target.value;
                         setJustificationForm(prev => ({
@@ -2079,12 +2129,12 @@ const App: React.FC = () => {
                           date: newStart,
                           endDate: prev.endDate < newStart ? newStart : prev.endDate
                         }));
-                      }} className="w-full p-3 rounded-xl bg-slate-50 border border-slate-200 font-black text-xs outline-none focus:ring-2 focus:ring-indigo-500"/>
+                      }} className="w-full p-3 rounded-xl bg-zinc-50 border border-zinc-200 font-black text-xs outline-none focus:ring-2 focus:ring-amber-400"/>
                     </label>
                     {(justificationForm.type === 'VACATION' || justificationForm.type === 'MEDICAL') && (
                       <label className="space-y-1">
-                        <span className="text-[10px] font-black uppercase text-slate-400">Data Fim *</span>
-                        <input type="date" required min={justificationForm.date} value={justificationForm.endDate} onChange={e => setJustificationForm({ ...justificationForm, endDate: e.target.value })} className="w-full p-3 rounded-xl bg-slate-50 border border-slate-200 font-black text-xs outline-none focus:ring-2 focus:ring-indigo-500"/>
+                        <span className="text-[10px] font-black uppercase text-zinc-400">Data Fim *</span>
+                        <input type="date" required min={justificationForm.date} value={justificationForm.endDate} onChange={e => setJustificationForm({ ...justificationForm, endDate: e.target.value })} className="w-full p-3 rounded-xl bg-zinc-50 border border-zinc-200 font-black text-xs outline-none focus:ring-2 focus:ring-amber-400"/>
                       </label>
                     )}
                   </div>
@@ -2123,14 +2173,14 @@ const App: React.FC = () => {
 
                   {/* Campos específicos para Evento Externo */}
                   {justificationForm.type === 'WORK_EXTERNAL' && (
-                    <div className="p-4 rounded-2xl bg-indigo-50 border border-indigo-100 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="p-4 rounded-2xl bg-amber-50/80 border border-amber-200 grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <label className="space-y-1">
-                        <span className="text-[10px] font-black uppercase text-indigo-800">Horário Início do Evento</span>
-                        <input type="time" value={justificationForm.startTime} onChange={e => setJustificationForm({ ...justificationForm, startTime: e.target.value })} className="w-full p-3 rounded-xl bg-white border border-indigo-200 font-mono font-bold text-xs"/>
+                        <span className="text-[10px] font-black uppercase text-amber-900">Horário Início do Evento</span>
+                        <input type="time" value={justificationForm.startTime} onChange={e => setJustificationForm({ ...justificationForm, startTime: e.target.value })} className="w-full p-3 rounded-xl bg-white border border-amber-200 font-mono font-bold text-xs"/>
                       </label>
                       <label className="space-y-1">
-                        <span className="text-[10px] font-black uppercase text-indigo-800">Horário Término do Evento</span>
-                        <input type="time" value={justificationForm.endTime} onChange={e => setJustificationForm({ ...justificationForm, endTime: e.target.value })} className="w-full p-3 rounded-xl bg-white border border-indigo-200 font-mono font-bold text-xs"/>
+                        <span className="text-[10px] font-black uppercase text-amber-900">Horário Término do Evento</span>
+                        <input type="time" value={justificationForm.endTime} onChange={e => setJustificationForm({ ...justificationForm, endTime: e.target.value })} className="w-full p-3 rounded-xl bg-white border border-amber-200 font-mono font-bold text-xs"/>
                       </label>
                     </div>
                   )}
@@ -2157,34 +2207,34 @@ const App: React.FC = () => {
                   )}
 
                   <label className="space-y-1 block">
-                    <span className="text-[10px] font-black uppercase text-slate-400">Observação / Nome do Evento</span>
-                    <input value={justificationForm.note} onChange={e => setJustificationForm({ ...justificationForm, note: e.target.value })} placeholder="Ex: Feira de Negócios / Atestado Dr. Silva" className="w-full p-3 rounded-xl bg-slate-50 border border-slate-200 font-bold text-xs outline-none focus:ring-2 focus:ring-indigo-500"/>
+                    <span className="text-[10px] font-black uppercase text-zinc-400">Observação / Nome do Evento</span>
+                    <input value={justificationForm.note} onChange={e => setJustificationForm({ ...justificationForm, note: e.target.value })} placeholder="Ex: Feira de Negócios / Atestado Dr. Silva" className="w-full p-3 rounded-xl bg-zinc-50 border border-zinc-200 font-bold text-xs outline-none focus:ring-2 focus:ring-amber-400"/>
                   </label>
 
-                  <button type="submit" disabled={isSaving} className="py-3 px-6 rounded-xl bg-indigo-600 text-white font-black text-xs uppercase tracking-wider shadow-md hover:bg-indigo-700 transition-all flex items-center gap-2">
+                  <button type="submit" disabled={isSaving} className="py-3 px-6 rounded-xl bg-zinc-950 hover:bg-zinc-900 text-amber-400 font-black text-xs uppercase tracking-wider shadow-md transition-all flex items-center gap-2 border border-amber-400/30">
                     {isSaving ? <RefreshCw className="animate-spin" size={14}/> : <CheckCircle2 size={14}/>} Confirmar Lançamento
                   </button>
                 </form>
               </div>
 
               {/* Lista de Justificativas e Lançamentos */}
-              <div className="bg-white rounded-[2rem] shadow-sm border border-slate-100 overflow-hidden">
-                <div className="px-6 py-4 bg-slate-50 border-b border-slate-100 flex items-center justify-between">
-                  <h3 className="text-xs font-black uppercase text-slate-400 tracking-widest">Histórico de Lançamentos</h3>
-                  <ShieldCheck size={16} className="text-slate-300"/>
+              <div className="bg-white rounded-[2rem] shadow-sm border border-zinc-200/80 overflow-hidden">
+                <div className="px-6 py-4 bg-zinc-50/70 border-b border-zinc-200/80 flex items-center justify-between">
+                  <h3 className="text-xs font-black uppercase text-zinc-400 tracking-widest">Histórico de Lançamentos</h3>
+                  <ShieldCheck size={16} className="text-zinc-300"/>
                 </div>
-                <div className="divide-y divide-slate-100">
+                <div className="divide-y divide-zinc-100">
                   {data.timeBank.filter(t => t.type !== 'WORK').map(t => {
                     const emp = data.employees.find(e => e.id === t.employeeId);
                     return (
-                      <div key={t.id} className="px-6 py-4 flex items-center justify-between hover:bg-slate-50/50 transition-all">
+                      <div key={t.id} className="px-6 py-4 flex items-center justify-between hover:bg-zinc-50/80 transition-all">
                         <div>
-                          <p className="font-bold text-xs text-slate-800">{emp?.name || '---'} • <span className="text-indigo-600 font-black">{ENTRY_TYPE_LABELS[t.type as keyof typeof ENTRY_TYPE_LABELS]}</span></p>
-                          <p className="text-[10px] text-slate-400">{safeFormatDate(t.date)} {t.note ? `• ${t.note}` : ''}</p>
+                          <p className="font-bold text-xs text-zinc-800">{emp?.name || '---'} • <span className="text-amber-700 font-black">{ENTRY_TYPE_LABELS[t.type as keyof typeof ENTRY_TYPE_LABELS]}</span></p>
+                          <p className="text-[10px] text-zinc-400">{safeFormatDate(t.date)} {t.note ? `• ${t.note}` : ''}</p>
                         </div>
                         <div className="flex items-center gap-3">
                           <span className={`font-mono font-bold text-xs ${t.minutes >= 0 ? 'text-emerald-500' : 'text-rose-500'}`}>{formatMinutes(t.minutes)}</span>
-                          <button onClick={() => handleDeleteEntry(t.id, "Deseja excluir este lançamento?")} className="p-1.5 text-slate-300 hover:text-rose-600 rounded-lg hover:bg-rose-50 transition-all">
+                          <button onClick={() => handleDeleteEntry(t.id, "Deseja excluir este lançamento?")} className="p-1.5 text-zinc-300 hover:text-rose-600 rounded-lg hover:bg-rose-50 transition-all">
                             <Trash2 size={14}/>
                           </button>
                         </div>
@@ -2199,39 +2249,39 @@ const App: React.FC = () => {
           {/* TAB: RELATÓRIOS & EDIÇÃO DE PONTO */}
           {activeTab === 'reports' && (
             <div className="space-y-8 animate-in fade-in duration-300">
-              <div className="bg-white p-6 md:p-8 rounded-[2rem] shadow-sm border border-slate-100 flex flex-col md:flex-row items-start md:items-end justify-between gap-4">
+              <div className="bg-white p-6 md:p-8 rounded-[2rem] shadow-sm border border-zinc-200/80 flex flex-col md:flex-row items-start md:items-end justify-between gap-4">
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full md:w-auto">
                   <label className="space-y-1">
-                    <span className="text-[10px] font-black uppercase text-slate-400">Data Inicial</span>
-                    <input type="date" value={reportFilter.startDate} onChange={e => setReportFilter({ ...reportFilter, startDate: e.target.value })} className="w-full p-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-xs"/>
+                    <span className="text-[10px] font-black uppercase text-zinc-400">Data Inicial</span>
+                    <input type="date" value={reportFilter.startDate} onChange={e => setReportFilter({ ...reportFilter, startDate: e.target.value })} className="w-full p-2.5 rounded-xl bg-zinc-50 border border-zinc-200 font-bold text-xs"/>
                   </label>
                   <label className="space-y-1">
-                    <span className="text-[10px] font-black uppercase text-slate-400">Data Final</span>
-                    <input type="date" value={reportFilter.endDate} onChange={e => setReportFilter({ ...reportFilter, endDate: e.target.value })} className="w-full p-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-xs"/>
+                    <span className="text-[10px] font-black uppercase text-zinc-400">Data Final</span>
+                    <input type="date" value={reportFilter.endDate} onChange={e => setReportFilter({ ...reportFilter, endDate: e.target.value })} className="w-full p-2.5 rounded-xl bg-zinc-50 border border-zinc-200 font-bold text-xs"/>
                   </label>
                   <label className="space-y-1">
-                    <span className="text-[10px] font-black uppercase text-slate-400">Colaborador</span>
-                    <select value={reportFilter.employeeId} onChange={e => setReportFilter({ ...reportFilter, employeeId: e.target.value })} className="w-full p-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-xs">
+                    <span className="text-[10px] font-black uppercase text-zinc-400">Colaborador</span>
+                    <select value={reportFilter.employeeId} onChange={e => setReportFilter({ ...reportFilter, employeeId: e.target.value })} className="w-full p-2.5 rounded-xl bg-zinc-50 border border-zinc-200 font-bold text-xs">
                       <option value="all">Todos os colaboradores</option>
                       {data.employees.map(emp => <option key={emp.id} value={emp.id}>{emp.name}</option>)}
                     </select>
                   </label>
                 </div>
                 <div className="flex gap-2">
-                  <button onClick={openCreateClockModal} className="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs uppercase tracking-wider transition-all flex items-center gap-1.5 shadow-md">
+                  <button onClick={openCreateClockModal} className="px-4 py-2.5 rounded-xl bg-zinc-950 hover:bg-zinc-900 text-amber-400 border border-amber-400/30 font-black text-xs uppercase tracking-wider transition-all flex items-center gap-1.5 shadow-md">
                     <Plus size={14}/> Incluir Ponto
                   </button>
-                  <button onClick={handleExportAccountantReport} className="px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-black text-xs uppercase tracking-wider transition-all flex items-center gap-1.5 shadow-md">
+                  <button onClick={handleExportAccountantReport} className="px-4 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-500 text-zinc-950 font-black text-xs uppercase tracking-wider transition-all flex items-center gap-1.5 shadow-md">
                     <Download size={14}/> Exportar CSV
                   </button>
                 </div>
               </div>
 
               {/* Tabela de Registros */}
-              <div className="bg-white rounded-[2rem] shadow-sm border border-slate-100 overflow-hidden">
+              <div className="bg-white rounded-[2rem] shadow-sm border border-zinc-200/80 overflow-hidden">
                 <div className="overflow-x-auto">
                   <table className="w-full text-left text-xs font-bold">
-                    <thead className="bg-slate-50 text-[9px] font-black uppercase text-slate-400">
+                    <thead className="bg-zinc-50/70 text-[9px] font-black uppercase text-zinc-400">
                       <tr>
                         <th className="px-6 py-4">Data</th>
                         <th className="px-6 py-4">Colaborador</th>
@@ -2240,20 +2290,20 @@ const App: React.FC = () => {
                         <th className="px-6 py-4 text-center">Ações</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-slate-100">
+                    <tbody className="divide-y divide-zinc-100">
                       {filteredRecords.map(r => {
                         const emp = data.employees.find(e => e.id === r.employeeId);
                         const tbe = data.timeBank.find(t => t.employeeId === r.employeeId && t.date === r.date && t.type === 'WORK');
                         return (
-                          <tr key={r.id} className="hover:bg-slate-50/50 transition-all">
-                            <td className="px-6 py-4 font-mono text-slate-500">{safeFormatDate(r.date)}</td>
-                            <td className="px-6 py-4">{emp?.name || '---'}</td>
-                            <td className="px-6 py-4 text-center font-mono">{formatTime(r.clockIn)} - {formatTime(r.clockOut)}</td>
-                            <td className={`px-6 py-4 text-center font-mono ${tbe && tbe.minutes >= 0 ? 'text-emerald-500' : 'text-rose-500'}`}>{tbe ? formatMinutes(tbe.minutes) : '---'}</td>
+                          <tr key={r.id} className="hover:bg-zinc-50/80 transition-all">
+                            <td className="px-6 py-4 font-mono text-zinc-500">{safeFormatDate(r.date)}</td>
+                            <td className="px-6 py-4 font-bold text-zinc-900">{emp?.name || '---'}</td>
+                            <td className="px-6 py-4 text-center font-mono text-zinc-700">{formatTime(r.clockIn)} - {formatTime(r.clockOut)}</td>
+                            <td className={`px-6 py-4 text-center font-mono font-black ${tbe && tbe.minutes >= 0 ? 'text-emerald-600' : 'text-rose-600'}`}>{tbe ? formatMinutes(tbe.minutes) : '---'}</td>
                             <td className="px-6 py-4 text-center">
                               <div className="flex items-center justify-center gap-1">
-                                <button title="Corrigir horários" onClick={() => openClockEditor(r)} className="p-2 text-indigo-300 hover:text-indigo-600"><Edit2 size={16}/></button>
-                                <button title="Excluir ponto" onClick={() => handleDeleteFullRecord(r.id, r.employeeId, r.date)} className="p-2 text-rose-300 hover:text-rose-600"><Trash2 size={16}/></button>
+                                <button title="Corrigir horários" onClick={() => openClockEditor(r)} className="p-2 text-zinc-400 hover:text-amber-600"><Edit2 size={16}/></button>
+                                <button title="Excluir ponto" onClick={() => handleDeleteFullRecord(r.id, r.employeeId, r.date)} className="p-2 text-zinc-300 hover:text-rose-600"><Trash2 size={16}/></button>
                               </div>
                             </td>
                           </tr>
@@ -2269,9 +2319,9 @@ const App: React.FC = () => {
           {/* TAB: ADMIN (CONFIGURAÇÕES) */}
           {activeTab === 'admin' && (
             <div className="space-y-8 animate-in fade-in duration-300">
-              <div className="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-100 max-w-xl">
-                <h3 className="text-xl font-black font-serif italic mb-2">Ajuste de PIN de Gerência</h3>
-                <p className="text-xs text-slate-400 mb-6">Altere a senha numérica de 4 dígitos para acesso aos módulos gerenciais.</p>
+              <div className="bg-white p-8 rounded-[2rem] shadow-sm border border-zinc-200/80 max-w-xl">
+                <h3 className="text-xl font-black font-serif italic mb-2 text-zinc-900">Ajuste de PIN de Gerência</h3>
+                <p className="text-xs text-zinc-400 mb-6">Altere a senha numérica de 4 dígitos para acesso aos módulos gerenciais.</p>
                 <form onSubmit={async (e) => {
                   e.preventDefault();
                   if (!supabase) return;
@@ -2284,10 +2334,10 @@ const App: React.FC = () => {
                   } catch (err: any) { alert("Erro: " + err.message); }
                 }} className="space-y-4">
                   <label className="space-y-1 block">
-                    <span className="text-[10px] font-black uppercase text-slate-400">Novo PIN (4 dígitos)</span>
-                    <input name="pin" type="password" maxLength={4} defaultValue={data.settings?.managerPin || "1234"} className="w-full p-3 rounded-xl bg-slate-50 border border-slate-200 font-mono font-bold text-center text-lg outline-none focus:ring-2 focus:ring-indigo-500"/>
+                    <span className="text-[10px] font-black uppercase text-zinc-400">Novo PIN (4 dígitos)</span>
+                    <input name="pin" type="password" maxLength={4} defaultValue={data.settings?.managerPin || "1234"} className="w-full p-3 rounded-xl bg-zinc-50 border border-zinc-200 font-mono font-bold text-center text-lg outline-none focus:ring-2 focus:ring-amber-400"/>
                   </label>
-                  <button type="submit" className="py-3 px-6 rounded-xl bg-indigo-600 text-white font-black text-xs uppercase tracking-wider shadow-md hover:bg-indigo-700 transition-all">Salvar Novo PIN</button>
+                  <button type="submit" className="py-3 px-6 rounded-xl bg-zinc-950 hover:bg-zinc-900 text-amber-400 font-black text-xs uppercase tracking-wider shadow-md transition-all border border-amber-400/30">Salvar Novo PIN</button>
                 </form>
               </div>
             </div>
@@ -2298,13 +2348,13 @@ const App: React.FC = () => {
 
       {/* MODAL AUTODECLARAÇÃO: ESQUECI DE BATER ENTRADA */}
       {isSelfDeclareModalOpen && (
-        <div className="fixed inset-0 z-[115] flex items-center justify-center bg-slate-900/80 backdrop-blur-md p-4">
-          <form onSubmit={handleSaveSelfDeclaration} className="bg-white text-slate-800 w-full max-w-lg p-7 md:p-9 rounded-[2.5rem] shadow-2xl relative">
+        <div className="fixed inset-0 z-[115] flex items-center justify-center bg-zinc-950/80 backdrop-blur-md p-4 animate-in fade-in">
+          <form onSubmit={handleSaveSelfDeclaration} className="bg-white text-zinc-800 w-full max-w-lg p-7 md:p-9 rounded-[2.5rem] shadow-2xl relative border border-zinc-100">
             <button
               type="button"
               onClick={() => { setIsSelfDeclareModalOpen(false); setSelfDeclareEmployeeId(null); }}
               disabled={isSaving}
-              className="absolute top-6 right-6 text-slate-300 hover:text-slate-900 disabled:opacity-40"
+              className="absolute top-6 right-6 text-zinc-300 hover:text-zinc-900 disabled:opacity-40"
             >
               <X size={24}/>
             </button>
@@ -2314,14 +2364,14 @@ const App: React.FC = () => {
                 <ClockIcon size={24}/>
               </div>
               <div>
-                <h2 className="text-2xl font-black font-serif italic text-slate-900">Informar Chegada</h2>
-                <p className="text-xs font-bold text-slate-400">
+                <h2 className="text-2xl font-black font-serif italic text-zinc-900">Informar Chegada</h2>
+                <p className="text-xs font-bold text-zinc-400">
                   {data.employees.find(e => e.id === selfDeclareEmployeeId)?.name} • {safeFormatDate(getLocalDateString(currentTime))}
                 </p>
               </div>
             </div>
 
-            <p className="text-xs text-slate-600 mb-4 leading-relaxed">
+            <p className="text-xs text-zinc-600 mb-4 leading-relaxed">
               Informe o horário exato em que você chegou na loja hoje. Este registro será gravado com o timestamp de confirmação para segurança mútua.
             </p>
 
@@ -2330,14 +2380,14 @@ const App: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setSelfDeclareTime('10:00')}
-                className={`flex-1 py-2 rounded-xl text-xs font-black uppercase transition-all ${selfDeclareTime === '10:00' ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}
+                className={`flex-1 py-2 rounded-xl text-xs font-black uppercase transition-all ${selfDeclareTime === '10:00' ? 'bg-zinc-950 text-amber-400 border border-amber-400/30' : 'bg-zinc-100 text-zinc-600 hover:bg-zinc-200'}`}
               >
                 10:00 (Abertura)
               </button>
               <button
                 type="button"
                 onClick={() => setSelfDeclareTime('14:30')}
-                className={`flex-1 py-2 rounded-xl text-xs font-black uppercase transition-all ${selfDeclareTime === '14:30' ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}
+                className={`flex-1 py-2 rounded-xl text-xs font-black uppercase transition-all ${selfDeclareTime === '14:30' ? 'bg-zinc-950 text-amber-400 border border-amber-400/30' : 'bg-zinc-100 text-zinc-600 hover:bg-zinc-200'}`}
               >
                 14:30 (Turno Tarde)
               </button>
@@ -2345,24 +2395,24 @@ const App: React.FC = () => {
 
             <div className="space-y-4">
               <label className="space-y-1 block">
-                <span className="text-[10px] font-black uppercase text-slate-400">Horário Exato de Entrada *</span>
+                <span className="text-[10px] font-black uppercase text-zinc-400">Horário Exato de Entrada *</span>
                 <input
                   type="time"
                   required
                   value={selfDeclareTime}
                   onChange={e => setSelfDeclareTime(e.target.value)}
-                  className="w-full p-3.5 rounded-xl bg-slate-50 border border-slate-200 font-mono font-black text-lg text-center outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full p-3.5 rounded-xl bg-zinc-50 border border-zinc-200 font-mono font-black text-lg text-center outline-none focus:ring-2 focus:ring-amber-400"
                 />
               </label>
 
               <label className="space-y-1 block">
-                <span className="text-[10px] font-black uppercase text-slate-400">Motivo (Opcional)</span>
+                <span className="text-[10px] font-black uppercase text-zinc-400">Motivo (Opcional)</span>
                 <input
                   type="text"
                   placeholder="Ex: Esqueci de registrar ao abrir a loja"
                   value={selfDeclareNote}
                   onChange={e => setSelfDeclareNote(e.target.value)}
-                  className="w-full p-3 rounded-xl bg-slate-50 border border-slate-200 font-bold text-xs outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full p-3 rounded-xl bg-zinc-50 border border-zinc-200 font-bold text-xs outline-none focus:ring-2 focus:ring-amber-400"
                 />
               </label>
             </div>
@@ -2372,14 +2422,14 @@ const App: React.FC = () => {
                 type="button"
                 onClick={() => { setIsSelfDeclareModalOpen(false); setSelfDeclareEmployeeId(null); }}
                 disabled={isSaving}
-                className="flex-1 py-3.5 rounded-xl bg-slate-100 text-slate-500 font-black uppercase text-xs disabled:opacity-40"
+                className="flex-1 py-3.5 rounded-xl bg-zinc-100 text-zinc-500 font-black uppercase text-xs disabled:opacity-40"
               >
                 Cancelar
               </button>
               <button
                 type="submit"
                 disabled={isSaving}
-                className="flex-1 py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-black uppercase text-xs flex items-center justify-center gap-2 shadow-lg shadow-indigo-200 disabled:opacity-60 transition-all"
+                className="flex-1 py-3.5 rounded-xl bg-zinc-950 hover:bg-zinc-900 text-amber-400 font-black uppercase text-xs flex items-center justify-center gap-2 shadow-lg border border-amber-400/30 disabled:opacity-60 transition-all"
               >
                 {isSaving ? <RefreshCw className="animate-spin" size={16}/> : <CheckCircle2 size={16}/>} Confirmar Entrada
               </button>
@@ -2390,12 +2440,12 @@ const App: React.FC = () => {
 
       {/* MODAL EDIÇÃO MANUAL DE PONTO (GERENTE) */}
       {(editingClockRecord || creatingClockRecord) && (
-        <div className="fixed inset-0 z-[110] flex items-center justify-center bg-slate-900/80 backdrop-blur-md p-4">
-          <form onSubmit={handleSaveClockEdit} className="bg-white text-slate-800 w-full max-w-2xl p-7 md:p-9 rounded-[2rem] shadow-2xl relative">
-            <button type="button" onClick={closeClockEditor} disabled={isSaving} className="absolute top-6 right-6 text-slate-300 hover:text-slate-900 disabled:opacity-40"><X size={24}/></button>
+        <div className="fixed inset-0 z-[110] flex items-center justify-center bg-zinc-950/80 backdrop-blur-md p-4 animate-in fade-in">
+          <form onSubmit={handleSaveClockEdit} className="bg-white text-zinc-800 w-full max-w-2xl p-7 md:p-9 rounded-[2rem] shadow-2xl relative border border-zinc-100">
+            <button type="button" onClick={closeClockEditor} disabled={isSaving} className="absolute top-6 right-6 text-zinc-300 hover:text-zinc-900 disabled:opacity-40"><X size={24}/></button>
             <div className="pr-10 mb-6">
               <h2 className="text-2xl font-black font-serif italic">{editingClockRecord ? 'Corrigir batidas' : 'Incluir ponto'}</h2>
-              <p className="text-xs font-bold text-slate-400 mt-1">
+              <p className="text-xs font-bold text-zinc-400 mt-1">
                 {editingClockRecord
                   ? `${data.employees.find(emp => emp.id === editingClockRecord.employeeId)?.name} • ${safeFormatDate(editingClockRecord.date)}`
                   : 'Cadastre os horários informados pelo funcionário.'}
@@ -2403,28 +2453,28 @@ const App: React.FC = () => {
             </div>
 
             {creatingClockRecord && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5 p-4 rounded-2xl bg-emerald-50 border border-emerald-100">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5 p-4 rounded-2xl bg-amber-50/80 border border-amber-200">
                 <label className="space-y-1">
-                  <span className="text-[10px] font-black uppercase text-emerald-700">Colaborador *</span>
+                  <span className="text-[10px] font-black uppercase text-amber-900">Colaborador *</span>
                   <select
                     required
                     value={creatingClockRecord.employeeId}
                     onChange={event => setCreatingClockRecord(current => current ? ({ ...current, employeeId: event.target.value }) : current)}
-                    className="w-full p-3 rounded-xl bg-white border border-emerald-100 font-bold outline-none focus:ring-2 focus:ring-emerald-500"
+                    className="w-full p-3 rounded-xl bg-white border border-amber-200 font-bold outline-none focus:ring-2 focus:ring-amber-400"
                   >
                     <option value="">Selecione...</option>
                     {data.employees.map(employee => <option key={employee.id} value={employee.id}>{employee.name}</option>)}
                   </select>
                 </label>
                 <label className="space-y-1">
-                  <span className="text-[10px] font-black uppercase text-emerald-700">Data *</span>
+                  <span className="text-[10px] font-black uppercase text-amber-900">Data *</span>
                   <input
                     type="date"
                     required
                     max={getLocalDateString(new Date())}
                     value={creatingClockRecord.date}
                     onChange={event => setCreatingClockRecord(current => current ? ({ ...current, date: event.target.value }) : current)}
-                    className="w-full p-3 rounded-xl bg-white border border-emerald-100 font-black outline-none focus:ring-2 focus:ring-emerald-500"
+                    className="w-full p-3 rounded-xl bg-white border border-amber-200 font-black outline-none focus:ring-2 focus:ring-amber-400"
                   />
                 </label>
               </div>
@@ -2440,21 +2490,21 @@ const App: React.FC = () => {
                 ['clockOut', 'Saída final', true]
               ] as [keyof ClockEditForm, string, boolean][]).map(([field, label, required]) => (
                 <label key={field} className="space-y-1">
-                  <span className="text-[10px] font-black uppercase text-slate-400">{label}{required ? ' *' : ''}</span>
+                  <span className="text-[10px] font-black uppercase text-zinc-400">{label}{required ? ' *' : ''}</span>
                   <input
                     type="time"
                     required={required}
                     value={clockEditForm[field]}
                     onChange={event => setClockEditForm(current => ({ ...current, [field]: event.target.value }))}
-                    className="w-full p-3 rounded-xl bg-slate-50 border border-slate-200 font-mono font-black outline-none focus:ring-2 focus:ring-indigo-500"
+                    className="w-full p-3 rounded-xl bg-zinc-50 border border-zinc-200 font-mono font-black outline-none focus:ring-2 focus:ring-amber-400"
                   />
                 </label>
               ))}
             </div>
 
             <div className="flex gap-3 mt-6">
-              <button type="button" onClick={closeClockEditor} disabled={isSaving} className="flex-1 py-3 rounded-xl bg-slate-100 text-slate-500 font-black uppercase text-xs disabled:opacity-40">Cancelar</button>
-              <button type="submit" disabled={isSaving} className="flex-1 py-3 rounded-xl bg-indigo-600 text-white font-black uppercase text-xs flex items-center justify-center gap-2 disabled:opacity-60">
+              <button type="button" onClick={closeClockEditor} disabled={isSaving} className="flex-1 py-3 rounded-xl bg-zinc-100 text-zinc-500 font-black uppercase text-xs disabled:opacity-40">Cancelar</button>
+              <button type="submit" disabled={isSaving} className="flex-1 py-3 rounded-xl bg-zinc-950 hover:bg-zinc-900 text-amber-400 font-black uppercase text-xs flex items-center justify-center gap-2 border border-amber-400/30 disabled:opacity-60">
                 {isSaving ? <RefreshCw className="animate-spin" size={16}/> : <CheckCircle2 size={16}/>} {editingClockRecord ? 'Salvar correção' : 'Incluir ponto'}
               </button>
             </div>
@@ -2464,19 +2514,19 @@ const App: React.FC = () => {
 
       {/* MODAL PIN */}
       {isLoginModalOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/80 backdrop-blur-md">
-           <div className="bg-white w-full max-w-[340px] p-10 rounded-[3rem] shadow-2xl relative text-center">
-              <button onClick={() => setIsLoginModalOpen(false)} className="absolute top-8 right-8 text-slate-300 hover:text-slate-900"><X size={24}/></button>
-              <div className="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-inner"><Lock size={32}/></div>
-              <h2 className="text-2xl font-black font-serif italic mb-1">Acesso Gerente</h2>
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-zinc-950/80 backdrop-blur-md p-4 animate-in fade-in">
+           <div className="bg-white w-full max-w-[340px] p-8 md:p-10 rounded-[3rem] shadow-2xl relative text-center border border-zinc-100">
+              <button onClick={() => setIsLoginModalOpen(false)} className="absolute top-8 right-8 text-zinc-300 hover:text-zinc-900"><X size={24}/></button>
+              <div className="w-16 h-16 bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-inner"><Lock size={32}/></div>
+              <h2 className="text-2xl font-black font-serif italic mb-1 text-zinc-900">Acesso Gerente</h2>
               <div className="flex justify-center gap-4 my-8">
                 {[0,1,2,3].map(i => (
-                  <div key={i} className={`w-3 h-3 rounded-full ${pinInput.length > i ? 'bg-indigo-600 scale-125' : 'bg-slate-200'} ${loginError ? 'bg-rose-500' : ''}`}></div>
+                  <div key={i} className={`w-3 h-3 rounded-full ${pinInput.length > i ? 'bg-amber-500 scale-125' : 'bg-zinc-200'} ${loginError ? 'bg-rose-500' : ''}`}></div>
                 ))}
               </div>
               <div className="grid grid-cols-3 gap-3">
                 {['1','2','3','4','5','6','7','8','9','C','0','<'].map(v => (
-                  <button key={v} onClick={() => v === 'C' ? setPinInput('') : v === '<' ? setPinInput(p => p.slice(0,-1)) : handlePinDigit(v)} className="h-14 rounded-xl font-black text-xl bg-slate-50 hover:bg-indigo-600 hover:text-white transition-all">{v}</button>
+                  <button key={v} onClick={() => v === 'C' ? setPinInput('') : v === '<' ? setPinInput(p => p.slice(0,-1)) : handlePinDigit(v)} className="h-14 rounded-xl font-black text-xl bg-zinc-50 hover:bg-zinc-950 hover:text-amber-400 transition-all">{v}</button>
                 ))}
               </div>
            </div>
@@ -2485,18 +2535,18 @@ const App: React.FC = () => {
 
       {/* MODAL REGRAS CLT & DIREITOS DE PONTO */}
       {isCltModalOpen && (
-        <div className="fixed inset-0 z-[120] flex items-center justify-center bg-slate-900/80 backdrop-blur-md p-4 overflow-y-auto">
-          <div className="bg-white text-slate-800 w-full max-w-3xl p-6 md:p-10 rounded-[2.5rem] shadow-2xl relative my-8 max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 z-[120] flex items-center justify-center bg-zinc-950/80 backdrop-blur-md p-4 overflow-y-auto">
+          <div className="bg-white text-zinc-800 w-full max-w-3xl p-6 md:p-10 rounded-[2.5rem] shadow-2xl relative my-8 max-h-[90vh] overflow-y-auto border border-zinc-100">
             <button
               type="button"
               onClick={() => setIsCltModalOpen(false)}
-              className="absolute top-6 right-6 text-slate-400 hover:text-slate-900 p-2 rounded-full hover:bg-slate-100 transition-all"
+              className="absolute top-6 right-6 text-zinc-400 hover:text-zinc-900 p-2 rounded-full hover:bg-zinc-100 transition-all"
             >
               <X size={24}/>
             </button>
 
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center font-black">
+              <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center font-black">
                 <BookOpen size={24}/>
               </div>
               <div>
@@ -2506,59 +2556,59 @@ const App: React.FC = () => {
             </div>
 
             <div className="space-y-4 text-xs">
-              <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100">
-                <h3 className="font-black text-slate-900 flex items-center gap-2 mb-1">
-                  <span className="text-indigo-600 font-mono">01.</span> Tolerância de Ponto (Art. 58, § 1º da CLT & Súmula 366 TST)
+              <div className="p-4 rounded-2xl bg-zinc-50 border border-zinc-200/80">
+                <h3 className="font-black text-zinc-900 flex items-center gap-2 mb-1">
+                  <span className="text-amber-600 font-mono">01.</span> Tolerância de Ponto (Art. 58, § 1º da CLT & Súmula 366 TST)
                 </h3>
-                <p className="text-slate-600 leading-relaxed font-normal">
+                <p className="text-zinc-600 leading-relaxed font-normal">
                   Variações de <strong>até 5 minutos</strong> por batida (e até <strong>10 minutos no total do dia</strong>) não são descontadas e nem computadas como hora extra. 
                   Se a variação ultrapassar 5 minutos ou o total do dia passar de 10 minutos, o tempo total é computado como hora extra ou hora devida.
                 </p>
               </div>
 
-              <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100">
-                <h3 className="font-black text-slate-900 flex items-center gap-2 mb-1">
-                  <span className="text-indigo-600 font-mono">02.</span> Intervalo de Almoço (Art. 71 da CLT)
+              <div className="p-4 rounded-2xl bg-zinc-50 border border-zinc-200/80">
+                <h3 className="font-black text-zinc-900 flex items-center gap-2 mb-1">
+                  <span className="text-amber-600 font-mono">02.</span> Intervalo de Almoço (Art. 71 da CLT)
                 </h3>
-                <p className="text-slate-600 leading-relaxed font-normal">
+                <p className="text-zinc-600 leading-relaxed font-normal">
                   Para jornadas de 8 horas diárias, o intervalo para refeição e descanso é de <strong>no mínimo 1 hora</strong>. O intervalo de almoço não é computado na jornada de trabalho.
                 </p>
               </div>
 
-              <div className="p-4 rounded-2xl bg-indigo-50/60 border border-indigo-100">
-                <h3 className="font-black text-indigo-900 flex items-center gap-2 mb-1">
-                  <span className="text-indigo-600 font-mono">03.</span> Pausa para Lanche (Benefício Concedido pela Empresa)
+              <div className="p-4 rounded-2xl bg-amber-50/70 border border-amber-200">
+                <h3 className="font-black text-amber-950 flex items-center gap-2 mb-1">
+                  <span className="text-amber-600 font-mono">03.</span> Pausa para Lanche (Benefício Concedido pela Empresa)
                 </h3>
-                <p className="text-indigo-950/80 leading-relaxed font-normal">
+                <p className="text-amber-900/90 leading-relaxed font-normal">
                   A empresa concede uma pausa de <strong>até 15 minutos</strong> para café/lanche como benefício aos colaboradores. 
                   Essa pausa de até 15 min <strong>não é descontada</strong> da sua jornada de 8h. Apenas minutos que excederem os 15 minutos serão deduzidos no banco de horas.
                 </p>
               </div>
 
-              <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100">
-                <h3 className="font-black text-slate-900 flex items-center gap-2 mb-1">
-                  <span className="text-indigo-600 font-mono">04.</span> Descanso Entre Dias de Trabalho (Art. 66 da CLT)
+              <div className="p-4 rounded-2xl bg-zinc-50 border border-zinc-200/80">
+                <h3 className="font-black text-zinc-900 flex items-center gap-2 mb-1">
+                  <span className="text-amber-600 font-mono">04.</span> Descanso Entre Dias de Trabalho (Art. 66 da CLT)
                 </h3>
-                <p className="text-slate-600 leading-relaxed font-normal">
+                <p className="text-zinc-600 leading-relaxed font-normal">
                   Entre o encerramento do expediente de um dia e o início da jornada do dia seguinte, deve haver um período mínimo de <strong>11 horas consecutivas</strong> de descanso.
                 </p>
               </div>
 
-              <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100">
-                <h3 className="font-black text-slate-900 flex items-center gap-2 mb-1">
-                  <span className="text-indigo-600 font-mono">05.</span> Feriados Trabalhados (Acordo de Petrópolis)
+              <div className="p-4 rounded-2xl bg-zinc-50 border border-zinc-200/80">
+                <h3 className="font-black text-zinc-900 flex items-center gap-2 mb-1">
+                  <span className="text-amber-600 font-mono">05.</span> Feriados Trabalhados (Acordo de Petrópolis)
                 </h3>
-                <p className="text-slate-600 leading-relaxed font-normal">
+                <p className="text-zinc-600 leading-relaxed font-normal">
                   Feriados trabalhados garantem compensação com <strong>folga integral (+8h)</strong> e pagamento conforme a convenção coletiva local.
                 </p>
               </div>
             </div>
 
-            <div className="mt-8 pt-6 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3">
+            <div className="mt-8 pt-6 border-t border-zinc-200/80 flex flex-wrap items-center justify-between gap-3">
               <button
                 type="button"
                 onClick={() => window.print()}
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-black uppercase tracking-wider transition-all"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-zinc-100 hover:bg-zinc-200 text-zinc-700 text-xs font-black uppercase tracking-wider transition-all"
               >
                 <Download size={14}/>
                 <span>Imprimir Este Guia</span>
@@ -2567,7 +2617,7 @@ const App: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setIsCltModalOpen(false)}
-                className="px-6 py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black uppercase tracking-wider transition-all shadow-lg shadow-indigo-200"
+                className="px-6 py-3 rounded-2xl bg-zinc-950 hover:bg-zinc-900 text-amber-400 text-xs font-black uppercase tracking-wider transition-all shadow-lg border border-amber-400/30"
               >
                 Entendi e Fechar
               </button>
@@ -2585,12 +2635,12 @@ const App: React.FC = () => {
         const isDirect = finishingAttendance.type === 'DIRECT';
 
         return (
-          <div className="fixed inset-0 z-[110] flex items-center justify-center bg-slate-950/80 backdrop-blur-md p-4 animate-in fade-in">
-            <div className="bg-white text-slate-800 w-full max-w-md p-8 rounded-[2.5rem] shadow-2xl relative border border-slate-100">
+          <div className="fixed inset-0 z-[110] flex items-center justify-center bg-zinc-950/80 backdrop-blur-md p-4 animate-in fade-in">
+            <div className="bg-white text-zinc-800 w-full max-w-md p-8 rounded-[2.5rem] shadow-2xl relative border border-zinc-100">
               <button 
                 type="button"
                 onClick={() => setFinishingAttendance(null)} 
-                className="absolute top-6 right-6 text-slate-400 hover:text-slate-900 p-2 rounded-full hover:bg-slate-100 transition-all"
+                className="absolute top-6 right-6 text-zinc-400 hover:text-zinc-900 p-2 rounded-full hover:bg-zinc-100 transition-all"
               >
                 <X size={20}/>
               </button>
@@ -2599,29 +2649,29 @@ const App: React.FC = () => {
                 <CheckSquare size={28}/>
               </div>
 
-              <h3 className="text-2xl font-black font-serif italic text-slate-900 mb-1">
+              <h3 className="text-2xl font-black font-serif italic text-zinc-900 mb-1">
                 Finalizar Atendimento
               </h3>
-              <p className="text-xs text-slate-400 mb-6">
-                Ao confirmar, o colaborador <strong className="text-slate-800 font-bold">{emp?.name}</strong> será posicionado no final da fila de espera.
+              <p className="text-xs text-zinc-400 mb-6">
+                Ao confirmar, o colaborador <strong className="text-zinc-900 font-bold">{emp?.name}</strong> será posicionado no final da fila de espera.
               </p>
 
-              <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100 space-y-2 mb-6">
-                <div className="flex justify-between text-xs font-bold text-slate-700">
+              <div className="p-4 rounded-2xl bg-zinc-50 border border-zinc-100 space-y-2 mb-6">
+                <div className="flex justify-between text-xs font-bold text-zinc-700">
                   <span>Tipo:</span>
-                  <span className={`px-2 py-0.5 rounded-full text-[10px] font-black uppercase ${isDirect ? 'bg-amber-100 text-amber-900' : 'bg-indigo-100 text-indigo-900'}`}>
+                  <span className={`px-2 py-0.5 rounded-full text-[10px] font-black uppercase ${isDirect ? 'bg-amber-100 text-amber-900 border border-amber-200' : 'bg-zinc-900 text-amber-400'}`}>
                     {isDirect ? '⭐ Cliente Fidelizado' : '👥 Vez da Fila'}
                   </span>
                 </div>
-                <div className="flex justify-between text-xs text-slate-600">
+                <div className="flex justify-between text-xs text-zinc-600">
                   <span>Horário Início:</span>
-                  <span className="font-mono font-bold text-slate-800">{finishingAttendance.startedAt}</span>
+                  <span className="font-mono font-bold text-zinc-900">{finishingAttendance.startedAt}</span>
                 </div>
-                <div className="flex justify-between text-xs text-slate-600">
+                <div className="flex justify-between text-xs text-zinc-600">
                   <span>Horário Término:</span>
-                  <span className="font-mono font-bold text-slate-800">{currentEndedAt}</span>
+                  <span className="font-mono font-bold text-zinc-900">{currentEndedAt}</span>
                 </div>
-                <div className="flex justify-between text-xs font-bold text-slate-800 pt-2 border-t border-slate-200/80">
+                <div className="flex justify-between text-xs font-bold text-zinc-800 pt-2 border-t border-zinc-200/80">
                   <span>Duração Estimada:</span>
                   <span className="font-mono text-emerald-700 font-black">~{diffMin} minutos</span>
                 </div>
