@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
-import { AppData, Employee, ClockRecord, TimeBankEntry, EntryType, Holiday, QueueAttendance } from './types';
+import * as XLSX from 'xlsx';
+import { AppData, Employee, ClockRecord, TimeBankEntry, EntryType, Holiday, QueueAttendance, RiserCoupon, ReconciliationItem } from './types';
 import { WEEK_DAYS_BR, NAVIGATION_ITEMS, STANDARD_PETROPOLIS_HOLIDAYS_2026 } from './constants';
 import { 
   formatMinutes, 
@@ -23,7 +24,8 @@ import {
   History, SlidersHorizontal, Info, Database, AlertTriangle,
   GraduationCap, Briefcase, Minus, Flame, CalendarDays, ArrowRight,
   Play, Check, SkipForward, Pause, Award, Bell, HelpCircle,
-  Star, Smartphone, Copy, RotateCcw, Receipt, CheckSquare, Share2
+  Star, Smartphone, Copy, RotateCcw, Receipt, CheckSquare, Share2,
+  FileSpreadsheet, Upload, CheckCheck, DollarSign, Percent, Zap, Filter
 } from 'lucide-react';
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL || "https://pbvtbwzswkhgeazhwqfa.supabase.co"; 
@@ -135,6 +137,17 @@ const App: React.FC = () => {
   const [finishSaleNote, setFinishSaleNote] = useState('');
   const [isShareQueueModalOpen, setIsShareQueueModalOpen] = useState(false);
   const [copiedLinkFeedback, setCopiedLinkFeedback] = useState(false);
+
+  // Estados da Conciliação Automática de Cupons do Riser
+  const [isReconcileModalOpen, setIsReconcileModalOpen] = useState(false);
+  const [reconcileTab, setReconcileTab] = useState<'upload' | 'paste' | 'results'>('upload');
+  const [rawPastedText, setRawPastedText] = useState('');
+  const [reconcileToleranceMin, setReconcileToleranceMin] = useState(15);
+  const [importedCoupons, setImportedCoupons] = useState<RiserCoupon[]>([]);
+  const [reconciledItems, setReconciledItems] = useState<ReconciliationItem[]>([]);
+  const [unmatchedCoupons, setUnmatchedCoupons] = useState<RiserCoupon[]>([]);
+  const [isProcessingFile, setIsProcessingFile] = useState(false);
+  const [reconcileAppliedFeedback, setReconcileAppliedFeedback] = useState(false);
 
   // Formulário de Novo Feriado
   const [newHoliday, setNewHoliday] = useState({ date: getLocalDateString(new Date()), name: '', type: 'MUNICIPAL' as const });
@@ -510,6 +523,256 @@ const App: React.FC = () => {
   // Atualizar Nº do Cupom / Obs de um atendimento no Balanço
   const handleUpdateAttendanceSaleNote = (attendanceId: string, note: string) => {
     setTodayAttendances(prev => prev.map(att => att.id === attendanceId ? { ...att, saleNote: note.trim() || undefined } : att));
+  };
+
+  // Parser inteligente de matriz de dados do Riser (Excel ou Copiado/Colado)
+  const parseRiserMatrix = (matrix: any[][]): RiserCoupon[] => {
+    const coupons: RiserCoupon[] = [];
+    if (!matrix || matrix.length === 0) return coupons;
+
+    let headerRowIdx = -1;
+    let colMap: Record<string, number> = {};
+
+    for (let r = 0; r < Math.min(10, matrix.length); r++) {
+      const row = matrix[r].map(c => String(c || '').toLowerCase().trim());
+      if (row.some(c => c.includes('cupom') || c.includes('data/hora') || c.includes('data') || c.includes('valor'))) {
+        headerRowIdx = r;
+        row.forEach((colName, cIdx) => {
+          if (colName.includes('data') || colName.includes('hora')) colMap['date'] = cIdx;
+          if (colName === 'cupom' || colName.includes('cupom')) colMap['cupom'] = cIdx;
+          if (colName === 'tipo' || colName.includes('tipo')) colMap['tipo'] = cIdx;
+          if (colName === 'valor' || colName.includes('valor') || colName.includes('total')) colMap['valor'] = cIdx;
+          if (colName === 'pdv' || colName.includes('pdv') || colName.includes('caixa')) colMap['pdv'] = cIdx;
+          if (colName === 'operador' || colName.includes('operador')) colMap['operador'] = cIdx;
+          if (colName === 'status' || colName.includes('status')) colMap['status'] = cIdx;
+        });
+        break;
+      }
+    }
+
+    const startIdx = headerRowIdx !== -1 ? headerRowIdx + 1 : 0;
+
+    for (let r = startIdx; r < matrix.length; r++) {
+      const row = matrix[r];
+      if (!row || row.length === 0) continue;
+
+      let dateStr = '';
+      let cupomStr = '';
+      let tipoStr = '';
+      let valorNum = 0;
+      let pdvStr = '';
+      let operadorStr = '';
+      let statusStr = '';
+
+      if (colMap['date'] !== undefined) dateStr = String(row[colMap['date']] || '');
+      if (colMap['cupom'] !== undefined) cupomStr = String(row[colMap['cupom']] || '');
+      if (colMap['tipo'] !== undefined) tipoStr = String(row[colMap['tipo']] || '');
+      if (colMap['valor'] !== undefined) {
+        const vRaw = String(row[colMap['valor']] || '').replace('R$', '').replace(/\s/g, '').replace(/\./g, '').replace(',', '.');
+        valorNum = parseFloat(vRaw) || 0;
+      }
+      if (colMap['pdv'] !== undefined) pdvStr = String(row[colMap['pdv']] || '');
+      if (colMap['operador'] !== undefined) operadorStr = String(row[colMap['operador']] || '');
+      if (colMap['status'] !== undefined) statusStr = String(row[colMap['status']] || '');
+
+      // Fallback: detecção de padrão por coluna se o cabeçalho não tiver sido mapeado
+      if (!dateStr || !cupomStr) {
+        row.forEach(cell => {
+          const val = String(cell || '').trim();
+          if (/\d{1,2}\/\d{1,2}\/\d{2,4}\s+\d{1,2}:\d{2}/.test(val) || /\d{1,2}:\d{2}:\d{2}/.test(val)) {
+            dateStr = val;
+          } else if (/^\d{4,8}$/.test(val) && !cupomStr) {
+            cupomStr = val;
+          } else if (/venda|abertura|cancel|troca|contra-vale/i.test(val) && !tipoStr) {
+            tipoStr = val;
+          } else if (/\d+[,.]\d{2}/.test(val) && !valorNum) {
+            const vRaw = val.replace('R$', '').replace(/\s/g, '').replace(/\./g, '').replace(',', '.');
+            valorNum = parseFloat(vRaw) || 0;
+          }
+        });
+      }
+
+      // Filtrar apenas linhas de venda (ignorar aberturas de caixa, contra-vales, sangrias)
+      const isSale = tipoStr.toLowerCase().includes('venda') || (!tipoStr && valorNum > 0);
+      const isIgnored = /abertura|contra-vale|sangria|suprimento/i.test(tipoStr) || /contra-vale/i.test(statusStr);
+
+      if (isSale && !isIgnored && valorNum > 0) {
+        let timeStr = '10:00:00';
+        const timeMatch = dateStr.match(/(\d{1,2}):(\d{2})(?::(\d{2}))?/);
+        if (timeMatch) {
+          timeStr = `${timeMatch[1].padStart(2, '0')}:${timeMatch[2].padStart(2, '0')}:${timeMatch[3] ? timeMatch[3].padStart(2, '0') : '00'}`;
+        }
+
+        const [thH, thM, thS] = timeStr.split(':').map(Number);
+        const couponDate = new Date(currentTime);
+        couponDate.setHours(thH, thM, thS || 0, 0);
+
+        coupons.push({
+          id: `cp_${r}_${cupomStr || Date.now()}`,
+          dateTimeStr: dateStr || timeStr,
+          timeStr,
+          timestamp: couponDate.getTime(),
+          cupom: cupomStr || `Cupom #${r}`,
+          tipo: tipoStr || 'Venda',
+          valor: valorNum,
+          pdv: pdvStr || undefined,
+          operador: operadorStr || undefined,
+          status: statusStr || 'Cupom encerrado'
+        });
+      }
+    }
+
+    return coupons;
+  };
+
+  // Executar algoritmo de matching cronológico
+  const executeReconciliation = (coupons: RiserCoupon[], toleranceMinutes: number = reconcileToleranceMin) => {
+    const completed = todayAttendances.filter(a => a.status === 'COMPLETED');
+    const availableCoupons = [...coupons].sort((a, b) => a.timestamp - b.timestamp);
+    const matched: ReconciliationItem[] = [];
+    const usedCouponIndexes = new Set<number>();
+
+    completed.forEach(att => {
+      const emp = data.employees.find(e => e.id === att.employeeId);
+      const empName = emp?.name || 'Vendedor';
+
+      const [sH, sM] = att.startedAt.split(':').map(Number);
+      const [eH, eM] = (att.endedAt || att.startedAt).split(':').map(Number);
+
+      const startDate = new Date(currentTime);
+      startDate.setHours(sH, sM, 0, 0);
+      const startTs = startDate.getTime();
+
+      const endDate = new Date(currentTime);
+      endDate.setHours(eH, eM, 59, 999);
+      const endTs = endDate.getTime();
+
+      const maxToleranceTs = endTs + (toleranceMinutes * 60 * 1000);
+
+      let bestCouponIdx = -1;
+      let minDiff = Infinity;
+
+      availableCoupons.forEach((cp, idx) => {
+        if (usedCouponIndexes.has(idx)) return;
+        // Cupom emitido a partir de 2 min antes do início do atendimento até toleranceMinutes após o fim
+        if (cp.timestamp >= startTs - (2 * 60 * 1000) && cp.timestamp <= maxToleranceTs) {
+          const diff = Math.abs(cp.timestamp - endTs);
+          if (diff < minDiff) {
+            minDiff = diff;
+            bestCouponIdx = idx;
+          }
+        }
+      });
+
+      if (bestCouponIdx !== -1) {
+        usedCouponIndexes.add(bestCouponIdx);
+        const cp = availableCoupons[bestCouponIdx];
+        const diffMin = Math.round((cp.timestamp - endTs) / 60000);
+        matched.push({
+          attendance: att,
+          employeeName: empName,
+          matchedCoupon: cp,
+          timeDiffMinutes: diffMin,
+          status: 'MATCHED'
+        });
+      } else {
+        matched.push({
+          attendance: att,
+          employeeName: empName,
+          status: 'NO_SALE'
+        });
+      }
+    });
+
+    const unmatched = availableCoupons.filter((_, idx) => !usedCouponIndexes.has(idx));
+    setImportedCoupons(coupons);
+    setReconciledItems(matched);
+    setUnmatchedCoupons(unmatched);
+    setReconcileTab('results');
+  };
+
+  // Handler de upload de arquivo Excel / CSV
+  const handleExcelUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setIsProcessingFile(true);
+
+    const reader = new FileReader();
+    reader.onload = (evt) => {
+      try {
+        const buffer = evt.target?.result as ArrayBuffer;
+        const workbook = XLSX.read(buffer, { type: 'array' });
+        const firstSheetName = workbook.SheetNames[0];
+        const worksheet = workbook.Sheets[firstSheetName];
+        const jsonRows = XLSX.utils.sheet_to_json(worksheet, { header: 1 }) as any[][];
+        const parsedCoupons = parseRiserMatrix(jsonRows);
+        if (parsedCoupons.length === 0) {
+          alert("Nenhum cupom de venda encontrado no arquivo. Verifique se o arquivo contém as colunas Data/Hora, Cupom e Valor.");
+          return;
+        }
+        executeReconciliation(parsedCoupons, reconcileToleranceMin);
+      } catch (err: any) {
+        alert("Erro ao ler arquivo: " + err.message);
+      } finally {
+        setIsProcessingFile(false);
+      }
+    };
+    reader.readAsArrayBuffer(file);
+  };
+
+  // Handler para dados colados
+  const handleProcessPastedText = () => {
+    if (!rawPastedText.trim()) {
+      alert("Por favor, cole os dados do relatório do Riser na caixa de texto.");
+      return;
+    }
+    setIsProcessingFile(true);
+    try {
+      const lines = rawPastedText.trim().split('\n');
+      const rows = lines.map(line => {
+        if (line.includes('\t')) return line.split('\t');
+        if (line.includes(';')) return line.split(';');
+        return line.split(/ {2,}/);
+      });
+      const parsedCoupons = parseRiserMatrix(rows);
+      if (parsedCoupons.length === 0) {
+        alert("Nenhum cupom de venda reconhecido no texto colado. Certifique-se de copiar a tabela de cupons do Riser.");
+        return;
+      }
+      executeReconciliation(parsedCoupons, reconcileToleranceMin);
+    } catch (err: any) {
+      alert("Erro ao processar texto: " + err.message);
+    } finally {
+      setIsProcessingFile(false);
+    }
+  };
+
+  // Aplicar resultados conciliados no Balanço Diário
+  const handleApplyReconciliation = () => {
+    const todayStr = getLocalDateString(currentTime);
+    setTodayAttendances(prev => {
+      const updated = prev.map(att => {
+        const match = reconciledItems.find(r => r.attendance.id === att.id);
+        if (match && match.status === 'MATCHED' && match.matchedCoupon) {
+          return {
+            ...att,
+            saleNote: `Cupom ${match.matchedCoupon.cupom}${match.matchedCoupon.pdv ? ` (PDV ${match.matchedCoupon.pdv})` : ''}`,
+            saleAmount: match.matchedCoupon.valor
+          };
+        }
+        return att;
+      });
+      try {
+        localStorage.setItem(`ponto_attendances_v2_${todayStr}`, JSON.stringify(updated));
+      } catch (e) {}
+      return updated;
+    });
+
+    setReconcileAppliedFeedback(true);
+    setTimeout(() => {
+      setReconcileAppliedFeedback(false);
+      setIsReconcileModalOpen(false);
+    }, 1200);
   };
 
   // Passar a vez caso o colaborador precise ir para o fim da fila sem registrar atendimento
@@ -1652,13 +1915,25 @@ const App: React.FC = () => {
                     </p>
                   </div>
 
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 flex-wrap justify-end">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setIsReconcileModalOpen(true);
+                        setReconcileTab('upload');
+                      }}
+                      className="px-4 py-2 rounded-xl bg-gradient-to-r from-amber-400 to-yellow-500 hover:from-amber-500 hover:to-yellow-600 text-zinc-950 text-xs font-black uppercase tracking-wider transition-all flex items-center gap-1.5 shadow-md shadow-amber-400/20 active:scale-95"
+                    >
+                      <FileSpreadsheet size={15}/> Conciliar com Excel / Riser
+                    </button>
+
                     <button
                       type="button"
                       onClick={() => {
                         const text = attendanceStats.completedToday.map(a => {
                           const emp = data.employees.find(e => e.id === a.employeeId)?.name || 'Vendedor';
-                          return `${a.startedAt} às ${a.endedAt || '--:--'} (${a.durationMinutes || 0}m) | ${emp} | ${a.type === 'DIRECT' ? 'FIDELIZADO' : 'VEZ'} | Cupom: ${a.saleNote || 'N/A'}`;
+                          const valorStr = a.saleAmount ? ` | R$ ${a.saleAmount.toFixed(2).replace('.', ',')}` : '';
+                          return `${a.startedAt} às ${a.endedAt || '--:--'} (${a.durationMinutes || 0}m) | ${emp} | ${a.type === 'DIRECT' ? 'FIDELIZADO' : 'VEZ'} | Cupom: ${a.saleNote || 'N/A'}${valorStr}`;
                         }).join('\n');
                         navigator.clipboard.writeText(`BALANÇO DE ATENDIMENTOS - ${getLocalDateString(currentTime)}\n\n` + text);
                         alert("Balanço copiado para a área de transferência!");
@@ -1701,7 +1976,7 @@ const App: React.FC = () => {
                           <th className="py-3 px-3">Início</th>
                           <th className="py-3 px-3">Término</th>
                           <th className="py-3 px-3">Duração</th>
-                          <th className="py-3 px-3">Nº Cupom / Obs PDV</th>
+                          <th className="py-3 px-3">Cupom & Venda Riser</th>
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-zinc-100 font-medium text-zinc-700">
@@ -1723,13 +1998,20 @@ const App: React.FC = () => {
                               <td className="py-3 px-3 font-mono font-bold text-zinc-900">{a.endedAt || '--:--'}</td>
                               <td className="py-3 px-3 font-mono text-zinc-600">{a.durationMinutes || 0} min</td>
                               <td className="py-3 px-3">
-                                <input
-                                  type="text"
-                                  placeholder="Inserir Nº do Cupom..."
-                                  defaultValue={a.saleNote || ''}
-                                  onBlur={(e) => handleUpdateAttendanceSaleNote(a.id, e.target.value)}
-                                  className="w-full max-w-[200px] px-2.5 py-1 text-xs rounded-lg border border-zinc-200 focus:border-amber-400 focus:outline-none bg-zinc-50/50 hover:bg-white"
-                                />
+                                <div className="flex items-center gap-2">
+                                  <input
+                                    type="text"
+                                    placeholder="Inserir Nº do Cupom..."
+                                    defaultValue={a.saleNote || ''}
+                                    onBlur={(e) => handleUpdateAttendanceSaleNote(a.id, e.target.value)}
+                                    className="w-full max-w-[180px] px-2.5 py-1 text-xs rounded-lg border border-zinc-200 focus:border-amber-400 focus:outline-none bg-zinc-50/50 hover:bg-white"
+                                  />
+                                  {a.saleAmount !== undefined && a.saleAmount > 0 && (
+                                    <span className="px-2 py-1 rounded-lg bg-emerald-100 text-emerald-900 font-mono font-black text-xs shrink-0 border border-emerald-200">
+                                      R$ {a.saleAmount.toFixed(2).replace('.', ',')}
+                                    </span>
+                                  )}
+                                </div>
                               </td>
                             </tr>
                           );
@@ -2789,8 +3071,353 @@ const App: React.FC = () => {
         );
       })()}
 
+      {/* MODAL DE CONCILIAÇÃO AUTOMÁTICA DE CUPONS RISER */}
+      {isReconcileModalOpen && (() => {
+        const matchedCount = reconciledItems.filter(r => r.status === 'MATCHED' && r.matchedCoupon).length;
+        const totalSalesAmount = reconciledItems.reduce((acc, r) => acc + (r.matchedCoupon?.valor || 0), 0);
+        const totalCompleted = todayAttendances.filter(a => a.status === 'COMPLETED').length;
+        const conversionRate = totalCompleted > 0 ? (matchedCount / totalCompleted) * 100 : 0;
+        const avgTicket = matchedCount > 0 ? totalSalesAmount / matchedCount : 0;
+
+        return (
+          <div className="fixed inset-0 z-[125] flex items-center justify-center bg-zinc-950/80 backdrop-blur-md p-4 overflow-y-auto animate-in fade-in">
+            <div className="bg-white text-zinc-900 w-full max-w-4xl p-6 md:p-9 rounded-[2.5rem] shadow-2xl relative my-8 max-h-[90vh] overflow-y-auto border border-zinc-100 flex flex-col">
+              
+              {/* Header */}
+              <div className="flex items-start justify-between gap-4 mb-6">
+                <div className="flex items-center gap-3">
+                  <div className="w-14 h-14 rounded-2xl bg-amber-400 text-zinc-950 flex items-center justify-center font-black shadow-md shadow-amber-400/20 shrink-0">
+                    <FileSpreadsheet size={28}/>
+                  </div>
+                  <div>
+                    <h2 className="text-2xl font-black font-serif italic text-zinc-900">
+                      Conciliação Automática com Cupons do Riser
+                    </h2>
+                    <p className="text-xs text-zinc-500 mt-0.5">
+                      Cruza os horários de término de atendimento dos vendedores com os cupons de venda emitidos no caixa.
+                    </p>
+                  </div>
+                </div>
+
+                <button 
+                  type="button"
+                  onClick={() => setIsReconcileModalOpen(false)} 
+                  className="p-2 rounded-full text-zinc-400 hover:text-zinc-900 hover:bg-zinc-100 transition-all"
+                >
+                  <X size={22}/>
+                </button>
+              </div>
+
+              {/* Tabs de Navegação */}
+              <div className="flex items-center gap-2 border-b border-zinc-200 pb-3 mb-6 flex-wrap">
+                <button
+                  type="button"
+                  onClick={() => setReconcileTab('upload')}
+                  className={`px-4 py-2 rounded-xl text-xs font-black uppercase tracking-wider transition-all flex items-center gap-2 ${reconcileTab === 'upload' ? 'bg-zinc-950 text-amber-400 shadow-sm' : 'bg-zinc-100 text-zinc-600 hover:bg-zinc-200'}`}
+                >
+                  <Upload size={14}/> Subir Excel / CSV
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setReconcileTab('paste')}
+                  className={`px-4 py-2 rounded-xl text-xs font-black uppercase tracking-wider transition-all flex items-center gap-2 ${reconcileTab === 'paste' ? 'bg-zinc-950 text-amber-400 shadow-sm' : 'bg-zinc-100 text-zinc-600 hover:bg-zinc-200'}`}
+                >
+                  <Copy size={14}/> Colar Relatório (Ctrl+V)
+                </button>
+                {reconciledItems.length > 0 && (
+                  <button
+                    type="button"
+                    onClick={() => setReconcileTab('results')}
+                    className={`px-4 py-2 rounded-xl text-xs font-black uppercase tracking-wider transition-all flex items-center gap-2 ${reconcileTab === 'results' ? 'bg-amber-400 text-zinc-950 font-black shadow-md shadow-amber-400/20' : 'bg-amber-100 text-amber-900 hover:bg-amber-200'}`}
+                  >
+                    <CheckCheck size={14}/> Ver Resultados ({matchedCount} Vendas)
+                  </button>
+                )}
+              </div>
+
+              {/* TAB 1: UPLOAD DE EXCEL */}
+              {reconcileTab === 'upload' && (
+                <div className="space-y-6 animate-in fade-in duration-200">
+                  <div className="border-2 border-dashed border-zinc-300 hover:border-amber-400 rounded-3xl p-8 md:p-12 text-center bg-zinc-50/50 hover:bg-amber-50/20 transition-all flex flex-col items-center justify-center gap-4 group">
+                    <div className="w-16 h-16 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <FileSpreadsheet size={32}/>
+                    </div>
+                    <div>
+                      <h4 className="text-base font-black text-zinc-900 mb-1">
+                        Selecione o relatório exportado do Riser
+                      </h4>
+                      <p className="text-xs text-zinc-500 max-w-md mx-auto">
+                        Suporta arquivos <strong>.xlsx</strong>, <strong>.xls</strong> e <strong>.csv</strong> exportados da tela "Relatórios dos Caixas / Cupons emitidos".
+                      </p>
+                    </div>
+                    <label className="cursor-pointer px-6 py-3.5 rounded-2xl bg-zinc-950 hover:bg-zinc-900 text-amber-400 font-black text-xs uppercase tracking-wider shadow-lg shadow-zinc-900/10 flex items-center gap-2 border border-amber-400/30 active:scale-95 transition-all">
+                      <Upload size={16}/>
+                      <span>{isProcessingFile ? 'Processando Planilha...' : 'Escolher Arquivo do Computador'}</span>
+                      <input
+                        type="file"
+                        accept=".xlsx, .xls, .csv"
+                        className="hidden"
+                        onChange={handleExcelUpload}
+                        disabled={isProcessingFile}
+                      />
+                    </label>
+                  </div>
+
+                  <div className="p-4 rounded-2xl bg-amber-50/70 border border-amber-200 text-xs text-amber-950 space-y-1">
+                    <p className="font-bold flex items-center gap-1.5 text-amber-900">
+                      💡 Como funciona o cruzamento automático:
+                    </p>
+                    <p className="leading-relaxed">
+                      O sistema lê a data/hora e o valor de cada cupom e localiza qual vendedor encerrou o atendimento naquele mesmo intervalo de tempo. Vendas avulsas de balcão e cancelamentos são identificados automaticamente.
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {/* TAB 2: COLAR DADOS DIRETO */}
+              {reconcileTab === 'paste' && (
+                <div className="space-y-4 animate-in fade-in duration-200">
+                  <div>
+                    <label className="block text-xs font-black uppercase text-zinc-500 mb-1">
+                      Cole aqui a tabela copiada da tela do Riser ou do Excel:
+                    </label>
+                    <textarea
+                      rows={8}
+                      value={rawPastedText}
+                      onChange={(e) => setRawPastedText(e.target.value)}
+                      placeholder={`ID\tLoja\tPDV\tData/Hora\tCupom\tTipo\tOperador\tStatus\tValor\n00163903\t0001\t004\t15/08/2026 10:15:07\t146268\tVenda\tandrea\tCupom encerrado\t69,90\n00163904\t0001\t004\t15/08/2026 10:27:57\t146269\tVenda\tandrea\tCupom encerrado\t136,80`}
+                      className="w-full p-4 rounded-2xl bg-zinc-50 border border-zinc-200 font-mono text-xs outline-none focus:ring-2 focus:ring-amber-400 focus:bg-white resize-y"
+                    />
+                    <span className="text-[10px] text-zinc-400 mt-1 block">
+                      Dica: você pode selecionar as linhas na tela do Riser ou no Excel, dar Ctrl+C e colar direto aqui.
+                    </span>
+                  </div>
+
+                  <div className="flex justify-end gap-3 pt-2">
+                    <button
+                      type="button"
+                      onClick={() => setRawPastedText('')}
+                      className="px-5 py-3 rounded-xl bg-zinc-100 hover:bg-zinc-200 text-zinc-600 font-black uppercase text-xs transition-all"
+                    >
+                      Limpar
+                    </button>
+                    <button
+                      type="button"
+                      onClick={handleProcessPastedText}
+                      disabled={isProcessingFile || !rawPastedText.trim()}
+                      className="px-6 py-3 rounded-xl bg-zinc-950 hover:bg-zinc-900 text-amber-400 font-black uppercase text-xs flex items-center gap-2 shadow-lg border border-amber-400/30 disabled:opacity-50 transition-all active:scale-95"
+                    >
+                      {isProcessingFile ? <RefreshCw className="animate-spin" size={16}/> : <Zap size={16}/>}
+                      Processar e Cruzar Atendimentos
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {/* TAB 3: RESULTADOS DA CONCILIAÇÃO */}
+              {reconcileTab === 'results' && (
+                <div className="space-y-6 animate-in fade-in duration-200">
+                  
+                  {/* Barra de Ajuste de Tolerância */}
+                  <div className="p-4 rounded-2xl bg-zinc-50 border border-zinc-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                    <div className="flex items-center gap-2">
+                      <SlidersHorizontal size={16} className="text-amber-600"/>
+                      <div>
+                        <span className="text-xs font-black uppercase text-zinc-800 block">
+                          Tolerância de Tempo até o Caixa:
+                        </span>
+                        <span className="text-[10px] text-zinc-500">
+                          Tempo máximo que o cliente leva entre o fim do atendimento e a passagem no caixa.
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-1.5 flex-wrap">
+                      {[5, 10, 15, 20, 30].map(mins => (
+                        <button
+                          key={mins}
+                          type="button"
+                          onClick={() => {
+                            setReconcileToleranceMin(mins);
+                            executeReconciliation(importedCoupons, mins);
+                          }}
+                          className={`px-3 py-1.5 rounded-xl text-xs font-black transition-all ${reconcileToleranceMin === mins ? 'bg-zinc-950 text-amber-400 border border-amber-400/40 shadow-sm' : 'bg-white border border-zinc-200 text-zinc-700 hover:bg-zinc-100'}`}
+                        >
+                          {mins} min
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* CARDS DE MÉTRICAS */}
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                    <div className="bg-emerald-50 p-4 rounded-2xl border border-emerald-200">
+                      <span className="text-[10px] font-black uppercase text-emerald-800 tracking-wider">Faturamento Conciliado</span>
+                      <p className="text-2xl font-black font-mono text-emerald-950 mt-1">
+                        R$ {totalSalesAmount.toFixed(2).replace('.', ',')}
+                      </p>
+                    </div>
+
+                    <div className="bg-zinc-950 p-4 rounded-2xl border border-zinc-800 text-white">
+                      <span className="text-[10px] font-black uppercase text-amber-400 tracking-wider">Vendas Fechadas</span>
+                      <p className="text-2xl font-black font-mono text-amber-400 mt-1">
+                        {matchedCount} <span className="text-xs text-zinc-400 font-bold">/ {totalCompleted} atend.</span>
+                      </p>
+                    </div>
+
+                    <div className="bg-amber-50 p-4 rounded-2xl border border-amber-200">
+                      <span className="text-[10px] font-black uppercase text-amber-800 tracking-wider">Taxa de Conversão</span>
+                      <p className="text-2xl font-black font-mono text-amber-950 mt-1">
+                        {conversionRate.toFixed(1)}%
+                      </p>
+                    </div>
+
+                    <div className="bg-zinc-50 p-4 rounded-2xl border border-zinc-200">
+                      <span className="text-[10px] font-black uppercase text-zinc-500 tracking-wider">Ticket Médio</span>
+                      <p className="text-2xl font-black font-mono text-zinc-900 mt-1">
+                        R$ {avgTicket.toFixed(2).replace('.', ',')}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* TABELA DE ATENDIMENTOS CONCILIADOS */}
+                  <div className="bg-white rounded-2xl border border-zinc-200 overflow-hidden">
+                    <div className="px-5 py-3 bg-zinc-50/70 border-b border-zinc-200 flex items-center justify-between">
+                      <h4 className="text-xs font-black uppercase text-zinc-600 tracking-wider">
+                        Cruzamento de Atendimentos vs Cupons ({reconciledItems.length})
+                      </h4>
+                      <span className="text-[10px] font-bold text-zinc-400">
+                        {matchedCount} conciliados • {reconciledItems.length - matchedCount} sem venda
+                      </span>
+                    </div>
+
+                    <div className="overflow-x-auto max-h-[300px] overflow-y-auto">
+                      <table className="w-full text-left text-xs border-collapse">
+                        <thead className="bg-zinc-50 text-[10px] font-black uppercase text-zinc-400 sticky top-0 border-b border-zinc-200">
+                          <tr>
+                            <th className="py-2.5 px-3">Vendedor</th>
+                            <th className="py-2.5 px-3">Horário Atend.</th>
+                            <th className="py-2.5 px-3">Status</th>
+                            <th className="py-2.5 px-3">Cupom Riser</th>
+                            <th className="py-2.5 px-3">Horário Caixa</th>
+                            <th className="py-2.5 px-3 text-right">Valor Venda</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-zinc-100 font-medium text-zinc-700">
+                          {reconciledItems.map((item, idx) => {
+                            const isMatched = item.status === 'MATCHED' && item.matchedCoupon;
+                            return (
+                              <tr key={idx} className={`hover:bg-zinc-50/80 transition-colors ${isMatched ? 'bg-emerald-50/30' : ''}`}>
+                                <td className="py-2.5 px-3 font-bold text-zinc-900">
+                                  {item.employeeName}
+                                </td>
+                                <td className="py-2.5 px-3 font-mono text-zinc-600 text-[11px]">
+                                  {item.attendance.startedAt} às {item.attendance.endedAt || '--:--'}
+                                </td>
+                                <td className="py-2.5 px-3">
+                                  {isMatched ? (
+                                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-black uppercase bg-emerald-100 text-emerald-900 border border-emerald-200">
+                                      <Check size={11}/> Venda Fechada
+                                    </span>
+                                  ) : (
+                                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-black uppercase bg-zinc-100 text-zinc-600">
+                                      Sem Cupom
+                                    </span>
+                                  )}
+                                </td>
+                                <td className="py-2.5 px-3 font-mono font-bold text-zinc-900">
+                                  {isMatched ? (
+                                    <span>
+                                      #{item.matchedCoupon?.cupom} {item.matchedCoupon?.pdv ? `(PDV ${item.matchedCoupon.pdv})` : ''}
+                                    </span>
+                                  ) : (
+                                    <span className="text-zinc-400 italic">---</span>
+                                  )}
+                                </td>
+                                <td className="py-2.5 px-3 font-mono text-zinc-600 text-[11px]">
+                                  {isMatched ? (
+                                    <span>
+                                      {item.matchedCoupon?.timeStr} {item.timeDiffMinutes !== undefined ? `(+${Math.max(0, item.timeDiffMinutes)}m)` : ''}
+                                    </span>
+                                  ) : (
+                                    <span className="text-zinc-400 italic">---</span>
+                                  )}
+                                </td>
+                                <td className="py-2.5 px-3 text-right font-mono font-black text-zinc-900">
+                                  {isMatched ? (
+                                    <span className="text-emerald-700">
+                                      R$ {item.matchedCoupon?.valor.toFixed(2).replace('.', ',')}
+                                    </span>
+                                  ) : (
+                                    <span className="text-zinc-400 italic">R$ 0,00</span>
+                                  )}
+                                </td>
+                              </tr>
+                            );
+                          })}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  {/* CUPONS AVULSOS DO CAIXA (NÃO VINCULADOS) */}
+                  {unmatchedCoupons.length > 0 && (
+                    <div className="p-4 rounded-2xl bg-zinc-50 border border-zinc-200 space-y-2">
+                      <div className="flex items-center justify-between">
+                        <h5 className="text-xs font-black uppercase text-zinc-600 tracking-wider flex items-center gap-1.5">
+                          <AlertCircle size={14} className="text-amber-600"/>
+                          Cupons Emitidos no Caixa sem Atendimento na Fila ({unmatchedCoupons.length})
+                        </h5>
+                        <span className="text-[10px] text-zinc-400">Compras de balcão / diretas</span>
+                      </div>
+                      <div className="flex flex-wrap gap-2 max-h-[120px] overflow-y-auto">
+                        {unmatchedCoupons.map((cp, idx) => (
+                          <span key={idx} className="px-2.5 py-1 rounded-xl bg-white border border-zinc-200 text-[10px] font-mono font-bold text-zinc-700 shadow-sm">
+                            Cupom #{cp.cupom} ({cp.timeStr}) • R$ {cp.valor.toFixed(2).replace('.', ',')}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* AÇÕES DE CONCLUSÃO */}
+                  <div className="flex items-center justify-between gap-3 pt-4 border-t border-zinc-200 flex-wrap">
+                    <button
+                      type="button"
+                      onClick={() => setReconcileTab('upload')}
+                      className="px-5 py-3 rounded-xl bg-zinc-100 hover:bg-zinc-200 text-zinc-700 font-black uppercase text-xs transition-all"
+                    >
+                      Subir Outro Arquivo
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={handleApplyReconciliation}
+                      disabled={reconcileAppliedFeedback}
+                      className="px-7 py-3.5 rounded-2xl bg-gradient-to-r from-amber-400 to-yellow-500 hover:from-amber-500 hover:to-yellow-600 text-zinc-950 font-black uppercase text-xs tracking-wider shadow-xl shadow-amber-400/20 flex items-center gap-2 transition-all active:scale-95"
+                    >
+                      {reconcileAppliedFeedback ? (
+                        <>
+                          <Check size={18}/> Conciliação Aplicada com Sucesso!
+                        </>
+                      ) : (
+                        <>
+                          <CheckCheck size={18}/> Salvar e Aplicar no Balanço de Hoje
+                        </>
+                      )}
+                    </button>
+                  </div>
+                </div>
+              )}
+
+            </div>
+          </div>
+        );
+      })()}
+
     </div>
   );
 };
 
 export default App;
+

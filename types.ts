@@ -33,6 +33,7 @@ export interface Employee {
   initialBalanceMinutes: number;
   isHourly?: boolean;
   isSalesperson?: boolean; // Participa da Fila da Vez (Vendas em Loja)
+  riserSellerCode?: string; // Código do Vendedor no Riser (ex: "229")
 }
 
 export interface ClockRecord {
@@ -75,7 +76,32 @@ export interface QueueAttendance {
   durationMinutes?: number;
   type: 'NORMAL' | 'DIRECT'; // NORMAL = Vez da Fila, DIRECT = Cliente Fidelizado / Preferência
   status: 'IN_PROGRESS' | 'COMPLETED' | 'CANCELLED';
-  saleNote?: string; // Nº do Cupom / Valor / Obs da Venda
+  saleNote?: string; // Nº do Cupom / Obs da Venda
+  saleAmount?: number; // Valor da Venda em R$
+}
+
+export interface RiserCoupon {
+  id?: string;
+  loja?: string;
+  pdv?: string;
+  dateTimeStr: string; // ex: "15/08/2026 10:15:07"
+  timeStr: string;     // ex: "10:15:07"
+  timestamp: number;
+  cupom: string;       // ex: "146268"
+  tipo: string;        // ex: "Venda"
+  operador?: string;
+  status?: string;
+  valor: number;       // ex: 69.90
+  vendedorCode?: string; // se houver
+  matchedAttendanceId?: string;
+}
+
+export interface ReconciliationItem {
+  attendance: QueueAttendance;
+  employeeName: string;
+  matchedCoupon?: RiserCoupon;
+  timeDiffMinutes?: number;
+  status: 'MATCHED' | 'NO_SALE' | 'MANUAL';
 }
 
 export interface AppSettings {
@@ -90,3 +116,4 @@ export interface AppData {
   attendances: QueueAttendance[];
   settings?: AppSettings;
 }
+
